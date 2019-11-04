@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Amass</string>
+    <string name="title_home">首页</string>
+    <string name="title_growth">成长</string>
+    <string name="title_news">消息</string>
+    <string name="title_grade">班级圈</string>
+    <string name="title_mine">我的</string>
+</resources>

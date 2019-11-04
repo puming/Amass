@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.pm.amass.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_growth"
+        android:name="com.pm.amass.ui.growth.GrowthFragment"
+        android:label="@string/title_growth"
+        tools:layout="@layout/fragment_growth" />
+
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.pm.amass.ui.news.NewsFragment"
+        android:label="@string/title_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/navigation_grade"
+        android:name="com.pm.amass.ui.grade.GradeFragment"
+        android:label="@string/title_grade"
+        tools:layout="@layout/fragment_grade" />
+    <fragment
+        android:id="@+id/navigation_mine"
+        android:name="com.pm.amass.ui.mine.MineFragment"
+        android:label="@string/title_mine"
+        tools:layout="@layout/fragment_mine" />
+</navigation>
