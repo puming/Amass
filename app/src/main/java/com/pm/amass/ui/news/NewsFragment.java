@@ -1,5 +1,6 @@
 package com.pm.amass.ui.news;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,8 +50,14 @@ public class NewsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAppBar = view.findViewById(R.id.appbar);
-        mRecyclerView = view.findViewById(R.id.rv_news);
+        mAppBar = view.findViewById(R.id.appbar_news);
+        AppBar.Text text = new AppBar.Builder().setText("通讯录")
+                .setTextColor(Color.GRAY)
+                .build();
+        mAppBar.setAppbarMenuText(text)
+                .showAppbarMenuIcon(false);
+
+        mRecyclerView = view.findViewById(R.id.rv_news_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         datas = new ArrayList(24);
         Object o = new Object();

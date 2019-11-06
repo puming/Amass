@@ -35,5 +35,15 @@ public class MineFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAppBar = view.findViewById(R.id.appbar);
+        mAppBar.setAppbarMenuIcon(R.drawable.ic_setting)
+                .showAppbarMenuIcon(true);
+        mAppBar.getAppbarRightContainer().setOnClickListener(v -> {
+
+        });
+        mRecyclerView = view.findViewById(R.id.rv_mine_list);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        Object obj = new Object();
+        List<Object> list = Arrays.asList(obj, obj, obj, obj, obj, obj);
+        mRecyclerView.setAdapter(new MineAdapter(getContext(), list));
     }
 }
