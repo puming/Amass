@@ -70,7 +70,7 @@ public class GrowthFragment extends Fragment {
             fragments.add(homeFragment);
         }
 //        mViewPager.setAdapter(new HomePageAdapter<ViewGroup>(pages));
-        HomeFragmentPageAdapter adapter = new HomeFragmentPageAdapter(getSupportFragmentManager(), fragments);
+        HomeFragmentPageAdapter adapter = new HomeFragmentPageAdapter(getChildFragmentManager(), fragments);
         mViewPager.setAdapter(adapter);
     }
 
@@ -86,10 +86,6 @@ public class GrowthFragment extends Fragment {
     }
 
     private void initView(View view) {
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setTitle("个人中心");
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mTabLayout = view.findViewById(R.id.tabs);
         mViewPager = view.findViewById(R.id.viewpager);
     }
