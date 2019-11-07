@@ -57,6 +57,10 @@ public class NewsFragment extends Fragment {
         mAppBar.setAppbarMenuText(text)
                 .showAppbarMenuIcon(false);
 
+        mAppBar.getAppbarRightContainer().setOnClickListener(v -> {
+
+        });
+
         mRecyclerView = view.findViewById(R.id.rv_news_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         datas = new ArrayList(24);

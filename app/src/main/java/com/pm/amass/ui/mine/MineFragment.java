@@ -1,5 +1,6 @@
 package com.pm.amass.ui.mine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +16,7 @@ import com.basics.base.BaseFragment;
 import com.common.widget.AppBar;
 import com.pm.amass.R;
 import com.pm.amass.ui.news.NewsAdapter;
+import com.pm.amass.ui.setting.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +41,8 @@ public class MineFragment extends BaseFragment {
         mAppBar.setAppbarMenuIcon(R.drawable.ic_setting)
                 .showAppbarMenuIcon(true);
         mAppBar.getAppbarRightContainer().setOnClickListener(v -> {
-
+//            Navigation.findNavController(v).navigate(R.id.action_mine_to_setting);
+            startActivity(new Intent(getActivity(), SettingActivity.class));
         });
         mRecyclerView = view.findViewById(R.id.rv_mine_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
