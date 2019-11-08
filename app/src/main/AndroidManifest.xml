@@ -12,17 +12,24 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ui.setting.SettingActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait">
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme.NoActionBar">
+
 
         </activity>
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".splash.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashActivityTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -33,12 +40,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
     </application>
 

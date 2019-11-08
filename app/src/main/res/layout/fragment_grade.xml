@@ -1,6 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/layout_grade_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/image_grade_ad" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexbox_fun"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_85"
+        app:alignItems="center"
+        app:justifyContent="space_evenly">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_curriculum" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_curriculum" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_curriculum" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_curriculum" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_curriculum" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+
+    <View
+        android:id="@+id/divider_grade1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_4"
+        android:background="?android:attr/listDivider" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexbox_ranking"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_85"
+            app:alignItems="center"
+            app:justifyContent="space_evenly">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/image_grade_ranking" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_curriculum" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_curriculum" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_curriculum" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_curriculum" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <ImageButton
+            android:id="@+id/btn_grade_ranking_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/ic_grade_ranking_del" />
+    </FrameLayout>
+
+
+    <View
+        android:id="@+id/divider_grade2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_4"
+        android:background="?android:attr/listDivider" />
+
 
 </LinearLayout>

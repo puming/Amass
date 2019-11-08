@@ -5,6 +5,7 @@ import android.os.StrictMode;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         mNavView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view_drawer);
         mNavView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(mNavView, navController);
+        NavController navControllerDrawer = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(navigationView, navControllerDrawer);
+
     }
 
 }
