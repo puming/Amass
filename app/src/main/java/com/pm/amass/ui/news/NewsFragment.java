@@ -65,7 +65,9 @@ public class NewsFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         datas = new ArrayList(24);
         Object o = new Object();
-        List<Object> objects = Arrays.asList(o, o, o, o);
-        mRecyclerView.setAdapter(new NewsAdapter(getContext(), objects));
+        for (int i = 0; i < 50; i++) {
+            datas.add(o);
+        }
+        mRecyclerView.setAdapter(new NewsAdapter(getContext(), datas));
     }
 }
