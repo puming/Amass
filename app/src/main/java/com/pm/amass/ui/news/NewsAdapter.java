@@ -17,7 +17,10 @@ public class NewsAdapter extends BaseAdapter<Object, NewsAdapter.NewsViewHolder>
     public NewsAdapter(Context context, List datas) {
         super(context, datas);
         banner = new ArrayList<>(4);
-        banner.add("");
+        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
+        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
+        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
+        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
     }
 
     @Override

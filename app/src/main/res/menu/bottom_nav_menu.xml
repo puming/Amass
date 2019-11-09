@@ -17,7 +17,7 @@
         android:title="@string/title_news" />
     <item
         android:id="@+id/navigation_grade"
-        android:icon="@drawable/ic_mine_black_24dp"
+        android:icon="@drawable/ic_grade_black_24dp"
         android:title="@string/title_grade" />
     <item
         android:id="@+id/navigation_mine"

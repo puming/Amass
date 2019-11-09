@@ -18,7 +18,18 @@ public class MineAdapter extends BaseAdapter<Object, MineAdapter.MineViewHolder>
 
     @Override
     public MineViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if(viewType == 1){
+            return new MineViewHolder(parent,R.layout.item_mine_header);
+        }
         return new MineViewHolder(parent, R.layout.item_mine_tile);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(position == 0){
+            return 1;
+        }
+        return super.getItemViewType(position);
     }
 
     static class MineViewHolder extends BaseViewHolder<Object> {

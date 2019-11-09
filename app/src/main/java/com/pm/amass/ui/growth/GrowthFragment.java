@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -66,22 +64,35 @@ public class GrowthFragment extends Fragment {
             layout.addView(child, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER));
             pages.add(layout);*/
-            HomeFragment homeFragment = HomeFragment.newInstance();
+            ContentFragment homeFragment = ContentFragment.newInstance();
             fragments.add(homeFragment);
         }
 //        mViewPager.setAdapter(new HomePageAdapter<ViewGroup>(pages));
-        HomeFragmentPageAdapter adapter = new HomeFragmentPageAdapter(getChildFragmentManager(), fragments);
+        ContentFragmentPageAdapter adapter = new ContentFragmentPageAdapter(getChildFragmentManager(), fragments);
         mViewPager.setAdapter(adapter);
     }
 
     private ArrayList<Channel> initData() {
         ArrayList<Channel> channels = new ArrayList<>(8);
-        for (int i = 0; i < 8; i++) {
-            Channel channel = new Channel();
-            channel.setId(i);
-            channel.setTitle("首页");
-            channels.add(channel);
-        }
+        Channel channel = new Channel();
+        channel.setId(0);
+        channel.setTitle("知识库");
+        channels.add(channel);
+
+        Channel channel1 = new Channel();
+        channel1.setId(1);
+        channel1.setTitle("推荐");
+        channels.add(channel1);
+
+        Channel channel2 = new Channel();
+        channel2.setId(2);
+        channel2.setTitle("启蒙教育");
+        channels.add(channel2);
+
+        Channel channe3 = new Channel();
+        channe3.setId(3);
+        channe3.setTitle("育儿助手");
+        channels.add(channe3);
         return channels;
     }
 

@@ -47,7 +47,10 @@ public class MineFragment extends BaseFragment {
         mRecyclerView = view.findViewById(R.id.rv_mine_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Object obj = new Object();
-        List<Object> list = Arrays.asList(obj, obj, obj, obj, obj, obj);
+        ArrayList<Object> list = new ArrayList<>(10);
+        for (int i = 0; i < 10; i++) {
+            list.add(obj);
+        }
         mRecyclerView.setAdapter(new MineAdapter(getContext(), list));
     }
 }

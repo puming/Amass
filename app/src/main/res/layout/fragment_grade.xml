@@ -27,32 +27,61 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.common.widget.ImageTextCell
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_curriculum" />
+                app:bottom_margin="@dimen/dp_0"
+                app:icon="@mipmap/ic_grade_fun_task_list"
+                app:icon_height="@dimen/dp_36"
+                app:icon_width="@dimen/dp_36"
+                app:text="任务列表"
+                app:text_color="#000000"
+                app:text_size="6sp" />
         </FrameLayout>
 
-        <ImageView
+        <com.common.widget.ImageTextCell
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_curriculum" />
+            app:bottom_margin="@dimen/dp_0"
+            app:icon="@mipmap/ic_grade_fun_task_list"
+            app:icon_height="@dimen/dp_36"
+            app:icon_width="@dimen/dp_36"
+            app:text="任务列表"
+            app:text_color="#000000"
+            app:text_size="6sp" />
 
-        <ImageView
+        <com.common.widget.ImageTextCell
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_curriculum" />
+            app:bottom_margin="@dimen/dp_0"
+            app:icon="@mipmap/ic_grade_fun_task_list"
+            app:icon_height="@dimen/dp_36"
+            app:icon_width="@dimen/dp_36"
+            app:text="任务列表"
+            app:text_color="#000000"
+            app:text_size="6sp" />
 
-        <ImageView
+        <com.common.widget.ImageTextCell
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_curriculum" />
+            app:bottom_margin="@dimen/dp_0"
+            app:icon="@mipmap/ic_grade_fun_task_list"
+            app:icon_height="@dimen/dp_36"
+            app:icon_width="@dimen/dp_36"
+            app:text="任务列表"
+            app:text_color="#000000"
+            app:text_size="6sp" />
 
-        <ImageView
+        <com.common.widget.ImageTextCell
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_curriculum" />
+            app:bottom_margin="@dimen/dp_0"
+            app:icon="@mipmap/ic_grade_fun_more"
+            app:icon_height="@dimen/dp_36"
+            app:icon_width="@dimen/dp_36"
+            app:text="更多"
+            app:text_color="#000000"
+            app:text_size="6sp" />
     </com.google.android.flexbox.FlexboxLayout>
 
 
@@ -73,31 +102,56 @@
             app:alignItems="center"
             app:justifyContent="space_evenly">
 
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@mipmap/image_grade_ranking" />
 
-            <ImageView
+            <com.common.widget.ImageTextCell
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_curriculum" />
+                app:bottom_margin="@dimen/dp_0"
+                app:icon="@mipmap/ic_mine_icon"
+                app:icon_height="@dimen/dp_36"
+                app:icon_width="@dimen/dp_36"
+                app:text="王梓桐"
+                app:text_color="#000000"
+                app:text_size="6sp" />
 
-            <ImageView
+            <com.common.widget.ImageTextCell
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_curriculum" />
+                app:bottom_margin="@dimen/dp_0"
+                app:icon="@mipmap/ic_mine_icon"
+                app:icon_height="@dimen/dp_36"
+                app:icon_width="@dimen/dp_36"
+                app:text="王梓桐"
+                app:text_color="#000000"
+                app:text_size="6sp" />
 
-            <ImageView
+            <com.common.widget.ImageTextCell
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_curriculum" />
+                app:bottom_margin="@dimen/dp_0"
+                app:icon="@mipmap/ic_mine_icon"
+                app:icon_height="@dimen/dp_36"
+                app:icon_width="@dimen/dp_36"
+                app:text="王梓桐"
+                app:text_color="#000000"
+                app:text_size="6sp" />
 
-            <ImageView
+            <com.common.widget.ImageTextCell
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_curriculum" />
+                app:bottom_margin="@dimen/dp_0"
+                app:icon="@mipmap/ic_mine_icon"
+                app:icon_height="@dimen/dp_36"
+                app:icon_width="@dimen/dp_36"
+                app:text="王梓桐"
+                app:text_color="#000000"
+                app:text_size="6sp" />
         </com.google.android.flexbox.FlexboxLayout>
 
         <ImageButton

@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.pm.amass.MainActivity;
 import com.pm.amass.R;
+import com.pm.amass.login.LoginActivity;
 
 import java.util.Timer;
 
@@ -86,7 +87,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void startMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 

@@ -8,7 +8,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
         <!--        android:fitsSystemWindows="true"-->
         <!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
 
@@ -35,7 +36,7 @@
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_48"
+                android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_marginTop="@dimen/dp_22"
                 android:background="@android:color/white"
@@ -44,30 +45,61 @@
                 app:justifyContent="space_evenly"
                 app:layout_collapseMode="pin">
 
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:src="@mipmap/ic_curriculum" />
+                <com.common.widget.ImageTextCell
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bottom_margin="@dimen/dp_0"
+                    app:icon="@mipmap/ic_curriculum"
+                    app:icon_height="@dimen/dp_36"
+                    app:icon_width="@dimen/dp_36"
+                    app:text="课程"
+                    app:text_color="#000000"
+                    app:text_size="6sp" />
 
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:src="@mipmap/ic_curriculum" />
+                <com.common.widget.ImageTextCell
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bottom_margin="@dimen/dp_0"
+                    app:icon="@mipmap/ic_curriculum"
+                    app:icon_height="@dimen/dp_36"
+                    app:icon_width="@dimen/dp_36"
+                    app:text="视频"
+                    app:text_color="#000000"
+                    app:text_size="6sp" />
 
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:src="@mipmap/ic_curriculum" />
+                <com.common.widget.ImageTextCell
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bottom_margin="@dimen/dp_0"
+                    app:icon="@mipmap/ic_curriculum"
+                    app:icon_height="@dimen/dp_36"
+                    app:icon_width="@dimen/dp_36"
+                    app:text="智慧购"
+                    app:text_color="#000000"
+                    app:text_size="6sp" />
 
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:src="@mipmap/ic_curriculum" />
+                <com.common.widget.ImageTextCell
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bottom_margin="@dimen/dp_0"
+                    app:icon="@mipmap/ic_curriculum"
+                    app:icon_height="@dimen/dp_36"
+                    app:icon_width="@dimen/dp_36"
+                    app:text="58同城"
+                    app:text_color="#000000"
+                    app:text_size="6sp" />
 
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:src="@mipmap/ic_curriculum" />
+                <com.common.widget.ImageTextCell
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:bottom_margin="@dimen/dp_0"
+                    app:icon="@mipmap/ic_curriculum"
+                    app:icon_height="@dimen/dp_36"
+                    app:icon_width="@dimen/dp_36"
+                    app:text="会员专区"
+                    app:text_color="#000000"
+                    app:text_size="6sp" />
+
             </com.google.android.flexbox.FlexboxLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

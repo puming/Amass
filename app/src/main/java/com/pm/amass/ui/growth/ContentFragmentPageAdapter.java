@@ -8,10 +8,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 
-public class HomeFragmentPageAdapter extends FragmentStatePagerAdapter {
+public class ContentFragmentPageAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> mFragments;
 
-    public HomeFragmentPageAdapter(FragmentManager fragmentManager
+    public ContentFragmentPageAdapter(FragmentManager fragmentManager
             , List<Fragment> fragments) {
         super(fragmentManager);
         this.mFragments = fragments;

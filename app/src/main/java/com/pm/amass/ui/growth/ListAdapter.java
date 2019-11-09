@@ -20,7 +20,7 @@ public class ListAdapter extends BaseAdapter<Moudle, ListAdapter.ListViewHolder>
 
     @Override
     public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ListViewHolder holder = new ListViewHolder(parent, R.layout.item_type_1_home);
+        ListViewHolder holder = new ListViewHolder(parent, R.layout.item_type_2_home);
         return holder;
     }
 
@@ -28,9 +28,9 @@ public class ListAdapter extends BaseAdapter<Moudle, ListAdapter.ListViewHolder>
     public void onBindViewHolder(ListViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
         Moudle moudle = mDatas.get(position);
-        TextView textView = holder.getItemView(R.id.tv_type_1_home);
-        ImageView imageView = holder.getItemView(R.id.iv_type_1_home);
-        textView.setText(moudle.getLabel());
+//        TextView textView = holder.getItemView(R.id.tv_type_1_home);
+//        ImageView imageView = holder.getItemView(R.id.iv_type_1_home);
+//        textView.setText(moudle.getLabel());
     }
 
     static class ListViewHolder extends BaseViewHolder<Moudle> {

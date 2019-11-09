@@ -15,11 +15,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeFragment extends Fragment {
+public class ContentFragment extends Fragment {
     private RecyclerView mRecyclerView;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static ContentFragment newInstance() {
+        return new ContentFragment();
     }
 
     @Override
