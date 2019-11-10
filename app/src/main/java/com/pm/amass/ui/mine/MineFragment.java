@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.basics.base.BaseFragment;
 import com.common.widget.AppBar;
 import com.pm.amass.R;
+import com.pm.amass.personal.PersonalActivity;
 import com.pm.amass.ui.news.NewsAdapter;
 import com.pm.amass.ui.setting.SettingActivity;
 
@@ -44,11 +45,13 @@ public class MineFragment extends BaseFragment {
 //            Navigation.findNavController(v).navigate(R.id.action_mine_to_setting);
             startActivity(new Intent(getActivity(), SettingActivity.class));
         });
+        ViewGroup mMineLayout = view.findViewById(R.id.mine_header_layout);
+        mMineLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), PersonalActivity.class)));
         mRecyclerView = view.findViewById(R.id.rv_mine_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Object obj = new Object();
         ArrayList<Object> list = new ArrayList<>(10);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             list.add(obj);
         }
         mRecyclerView.setAdapter(new MineAdapter(getContext(), list));

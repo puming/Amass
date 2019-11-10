@@ -27,7 +27,7 @@ public class MineAdapter extends BaseAdapter<Object, MineAdapter.MineViewHolder>
     @Override
     public int getItemViewType(int position) {
         if(position == 0){
-            return 1;
+//            return 1;
         }
         return super.getItemViewType(position);
     }

@@ -11,11 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".login.LoginActivity"></activity>
+        <activity android:name=".personal.PersonalActivity"></activity>
+        <activity android:name=".login.LoginActivity" />
         <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.setting.SettingActivity"
             android:launchMode="singleTop"
@@ -34,7 +35,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

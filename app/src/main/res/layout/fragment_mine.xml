@@ -21,22 +21,80 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="我的"
-        app:showLeft="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:showLeft="false" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:background="@android:color/white"
-        android:id="@+id/rv_mine_list"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar" />
+        app:layout_constraintTop_toBottomOf="@id/appbar">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/mine_item_header_bg_shape">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:expandedTitleMarginEnd="0dp"
+                app:expandedTitleMarginStart="0dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <include
+                    android:id="@+id/mine_header_layout"
+                    layout="@layout/item_mine_header" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:alignItems="center"
+                    app:justifyContent="space_evenly">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_72"
+                        android:layout_height="@dimen/dp_72"
+                        app:srcCompat="@mipmap/ic_curriculum" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_72"
+                        android:layout_height="@dimen/dp_72"
+                        app:srcCompat="@mipmap/ic_curriculum" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_72"
+                        android:layout_height="@dimen/dp_72"
+                        app:srcCompat="@mipmap/ic_curriculum" />
+
+                </com.google.android.flexbox.FlexboxLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_mine_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="@dimen/dp_0"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/white"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

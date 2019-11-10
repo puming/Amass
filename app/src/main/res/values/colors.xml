@@ -3,4 +3,6 @@
     <color name="colorPrimary">#00BCD4</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="mine_header_bg_color">#7fF4FAF7</color>
 </resources>

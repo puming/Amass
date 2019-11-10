@@ -64,7 +64,7 @@
     </RadioGroup>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/fl_form_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_100"
         android:layout_marginStart="16dp"
@@ -74,18 +74,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rg">
 
+        <LinearLayout
+            android:id="@+id/sign_in_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_sign_in_form_mobile" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <include layout="@layout/layout_sign_in_form_auth_code" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sign_up_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_sign_up_form_account" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <include layout="@layout/layout_sign_up_form_psd" />
+
+        </LinearLayout>
+
     </FrameLayout>
 
     <Button
         android:id="@+id/btn_sign_in"
-        style="@style/btn_style"
+        style="@style/BtnStyle"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginEnd="@dimen/dp_16"
         android:text="登录"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/fl_form_container" />
 
     <!--chain-->
     <View
@@ -125,11 +161,12 @@
         android:id="@+id/imageTextWeiChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
         android:layout_marginBottom="@dimen/dp_48"
         app:icon="@mipmap/ic_mine_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imageTextQQ"
-        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:text="微信"
         app:text_color="#000000" />
@@ -138,6 +175,7 @@
         android:id="@+id/imageTextQQ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
         android:layout_marginBottom="@dimen/dp_48"
         app:icon="@mipmap/ic_mine_icon"
         app:layout_constraintBottom_toBottomOf="parent"

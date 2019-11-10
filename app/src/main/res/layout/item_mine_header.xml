@@ -2,18 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#7fF4FAF7"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_106"
     android:layout_marginStart="@dimen/dp_16"
     android:layout_marginEnd="@dimen/dp_16"
-    android:layout_width="match_parent"
-    android:layout_marginBottom="@dimen/dp_20"
-    android:layout_height="@dimen/dp_220">
+    android:layout_marginBottom="@dimen/dp_20">
 
     <ImageView
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginEnd="@dimen/dp_16"
         android:id="@+id/iv_mine_icon"
         android:layout_width="@dimen/dp_72"
         android:layout_height="@dimen/dp_72"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_mine_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,45 +24,23 @@
         android:id="@+id/tv_mine_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_6"
         android:text="612259"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/tv_mine_modify"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iv_mine_icon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/iv_mine_icon"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <TextView
+        android:id="@+id/tv_mine_modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="@dimen/dp_108" />
-
-    <com.google.android.flexbox.FlexboxLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:alignItems="center"
-        app:justifyContent="space_evenly"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="修改信息"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBottom_toBottomOf="@id/iv_mine_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline">
-
-        <ImageView
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_72"
-            app:srcCompat="@mipmap/ic_curriculum" />
-
-        <ImageView
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_72"
-            app:srcCompat="@mipmap/ic_curriculum" />
-
-        <ImageView
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_72"
-            app:srcCompat="@mipmap/ic_curriculum" />
-
-    </com.google.android.flexbox.FlexboxLayout>
-
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tv_mine_id"
+        app:layout_constraintTop_toBottomOf="@id/tv_mine_id" />
 </androidx.constraintlayout.widget.ConstraintLayout>
