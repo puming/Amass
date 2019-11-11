@@ -54,26 +54,107 @@
                     android:id="@+id/mine_header_layout"
                     layout="@layout/item_mine_header" />
 
+
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:alignItems="center"
                     app:justifyContent="space_evenly">
 
-                    <ImageView
-                        android:layout_width="@dimen/dp_72"
-                        android:layout_height="@dimen/dp_72"
-                        app:srcCompat="@mipmap/ic_curriculum" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="@dimen/dp_72"
-                        android:layout_height="@dimen/dp_72"
-                        app:srcCompat="@mipmap/ic_curriculum" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@mipmap/ic_mine_integral_task" />
 
-                    <ImageView
-                        android:layout_width="@dimen/dp_72"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:layout_weight="1"
+                            android:text="积分任务"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="已经领取0/180" />
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="1dp"
                         android:layout_height="@dimen/dp_72"
-                        app:srcCompat="@mipmap/ic_curriculum" />
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@mipmap/ic_mine_integral_task" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:layout_weight="1"
+                            android:text="排行榜"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="班级排名3" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/dp_72"
+                        android:background="?android:attr/listDivider" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@mipmap/ic_mine_integral_task" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:layout_weight="1"
+                            android:text="积分商城"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="积分兑豪礼" />
+                    </LinearLayout>
 
                 </com.google.android.flexbox.FlexboxLayout>
 
@@ -88,7 +169,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="@dimen/dp_0"
+            android:layout_marginTop="@dimen/dp_16"
             android:layout_marginEnd="16dp"
             android:background="@android:color/white"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
