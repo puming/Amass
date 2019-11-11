@@ -42,15 +42,30 @@
     </style>
 
     <style name="SignUpFormInputStyle">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_marginStart">@dimen/dp_48</item>
         <item name="android:layout_marginEnd">@dimen/dp_16</item>
+        <item name="android:lines">1</item>
+        <item name="android:textSize">@dimen/sp_18</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="layout_constraintHorizontal_bias">0.0</item>
 
+
+    </style>
+
+    <style name="SignInputStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_16</item>
+        <item name="android:layout_marginEnd">@dimen/dp_16</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="android:textSize">@dimen/sp_18</item>
     </style>
 
 </resources>

@@ -38,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_60"
+        android:checkedButton="@id/rbtn_sign_in"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,17 +49,14 @@
             android:id="@+id/rbtn_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="手机快捷登录"
-
-            />
+            android:layout_marginEnd="@dimen/dp_32"
+            android:text="手机快捷登录" />
 
         <RadioButton
             android:id="@+id/rbtn_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="账号密码登录"
-
-            />
+            android:text="账号密码登录" />
 
 
     </RadioGroup>
@@ -66,7 +64,7 @@
     <FrameLayout
         android:id="@+id/fl_form_container"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_100"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -78,8 +76,8 @@
             android:id="@+id/sign_in_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <include layout="@layout/layout_sign_in_form_mobile" />
 
@@ -96,8 +94,8 @@
             android:id="@+id/sign_up_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <include layout="@layout/layout_sign_up_form_account" />
 
@@ -128,7 +126,7 @@
         android:id="@+id/divider_left"
         android:layout_width="@dimen/dp_100"
         android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/dp_48"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toStartOf="@id/three_parties_login"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -163,12 +161,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_16"
         android:layout_marginBottom="@dimen/dp_48"
-        app:icon="@mipmap/ic_mine_icon"
+        app:icon="@drawable/ic_wechat_vector"
+        app:layout_constraintTop_toBottomOf="@id/divider_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imageTextQQ"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1"
         app:text="微信"
+        app:text_size="8dp"
         app:text_color="#000000" />
 
     <com.common.widget.ImageTextCell
@@ -177,11 +178,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginBottom="@dimen/dp_48"
-        app:icon="@mipmap/ic_mine_icon"
+        app:icon="@drawable/ic_qq_vector"
+        app:layout_constraintTop_toTopOf="@id/imageTextWeiChat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imageTextWeiChat"
         app:text="QQ"
+        app:text_size="8dp"
         app:text_color="#000000" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

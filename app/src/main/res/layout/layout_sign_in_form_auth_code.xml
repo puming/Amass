@@ -18,17 +18,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_sign_in_auth_code" />
 
-    <EditText
+    <com.common.widget.InputText
         android:id="@+id/input_sign_in_auth_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:ems="10"
+        style="@style/SignInputStyle"
+        android:ems="6"
+        android:hint="请输入短信验证码"
         android:inputType="numberSigned"
+        android:maxLength="6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_sign_in_auth_code"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

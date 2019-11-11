@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import com.basics.base.BaseFragment;
 import com.pm.amass.MainActivity;
@@ -43,6 +44,19 @@ public class SignInFragment extends BaseFragment {
                 Navigation.findNavController(v)
                         .navigate(R.id.action_signIn_to_signUp)
         );
+
+        RadioGroup mRadioGroup = view.findViewById(R.id.rg);
+        ViewGroup mViewGroupSignIn = view.findViewById(R.id.sign_in_form);
+        ViewGroup mViewGroupSignUp = view.findViewById(R.id.sign_up_form);
+        mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rbtn_sign_in) {
+                mViewGroupSignIn.setVisibility(View.VISIBLE);
+                mViewGroupSignUp.setVisibility(View.GONE);
+            } else if (checkedId == R.id.rbtn_sign_up) {
+                mViewGroupSignIn.setVisibility(View.GONE);
+                mViewGroupSignUp.setVisibility(View.VISIBLE);
+            }
+        });
 
         view.findViewById(R.id.btn_sign_in).setOnClickListener(v -> {
             startActivity(new Intent(getContext(), MainActivity.class));

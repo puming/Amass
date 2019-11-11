@@ -18,17 +18,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_sign_in_mobile" />
 
-    <EditText
+    <com.common.widget.InputText
         android:id="@+id/input_sign_in_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:ems="10"
+        style="@style/SignInputStyle"
+        android:layout_width="0dp"
+        android:ems="11"
+        android:hint="请输入手机号"
         android:inputType="phone"
+        android:maxLength="11"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_auth_code"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_sign_in_mobile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_auth_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/text_button_bg_selector"
+        android:clickable="false"
+        android:text="获取验证码"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

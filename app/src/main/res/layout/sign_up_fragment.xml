@@ -39,12 +39,12 @@
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="16dp" />
 
-                <EditText
+                <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_account"
                     style="@style/SignUpFormInputStyle"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name"
+                    android:inputType="number"
+                    android:hint="请输入账号"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -69,12 +69,12 @@
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="16dp" />
 
-                <EditText
+                <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_psd"
                     style="@style/SignUpFormInputStyle"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:text="Name"
+                    android:hint="请输入密码"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_psd_title"
                     tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -96,12 +96,12 @@
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="16dp" />
 
-                <EditText
+                <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_name"
                     style="@style/SignUpFormInputStyle"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:hint="请输入姓名"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_name_title"
                     tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -123,14 +123,26 @@
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="16dp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/input_sing_up_item_relation"
                     style="@style/SignUpFormInputStyle"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="Name"
+                    android:hint="爸爸"
+                    app:layout_constraintEnd_toStartOf="@id/ibtn_select"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_relation_title"
                     tools:ignore="MissingConstraints" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_select"
+                    android:padding="0dp"
+                    android:paddingHorizontal="@dimen/dp_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_drop_down_vector"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -148,14 +160,28 @@
                     android:text="手\u3000机\u3000号"
                     tools:ignore="MissingConstraints" />
 
-                <EditText
+                <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_phone"
                     style="@style/SignUpFormInputStyle"
+                    app:layout_constraintEnd_toStartOf="@id/btn_start_auth"
                     android:ems="10"
-                    android:inputType="text"
-                    android:text="Name"
+                    android:inputType="phone"
+                    android:hint="请输入手机号"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_phone_title"
                     tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/btn_start_auth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@drawable/login_btn_bg_shape"
+                    android:text="发送验证"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -173,12 +199,12 @@
                     android:text="@string/sign_up_title_code"
                     tools:ignore="MissingConstraints" />
 
-                <EditText
+                <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_code"
                     style="@style/SignUpFormInputStyle"
                     android:ems="10"
-                    android:inputType="text"
-                    android:text="Name"
+                    android:inputType="numberSigned"
+                    android:hint="请输入验证码"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_code_title"
                     tools:ignore="MissingConstraints" />
             </androidx.constraintlayout.widget.ConstraintLayout>
