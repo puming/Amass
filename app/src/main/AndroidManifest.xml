@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.pm.amass">
 
+    <uses-permission android:name=" android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,14 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".personal.PersonalActivity"></activity>
+        <activity android:name=".mine.top.TopActivity"></activity>
+        <activity android:name=".mine.mission.MissionActivity" />
+        <activity android:name=".mine.mall.MallActivity" />
+        <activity android:name=".mine.personal.PersonalActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.setting.SettingActivity"
+            android:name=".mine.setting.SettingActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity

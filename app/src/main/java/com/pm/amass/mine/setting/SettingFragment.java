@@ -1,4 +1,4 @@
-package com.pm.amass.ui.setting;
+package com.pm.amass.mine.setting;
 
 import androidx.lifecycle.ViewModelProviders;
 

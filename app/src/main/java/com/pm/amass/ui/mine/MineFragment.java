@@ -8,20 +8,19 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.basics.base.BaseFragment;
 import com.common.widget.AppBar;
 import com.pm.amass.R;
-import com.pm.amass.personal.PersonalActivity;
-import com.pm.amass.ui.news.NewsAdapter;
-import com.pm.amass.ui.setting.SettingActivity;
+import com.pm.amass.mine.mall.MallActivity;
+import com.pm.amass.mine.mission.MissionActivity;
+import com.pm.amass.mine.personal.PersonalActivity;
+import com.pm.amass.mine.top.TopActivity;
+import com.pm.amass.mine.setting.SettingActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class MineFragment extends BaseFragment {
     AppBar mAppBar;
@@ -47,6 +46,10 @@ public class MineFragment extends BaseFragment {
         });
         ViewGroup mMineLayout = view.findViewById(R.id.mine_header_layout);
         mMineLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), PersonalActivity.class)));
+
+        view.findViewById(R.id.ll_goto_mission).setOnClickListener(v -> startActivity(new Intent(getContext(), MissionActivity.class)));
+        view.findViewById(R.id.ll_goto_top).setOnClickListener(v -> startActivity(new Intent(getContext(), TopActivity.class)));
+        view.findViewById(R.id.ll_goto_mall).setOnClickListener(v -> startActivity(new Intent(getContext(), MallActivity.class)));
         mRecyclerView = view.findViewById(R.id.rv_mine_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Object obj = new Object();

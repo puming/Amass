@@ -58,10 +58,12 @@
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_16"
                     app:alignItems="center"
                     app:justifyContent="space_evenly">
 
                     <LinearLayout
+                        android:id="@+id/ll_goto_mission"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -96,6 +98,7 @@
                         android:background="?android:attr/listDivider" />
 
                     <LinearLayout
+                        android:id="@+id/ll_goto_top"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -129,6 +132,7 @@
                         android:background="?android:attr/listDivider" />
 
                     <LinearLayout
+                        android:id="@+id/ll_goto_mall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"

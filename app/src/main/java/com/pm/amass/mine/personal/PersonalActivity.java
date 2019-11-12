@@ -1,15 +1,15 @@
-package com.pm.amass.personal;
+package com.pm.amass.mine.personal;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.basics.base.AppBarActivity;
 import com.pm.amass.R;
 
 /**
  * @author pmcho
  */
-public class PersonalActivity extends AppCompatActivity {
+public class PersonalActivity extends AppBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

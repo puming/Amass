@@ -1,10 +1,9 @@
-package com.pm.amass.ui.setting;
+package com.pm.amass.mine.setting;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.common.widget.AppBar;
 import com.pm.amass.R;

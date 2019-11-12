@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_setting"
-        android:name="com.pm.amass.ui.setting.SettingFragment"
+        android:name="com.pm.amass.mine.setting.SettingFragment"
         android:label="@string/title_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>
