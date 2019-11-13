@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
 import com.common.widget.AppBar;
+import com.common.widget.Tile;
 import com.pm.amass.R;
 
 /**
@@ -23,6 +24,12 @@ public class SettingActivity extends AppCompatActivity {
         mAppBar.getAppbarLeftContainer().setOnClickListener(v -> {
             onBackPressed();
         });
+        Tile tileTips = findViewById(R.id.tile_news);
+        tileTips.showLeading(false);
+        tileTips.setTitle("新消息提示");
+        Tile tileAccountManager = findViewById(R.id.tile_account_manager);
+        tileAccountManager.showLeading(false);
+        tileAccountManager.setTitle("账号管理");
         mViewModel = ViewModelProviders.of(this).get(SettingViewModel.class);
     }
 }

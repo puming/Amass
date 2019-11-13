@@ -8,14 +8,13 @@
     <ImageView
         android:id="@+id/iv_home_bg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/image_home_head_bg" />
 
     <ImageButton
@@ -48,13 +47,14 @@
         <LinearLayout
             android:id="@+id/ll_goto_brick"
             android:layout_width="wrap_content"
+            android:gravity="center_vertical"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_del_icon" />
+                android:src="@mipmap/ic_brick" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,17 +73,18 @@
             android:id="@+id/ll_goto_concrete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_del_icon" />
+                android:src="@mipmap/ic_concrete" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="块砖：" />
+                android:text="混凝土：" />
 
             <TextView
                 android:id="@+id/tv_concrete_value"
@@ -97,17 +98,18 @@
             android:id="@+id/ll_goto_rebar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_del_icon" />
+                android:src="@mipmap/ic_rebar" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="块砖：" />
+                android:text="钢筋：" />
 
             <TextView
                 android:id="@+id/tv_rebar_value"
@@ -119,6 +121,7 @@
 
         <LinearLayout
             android:id="@+id/ll_goto_gold"
+            android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -126,12 +129,12 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_del_icon" />
+                android:src="@mipmap/ic_gold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="块砖：" />
+                android:text="金币：" />
 
             <TextView
                 android:id="@+id/tv_gold_value"
@@ -165,12 +168,125 @@
         app:srcCompat="@mipmap/image_home_house" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_baby_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@id/tv_baby_name"
+        app:layout_constraintTop_toBottomOf="@+id/iv_team"
+        app:srcCompat="@mipmap/image_baby_pic" />
+
+    <FrameLayout
+        android:id="@+id/fl_label_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_48"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_baby_picture"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iv_house"
+        app:layout_constraintTop_toBottomOf="@+id/iv_house">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_label_day" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="完成2个共4个"
+            android:textSize="@dimen/dp_6" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_label_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        app:layout_constraintEnd_toStartOf="@+id/iv_baby_picture"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iv_house"
+        app:layout_constraintTop_toBottomOf="@+id/fl_label_day">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_lable_week" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="完成2个共4个"
+            android:textSize="@dimen/dp_6" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_label_special"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        app:layout_constraintEnd_toStartOf="@+id/iv_baby_picture"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iv_house"
+        app:layout_constraintTop_toBottomOf="@+id/fl_label_week">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_label_special" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="完成2个共4个"
+            android:textSize="@dimen/dp_6" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_baby_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:text="瑞吉吉"
+        app:layout_constraintBottom_toBottomOf="@id/iv_home_bg"
+        app:layout_constraintEnd_toEndOf="@+id/iv_home_bg"
+        app:layout_constraintStart_toStartOf="@+id/iv_home_bg" />
+
+    <ImageButton
+        android:id="@+id/btn_goto_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_team"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/btn_goto_psp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_baby_name"
+        app:srcCompat="@mipmap/ic_btn_task" />
+
+    <ImageButton
+        android:id="@+id/btn_goto_psp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_goto_task"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_team"
-        app:srcCompat="@mipmap/image_baby_pic" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_baby_name"
+        app:srcCompat="@mipmap/ic_btn_psp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
