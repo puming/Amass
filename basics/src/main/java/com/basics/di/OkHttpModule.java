@@ -2,12 +2,12 @@ package com.basics.di;
 
 import android.text.TextUtils;
 
+import com.basics.BuildConfig;
 import com.common.retrofit.LiveDataCallAdapterFactory;
 import com.basics.http.interceptor.AddCookiesInterceptor;
 import com.basics.http.interceptor.LoggingInterceptor;
 import com.basics.http.interceptor.ReceivedCookiesInterceptor;
 import com.basics.http.interceptor.TokenInterceptor;
-import com.common.BuildConfig;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.security.KeyManagementException;

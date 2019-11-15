@@ -11,9 +11,22 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField('String', 'DOMAIN', '"http://jiye.sdmiaobang.com"')
+        }
+        preview {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.preview
+//            buildConfigField('String', 'DOMAIN', '"http://rap2api.taobao.org/app/mock/235602"')
+//            matchingFallbacks = ['release', 'preview', 'debug']
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+//            buildConfigField('String', 'DOMAIN', '"http://jiye.sdmiaobang.com"')
         }
     }
 

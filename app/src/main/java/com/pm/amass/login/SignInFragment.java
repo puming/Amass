@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,13 @@ import android.widget.RadioGroup;
 import com.basics.base.BaseFragment;
 import com.pm.amass.MainActivity;
 import com.pm.amass.R;
+import com.pm.amass.bean.Token;
 
 /**
  * @author pmcho
  */
 public class SignInFragment extends BaseFragment {
+    private static final String TAG = "SignInFragment";
 
     private SignInViewModel mViewModel;
 
@@ -71,7 +74,21 @@ public class SignInFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
-        // TODO: Use the ViewModel
+        subscribeViewModel();
+    }
+
+    private void subscribeViewModel() {
+        mViewModel.getToken().observe(this, tokenResource -> {
+            switch (tokenResource.status) {
+                case SUCCEED:
+                    Token token = tokenResource.data;
+                    String tokenString = token.getData().getToken().getInfo();
+                    Log.d(TAG, "subscribeViewModel: tokenString" + tokenString);
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 
 }
