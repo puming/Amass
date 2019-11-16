@@ -8,11 +8,15 @@ import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
 import com.common.widget.Tile;
 import com.pm.amass.R;
+import com.pm.amass.bean.TileInfo;
 
 import java.util.List;
 
-public class MineAdapter extends BaseAdapter<Object, MineAdapter.MineViewHolder> {
-    public MineAdapter(Context context, List datas) {
+/**
+ * @author pmcho
+ */
+public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolder> {
+    public MineAdapter(Context context, List<TileInfo> datas) {
         super(context, datas);
     }
 
@@ -25,21 +29,37 @@ public class MineAdapter extends BaseAdapter<Object, MineAdapter.MineViewHolder>
     }
 
     @Override
+    public void onBindViewHolder(MineViewHolder holder, int position) {
+        super.onBindViewHolder(holder, position);
+        TileInfo tileInfo = mDatas.get(position);
+        holder.tile.setTitle(tileInfo.getTitle());
+        holder.tile.setLeading(tileInfo.getIcon());
+    }
+
+    @Override
     public int getItemViewType(int position) {
-        if(position == 0){
-//            return 1;
-        }
         return super.getItemViewType(position);
     }
 
-    static class MineViewHolder extends BaseViewHolder<Object> {
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
 
+    @Override
+    public void setHasStableIds(boolean hasStableIds) {
+        super.setHasStableIds(hasStableIds);
+    }
+
+    static class MineViewHolder extends BaseViewHolder<TileInfo> {
+        Tile tile;
         public MineViewHolder(View itemView) {
             super(itemView);
         }
 
         public MineViewHolder(ViewGroup parent, int res) {
             super(parent, res);
+            tile = getItemView(R.id.tile_mine);
         }
     }
 }

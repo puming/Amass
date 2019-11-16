@@ -42,7 +42,7 @@ public class BaseApplication extends Application {
 /*                .showThreadInfo(true)
                 .methodCount(2)
                 .methodOffset(5)*/
-                .tag("house")
+                .tag("amass")
                 .build();
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy) {
             @Override

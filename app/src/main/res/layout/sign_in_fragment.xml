@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_104"
@@ -38,22 +38,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_60"
-        android:checkedButton="@id/rbtn_sign_in"
+        android:checkedButton="@id/rbtn_sign_in_by_phone"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView">
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome">
 
 
         <RadioButton
-            android:id="@+id/rbtn_sign_in"
+            android:id="@+id/rbtn_sign_in_by_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_32"
             android:text="手机快捷登录" />
 
         <RadioButton
-            android:id="@+id/rbtn_sign_up"
+            android:id="@+id/rbtn_sign_up_by_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="账号密码登录" />
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rg">
 
         <LinearLayout
-            android:id="@+id/sign_in_form"
+            android:id="@+id/sign_in_by_phone_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -91,20 +91,20 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/sign_up_form"
+            android:id="@+id/sign_in_by_account_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone">
 
-            <include layout="@layout/layout_sign_up_form_account" />
+            <include layout="@layout/layout_sign_in_form_account" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
 
-            <include layout="@layout/layout_sign_up_form_psd" />
+            <include layout="@layout/layout_sign_in_form_psd" />
 
         </LinearLayout>
 

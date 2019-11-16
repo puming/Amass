@@ -68,4 +68,11 @@
         <item name="android:textSize">@dimen/sp_18</item>
     </style>
 
+    <style name="PersonTileTitle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TileTrailingText">
+        <item name="android:textColor">@color/color_gray_fifty</item>
+    </style>
 </resources>

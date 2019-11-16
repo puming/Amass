@@ -39,7 +39,6 @@
         android:layout_gravity="center_vertical|end"
         android:layout_marginEnd="@dimen/dp_16"
         android:background="@drawable/text_button_bg_selector"
-        android:clickable="false"
         android:text="获取验证码"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

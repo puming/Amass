@@ -29,9 +29,9 @@ public class Resource<T> {
          */
         int RESPONSE_NO_BODY = 204;
         /**
-         * 无响应的错误码
+         * 网络异常或者处理响应时异常
          */
-        int NO_RESPONSE = 0;
+        int EXCEPTION = 0;
         /**
          * 默认值，无效
          */

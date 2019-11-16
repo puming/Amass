@@ -14,15 +14,15 @@ public class Token {
      * data : {"token":{"ctime":1573811102,"expire":7200,"info":"a1748b816069d4d6dbe185ad2ca5f2b6597b77b1"}}
      */
 
-    private int result;
+    private boolean result;
     private String msg;
     private DataBean data;
 
-    public int getResult() {
+    public boolean getResult() {
         return result;
     }
 
-    public void setResult(int result) {
+    public void setResult(boolean result) {
         this.result = result;
     }
 

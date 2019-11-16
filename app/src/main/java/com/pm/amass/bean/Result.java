@@ -13,15 +13,15 @@ public class Result {
      * data :
      */
 
-    private int result;
+    private boolean result;
     private String msg;
     private Object data;
 
-    public int getResult() {
+    public boolean getResult() {
         return result;
     }
 
-    public void setResult(int result) {
+    public void setResult(boolean result) {
         this.result = result;
     }
 

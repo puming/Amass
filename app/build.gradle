@@ -9,6 +9,16 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+                //room的数据库概要、记录
+                /*arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]*/
+            }
+        }
+
+        multiDexEnabled true
     }
     buildTypes {
         debug {
@@ -47,7 +57,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(path: ':basics')
+
+    //compiler
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
+    annotationProcessor "com.alibaba:arouter-compiler:$arouterCompilerVersion"
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 }

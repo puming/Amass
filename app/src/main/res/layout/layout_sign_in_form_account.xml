@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/iv_sign_up_account"
+        android:id="@+id/iv_sign_in_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
@@ -19,7 +19,7 @@
         app:srcCompat="@mipmap/ic_sign_up_account" />
 
     <com.common.widget.InputText
-        android:id="@+id/input_sign_up_account"
+        android:id="@+id/input_sign_in_account"
         style="@style/SignInputStyle"
         android:ems="11"
         android:maxLength="11"
@@ -28,6 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/iv_sign_up_account"
+        app:layout_constraintStart_toEndOf="@+id/iv_sign_in_account"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
