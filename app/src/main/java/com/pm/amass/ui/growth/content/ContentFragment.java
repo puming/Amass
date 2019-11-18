@@ -1,21 +1,26 @@
-package com.pm.amass.ui.growth;
+package com.pm.amass.ui.growth.content;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.basics.base.BaseFragment;
 import com.pm.amass.R;
+import com.pm.amass.bean.Moudle;
+import com.pm.amass.ui.growth.Constant;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ContentFragment extends Fragment {
+/**
+ * @author pmcho
+ */
+public class ContentFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
 
     public static ContentFragment newInstance() {
@@ -25,7 +30,7 @@ public class ContentFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_content, container, false);
     }
 
     @Override
@@ -35,7 +40,7 @@ public class ContentFragment extends Fragment {
         registerListener();
         ArrayList<Moudle> moudles = initData();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(new ListAdapter(getContext(), moudles));
+        mRecyclerView.setAdapter(new ContentListAdapter(getContext(), moudles));
     }
 
     private void registerListener() {

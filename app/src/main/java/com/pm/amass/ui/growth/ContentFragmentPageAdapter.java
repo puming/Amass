@@ -8,6 +8,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 
+/**
+ * @author pmcho
+ */
 public class ContentFragmentPageAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> mFragments;
 

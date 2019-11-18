@@ -14,6 +14,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
+import com.pm.amass.bean.Channel;
+import com.pm.amass.ui.growth.content.ContentFragment;
 
 import java.util.ArrayList;
 
@@ -44,6 +46,8 @@ public class GrowthFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
         registerListener();
+
+
         bindPage();
     }
 

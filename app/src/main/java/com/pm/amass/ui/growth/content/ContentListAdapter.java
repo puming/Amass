@@ -1,26 +1,28 @@
-package com.pm.amass.ui.growth;
+package com.pm.amass.ui.growth.content;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
 import com.pm.amass.R;
+import com.pm.amass.bean.Moudle;
 
 import java.util.List;
 
-public class ListAdapter extends BaseAdapter<Moudle, ListAdapter.ListViewHolder> {
-    public ListAdapter(Context context, List<Moudle> datas) {
+/**
+ * @author pmcho
+ */
+public class ContentListAdapter extends BaseAdapter<Moudle, ContentListAdapter.ListViewHolder> {
+    public ContentListAdapter(Context context, List<Moudle> datas) {
         super(context, datas);
     }
 
     @Override
     public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ListViewHolder holder = new ListViewHolder(parent, R.layout.item_type_2_home);
+        ListViewHolder holder = new ListViewHolder(parent, R.layout.item_content_artcle);
         return holder;
     }
 

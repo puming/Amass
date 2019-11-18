@@ -1,4 +1,4 @@
-package com.pm.amass.ui.growth;
+package com.pm.amass.bean;
 
 public class Moudle {
     private long id;

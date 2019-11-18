@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_72"
-            app:srcCompat="@mipmap/ic_curriculum" />
+            app:srcCompat="@mipmap/ic_growth_curriculum" />
 
         <View
             android:layout_width="5dp"
@@ -26,7 +26,7 @@
         <ImageView
             android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_72"
-            app:srcCompat="@mipmap/ic_curriculum" />
+            app:srcCompat="@mipmap/ic_growth_curriculum" />
         <View
             android:layout_width="5dp"
             android:layout_height="@dimen/dp_72"
@@ -35,7 +35,7 @@
         <ImageView
             android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_72"
-            app:srcCompat="@mipmap/ic_curriculum" />
+            app:srcCompat="@mipmap/ic_growth_curriculum" />
 
     </com.google.android.flexbox.FlexboxLayout>
 
