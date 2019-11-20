@@ -1,6 +1,7 @@
 package com.pm.amass.ui.news;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -8,10 +9,14 @@ import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
 import com.common.widget.BannerView;
 import com.pm.amass.R;
+import com.pm.amass.news.details.NewsDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author pmcho
+ */
 public class NewsAdapter extends BaseAdapter<Object, NewsAdapter.NewsViewHolder> {
     private ArrayList<String> banner;
     public NewsAdapter(Context context, List datas) {
@@ -56,6 +61,16 @@ public class NewsAdapter extends BaseAdapter<Object, NewsAdapter.NewsViewHolder>
 
         public NewsViewHolder(ViewGroup parent, int res) {
             super(parent, res);
+        }
+
+        @Override
+        protected void onItemClick(View view, int pos) {
+            super.onItemClick(view, pos);
+            Context context = view.getContext();
+            if(context == null){
+                return;
+            }
+            context.startActivity(new Intent(context, NewsDetailsActivity.class));
         }
     }
 }

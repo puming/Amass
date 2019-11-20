@@ -12,6 +12,8 @@ import com.common.widget.AppBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+
 import butterknife.ButterKnife;
 
 /**
@@ -39,12 +41,14 @@ public abstract class AppBarFragment extends BaseFragment {
         LinearLayout root = new LinearLayout(container.getContext());
         ViewGroup.LayoutParams matchParent = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mAppBar = new AppBar(container.getContext());
+        initAppBar(mAppBar);
+        registerAppBarListener();
         root.addView(mAppBar, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         //content
         FrameLayout content = new FrameLayout(getContext());
         inflater.inflate(getContentLayoutId(), content, true);
         root.addView(content, 1, matchParent);
-        container.addView(root, matchParent);
+//        container.addView(root, matchParent);
         ButterKnife.bind(this, root);
         return root;
     }
@@ -54,4 +58,34 @@ public abstract class AppBarFragment extends BaseFragment {
     }
 
     protected abstract int getContentLayoutId();
+
+    protected void registerAppBarListener() {
+        mAppBar.getAppbarRightContainer().setOnClickListener(this::onClickAppBarRightView);
+        mAppBar.getAppbarLeftContainer().setOnClickListener(this::onClickAppBarLeftView);
+    }
+
+    protected void onClickAppBarRightView(View view) {
+    }
+
+    protected void onClickAppBarLeftView(View view) {
+        FragmentActivity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+        activity.onBackPressed();
+    }
+
+    protected AppBar getAppBar() {
+        return mAppBar;
+    }
+
+    /**
+     * 子类可以根据需求定制AppBar
+     *
+     * @param appBar
+     */
+    protected void initAppBar(AppBar appBar) {
+        appBar.showAppbarRightContainer(false)
+                .showAppbarBackText(false);
+    }
 }

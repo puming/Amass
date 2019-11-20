@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.pm.amass">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name=" android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name=" android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-feature android:name="android.hardware.location.gps"/>
+
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <application
         android:name=".MainApplication"
@@ -22,7 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mine.top.TopActivity"></activity>
+        <activity android:name=".home.DailyTaskActivity"></activity>
+        <activity android:name=".news.details.NewsDetailsActivity" />
+        <activity android:name=".mine.coin.VirtualCoinActivity" />
+        <activity android:name=".mine.order.OrderActivity" />
+        <activity android:name=".mine.top.TopActivity" />
         <activity android:name=".mine.mission.MissionActivity" />
         <activity android:name=".mine.mall.MallActivity" />
         <activity android:name=".mine.personal.PersonalActivity" />

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.basics.base.BaseFragment;
+import com.basics.base.BaseItemDecoration;
 import com.pm.amass.R;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class MallContentFragment extends BaseFragment {
             objects.add(o);
         }
 
+        mRecyclerView.addItemDecoration(new BaseItemDecoration());
         mRecyclerView.setAdapter(new MallContentAdapter(getContext(),objects));
     }
 

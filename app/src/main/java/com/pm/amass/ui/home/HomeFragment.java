@@ -1,5 +1,6 @@
 package com.pm.amass.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.pm.amass.R;
+import com.pm.amass.home.DailyTaskActivity;
 
 /**
  * @author pmcho
@@ -36,6 +38,10 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.btn_open_drawer).setOnClickListener(v -> {
             // TODO: 2019/11/8
             //回调给activity
+        });
+
+        view.findViewById(R.id.btn_goto_task).setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), DailyTaskActivity.class));
         });
     }
 

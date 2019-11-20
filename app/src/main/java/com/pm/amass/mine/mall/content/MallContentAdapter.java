@@ -10,6 +10,9 @@ import com.pm.amass.R;
 
 import java.util.List;
 
+/**
+ * @author pmcho
+ */
 public class MallContentAdapter extends BaseAdapter<Object, MallContentAdapter.MallContentViewHolder> {
     public MallContentAdapter(Context context, List<Object> datas) {
         super(context, datas);
