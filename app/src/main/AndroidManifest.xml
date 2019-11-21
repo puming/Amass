@@ -24,7 +24,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".test.TestActivity"></activity>
-        <activity android:name=".home.DailyTaskActivity" />
+        <activity android:name=".home.task.DailyTaskActivity" />
         <activity android:name=".news.details.NewsDetailsActivity" />
         <activity android:name=".mine.coin.VirtualCoinActivity" />
         <activity android:name=".mine.order.OrderActivity" />

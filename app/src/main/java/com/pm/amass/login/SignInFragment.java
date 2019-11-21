@@ -2,6 +2,7 @@ package com.pm.amass.login;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -27,7 +28,10 @@ import com.common.ux.ToastHelper;
 import com.pm.amass.BuildConfig;
 import com.pm.amass.MainActivity;
 import com.pm.amass.R;
+import com.pm.amass.bean.Result;
 import com.pm.amass.bean.Token;
+
+import java.util.HashMap;
 
 import static com.pm.amass.utils.LoginUtil.isAuthCodeNo;
 import static com.pm.amass.utils.LoginUtil.isMobileNO;
@@ -40,6 +44,8 @@ public class SignInFragment extends BaseFragment {
 
     private AppCompatEditText mAppCompatEditTextPhone;
     private AppCompatEditText mAppCompatEditTextCode;
+    private AppCompatEditText mAppCompatEditTextAccount;
+    private AppCompatEditText mAppCompatEditTextPsd;
     private SignInViewModel mViewModel;
     private String tokenString;
     private boolean isFeatchCode;
@@ -95,6 +101,8 @@ public class SignInFragment extends BaseFragment {
         });
         mAppCompatEditTextPhone = view.findViewById(R.id.input_sign_in_phone);
         mAppCompatEditTextCode = view.findViewById(R.id.input_sign_in_auth_code);
+        mAppCompatEditTextAccount = view.findViewById(R.id.input_sign_in_account);
+        mAppCompatEditTextPsd = view.findViewById(R.id.input_sign_in_psd);
         mAppCompatEditTextPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -151,14 +159,17 @@ public class SignInFragment extends BaseFragment {
 
 
     private void attemptLogin() {
+        HashMap<String, String> fieldMap = new HashMap<>(12);
         if (mRadioGroup.getCheckedRadioButtonId() == R.id.rbtn_sign_in_by_phone) {
-            // Store values at the time of the login attempt.
             String mobiles = mAppCompatEditTextPhone.getText().toString();
             String code = mAppCompatEditTextCode.getText().toString();
-
+            // Store values at the time of the login attempt.
             if (isMobileNO(mobiles) && isAuthCodeNo(code) && isFeatchCode) {
 //            showProgress(true);
-                mViewModel.getSignInData(mobiles, code)
+                fieldMap.put("phone",mobiles);
+                fieldMap.put("yzm",code);
+                fieldMap.put("way","phone");
+                mViewModel.getSignInData(fieldMap)
                         .observe(this, resultLogin -> {
                             if (resultLogin.status == Resource.Status.SUCCEED) {
                                 startActivity(new Intent(getContext(), MainActivity.class));
@@ -187,8 +198,34 @@ public class SignInFragment extends BaseFragment {
                     ToastHelper.makeToast(getContext(), R.string.error_invalid_sms_code, Toast.LENGTH_SHORT).show();
                 }
             }
-        } else {
+        } else if (mRadioGroup.getCheckedRadioButtonId() == R.id.rbtn_sign_up_by_account) {
 
+            String account = mAppCompatEditTextAccount.getText().toString();
+            String psd = mAppCompatEditTextPsd.getEditableText().toString();
+            if (!isMobileNO(account)) {
+                if (TextUtils.isEmpty(account)) {
+                    ToastHelper.makeToast(getContext(), R.string.error_empth_account, Toast.LENGTH_SHORT).show();
+                } else {
+                    ToastHelper.makeToast(getContext(), R.string.error_invalid_account, Toast.LENGTH_SHORT).show();
+                }
+            } else if (TextUtils.isEmpty(psd)) {
+                ToastHelper.makeToast(getContext(), "请输入密码", Toast.LENGTH_SHORT).show();
+            }else {
+                fieldMap.put("number",account);
+                fieldMap.put("password",psd);
+                fieldMap.put("way","number");
+                mViewModel.getSignInData(fieldMap).observe(this, resultResource -> {
+                    if (resultResource.status == Resource.Status.SUCCEED) {
+                        startActivity(new Intent(getContext(), MainActivity.class));
+                        FragmentActivity activity = getActivity();
+                        if (activity != null) {
+                            activity.finish();
+                        }
+                    } else if (resultResource.status == Resource.Status.ERROR) {
+                        ToastHelper.makeToast(getContext(), resultResource.message, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
         }
     }
 

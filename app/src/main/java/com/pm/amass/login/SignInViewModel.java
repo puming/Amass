@@ -18,6 +18,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author pm
@@ -72,17 +73,13 @@ public class SignInViewModel extends BaseViewModel {
         return boundResource.getAsLiveData();
     }
 
-    public MediatorLiveData<Resource<Result>> getSignInData(String phone,String code) {
+    public MediatorLiveData<Resource<Result>> getSignInData(Map fieldMap) {
         LiveNetworkBoundResource<Result> boundResource = new LiveNetworkBoundResource<Result>() {
             @NonNull
             @Override
             protected LiveData<ApiResponse<Result>> createCall() {
                 ILoginService loginService = retrofitManager.obtainRetrofitService(ILoginService.class);
-                HashMap<String, String> fieldMap = new HashMap<>(12);
                 fieldMap.put("token",readTokenFromSp());
-                fieldMap.put("phone",phone);
-                fieldMap.put("yzm",code);
-                fieldMap.put("way","phone");
                 fieldMap.put("source","student");
                 return loginService.requestSignIn(fieldMap);
             }

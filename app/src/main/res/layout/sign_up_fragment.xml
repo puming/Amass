@@ -216,7 +216,8 @@
                 <TextView
                     android:id="@+id/input_sing_up_item_relation"
                     style="@style/SignUpFormInputStyle"
-                    android:hint="爸爸"
+                    android:hint="请选择"
+                    android:text="爸爸"
                     app:layout_constraintEnd_toStartOf="@id/ibtn_select"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_relation_title"
                     tools:ignore="MissingConstraints" />

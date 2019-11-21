@@ -1,5 +1,6 @@
 package com.pm.amass.login;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +18,21 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.basics.repository.Resource;
+import com.common.ux.ToastHelper;
 import com.common.widget.AppBar;
 import com.common.widget.InputText;
 import com.pm.amass.R;
+import com.pm.amass.bean.Result;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
  * @author pm
  */
 public class SignUpFragment extends Fragment implements View.OnClickListener {
+    private static final String TAG = "SignUpFragment";
     /**
      * 请输入姓名
      */
@@ -64,6 +72,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private Button mBtnStartSignUp;
 
     private SignUpViewModel mViewModel;
+    private boolean isFetchAuthCode;
 
     public static SignUpFragment newInstance() {
         return new SignUpFragment();
@@ -108,6 +117,9 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             default:
                 break;
             case R.id.btn_start_auth:
+                Log.d(TAG, "onClick: btn_start_auth");
+                mBtnStartAuth.requestFocus();
+                attemptFetchSmsCode();
                 break;
             case R.id.ibtn_select:
                 break;
@@ -117,7 +129,73 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private void attemptFetchSmsCode() {
+        String phone = mInputSingUpItemPhone.getEditableText().toString();
+        if (TextUtils.isEmpty(phone)) {
+            ToastHelper.makeToast(getContext(), "请输入手机号").show();
+        } else {
+            mViewModel.getSmsCode(phone).observe(this, resultResource -> {
+                switch (resultResource.status) {
+                    case SUCCEED:
+                        isFetchAuthCode = true;
+                        break;
+                    case ERROR:
+                        ToastHelper.makeToast(getContext(), resultResource.message).show();
+                        break;
+                        default:
+                            break;
+                }
+
+            });
+        }
+
+    }
+
     private void attemptSign() {
+        String name = mInputSingUpItemName.getEditableText().toString();
+        String nickName = mInputSingUpItemNickname.getEditableText().toString();
+        String psd = mInputSingUpItemPsd.getEditableText().toString();
+        String phone = mInputSingUpItemPhone.getEditableText().toString();
+        String code = mInputSingUpItemCode.getEditableText().toString();
+        CharSequence relation = mInputSingUpItemRelation.getText();
+        String invitation = mInputSingUpItemInvitation.getEditableText().toString();
+        if (TextUtils.isEmpty(name)) {
+            ToastHelper.makeToast(getContext(), "请输入名字").show();
+        } else if (TextUtils.isEmpty(nickName)) {
+            ToastHelper.makeToast(getContext(), "请输入昵称").show();
+        } else if (TextUtils.isEmpty(psd)) {
+            ToastHelper.makeToast(getContext(), "请输入密码").show();
+        } else if (TextUtils.isEmpty(phone)) {
+            ToastHelper.makeToast(getContext(), "请输入手机号").show();
+        } else if (!isFetchAuthCode) {
+            ToastHelper.makeToast(getContext(), "请输获取验证码").show();
+        } else if (TextUtils.isEmpty(code)) {
+            ToastHelper.makeToast(getContext(), "请输入验证码").show();
+        } else if (TextUtils.isEmpty(relation)) {
+            ToastHelper.makeToast(getContext(), "请输选择关系").show();
+        } else {
+            HashMap<String, String> fieldMap = new HashMap<>(12);
+            fieldMap.put("token", mViewModel.readTokenFromSp());
+            fieldMap.put("phone", phone);
+            fieldMap.put("yzm", code);
+            fieldMap.put("source", "student");
+            if (!TextUtils.isEmpty(invitation)) {
+                fieldMap.put("invite_code", invitation);
+            }
+            fieldMap.put("password", psd);
+            fieldMap.put("name", name);
+            fieldMap.put("nickname", nickName);
+            fieldMap.put("relation", "爸爸");
+            mViewModel.getSignUpData(fieldMap).observe(this, resultResource -> {
+                switch (resultResource.status) {
+                    case SUCCEED:
+                        getActivity().onBackPressed();
+                        break;
+                }
+
+            });
+        }
+
     }
 
 }

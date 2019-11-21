@@ -38,8 +38,8 @@ public interface ILoginService {
     LiveData<ApiResponse<Result>> requestSignIn(@FieldMap Map<String,String> map);
 
     @FormUrlEncoded
-    @POST(SIGN_IN)
-    LiveData<ApiResponse<Result>> requestSignUp(@Body RequestBody body);
+    @POST(SIGN_UP)
+    LiveData<ApiResponse<Result>> requestSignUp(@FieldMap Map<String,String> map);
 
     @FormUrlEncoded
     @POST(TOKEN)
