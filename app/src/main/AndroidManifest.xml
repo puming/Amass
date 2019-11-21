@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".home.DailyTaskActivity"></activity>
+        <activity android:name=".test.TestActivity"></activity>
+        <activity android:name=".home.DailyTaskActivity" />
         <activity android:name=".news.details.NewsDetailsActivity" />
         <activity android:name=".mine.coin.VirtualCoinActivity" />
         <activity android:name=".mine.order.OrderActivity" />

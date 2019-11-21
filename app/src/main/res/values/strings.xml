@@ -21,6 +21,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="sign_up_title_code">验\u3000证\u3000码</string>
+    <string name="sign_up_title_invitation">邀\u3000请\u3000码</string>
     <string name="error_invalid_mobile">手机号错误</string>
     <string name="invalid_feath_code">请先获取验证码</string>
     <string name="error_invalid_sms_code">验证码错误</string>
