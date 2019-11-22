@@ -11,6 +11,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 import android.text.Editable;
 import android.text.TextUtils;
@@ -19,7 +23,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.basics.base.BaseFragment;
@@ -28,10 +34,10 @@ import com.common.ux.ToastHelper;
 import com.pm.amass.BuildConfig;
 import com.pm.amass.MainActivity;
 import com.pm.amass.R;
-import com.pm.amass.bean.Result;
 import com.pm.amass.bean.Token;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import static com.pm.amass.utils.LoginUtil.isAuthCodeNo;
 import static com.pm.amass.utils.LoginUtil.isMobileNO;
@@ -50,7 +56,9 @@ public class SignInFragment extends BaseFragment {
     private String tokenString;
     private boolean isFeatchCode;
     private RadioGroup mRadioGroup;
-    private View mButtonAuthCode;
+    private Button mButtonAuthCode;
+
+    private CompositeDisposable mDisposable = new CompositeDisposable();
 
     public static SignInFragment newInstance() {
         return new SignInFragment();
@@ -136,6 +144,7 @@ public class SignInFragment extends BaseFragment {
                 ToastHelper.makeToast(getContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                 return;
             }
+            startTime(mButtonAuthCode);
             //手机号正确缓存
             mViewModel.writePhoneToSp(phone);
             mViewModel.getSmsCode(phone, tokenString)
@@ -157,6 +166,38 @@ public class SignInFragment extends BaseFragment {
         }
     }
 
+    private void startTime(final TextView tvGetCode) {
+        final long codeTimes = 60L;
+        Disposable disposable1 = Observable.interval(0L, 1L, TimeUnit.SECONDS)
+                .take(codeTimes + 1L)
+                .map(aLong -> codeTimes - aLong)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    mDisposable.add(disposable);
+                    tvGetCode.setEnabled(false);
+                })
+                .subscribe(
+                        (value) -> {
+                            tvGetCode.setText(String.valueOf(value) + "s");
+                        },
+                        (error) -> {
+                        },
+                        () -> {
+                            tvGetCode.setEnabled(true);
+                            tvGetCode.setText("重新获取");
+                        });
+        mDisposable.add(disposable1);
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mDisposable.isDisposed()) {
+            mDisposable.dispose();
+        }
+    }
+
 
     private void attemptLogin() {
         HashMap<String, String> fieldMap = new HashMap<>(12);
@@ -166,9 +207,9 @@ public class SignInFragment extends BaseFragment {
             // Store values at the time of the login attempt.
             if (isMobileNO(mobiles) && isAuthCodeNo(code) && isFeatchCode) {
 //            showProgress(true);
-                fieldMap.put("phone",mobiles);
-                fieldMap.put("yzm",code);
-                fieldMap.put("way","phone");
+                fieldMap.put("phone", mobiles);
+                fieldMap.put("yzm", code);
+                fieldMap.put("way", "phone");
                 mViewModel.getSignInData(fieldMap)
                         .observe(this, resultLogin -> {
                             if (resultLogin.status == Resource.Status.SUCCEED) {
@@ -210,10 +251,10 @@ public class SignInFragment extends BaseFragment {
                 }
             } else if (TextUtils.isEmpty(psd)) {
                 ToastHelper.makeToast(getContext(), "请输入密码", Toast.LENGTH_SHORT).show();
-            }else {
-                fieldMap.put("number",account);
-                fieldMap.put("password",psd);
-                fieldMap.put("way","number");
+            } else {
+                fieldMap.put("number", account);
+                fieldMap.put("password", psd);
+                fieldMap.put("way", "number");
                 mViewModel.getSignInData(fieldMap).observe(this, resultResource -> {
                     if (resultResource.status == Resource.Status.SUCCEED) {
                         startActivity(new Intent(getContext(), MainActivity.class));

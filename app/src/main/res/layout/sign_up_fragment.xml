@@ -42,7 +42,7 @@
                 <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_name"
                     style="@style/SignUpFormInputStyle"
-                    android:ems="10"
+                    android:ems="100"
                     android:hint="请输入姓名"
                     android:inputType="text"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_name_title"
@@ -69,7 +69,7 @@
                 <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_nickname"
                     style="@style/SignUpFormInputStyle"
-                    android:ems="10"
+                    android:ems="100"
                     android:hint="请输入昵称"
                     android:inputType="text"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -99,7 +99,7 @@
                 <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_psd"
                     style="@style/SignUpFormInputStyle"
-                    android:ems="10"
+                    android:ems="20"
                     android:hint="请输入密码"
                     android:inputType="textPassword"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_psd_title"
@@ -124,7 +124,7 @@
                 <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_phone"
                     style="@style/SignUpFormInputStyle"
-                    android:ems="10"
+                    android:ems="11"
                     android:hint="请输入手机号"
                     android:inputType="phone"
                     app:layout_constraintStart_toEndOf="@+id/tv_sing_up_phone_title"
@@ -150,7 +150,7 @@
                 <com.common.widget.InputText
                     android:id="@+id/input_sing_up_item_code"
                     style="@style/SignUpFormInputStyle"
-                    android:ems="10"
+                    android:ems="6"
                     android:hint="请输入验证码"
                     android:inputType="numberSigned"
                     app:layout_constraintEnd_toStartOf="@id/btn_start_auth"

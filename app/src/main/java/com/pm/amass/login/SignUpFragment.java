@@ -1,6 +1,5 @@
 package com.pm.amass.login;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -8,25 +7,29 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.basics.repository.Resource;
 import com.common.ux.ToastHelper;
 import com.common.widget.AppBar;
 import com.common.widget.InputText;
 import com.pm.amass.R;
-import com.pm.amass.bean.Result;
+import com.pm.amass.utils.LoginUtil;
 
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author pm
@@ -65,7 +68,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
      * 爸爸
      */
     private TextView mInputSingUpItemRelation;
-    private ImageButton mIbtnSelect;
+    private ImageButton mBtnSelect;
     /**
      * 确认注册
      */
@@ -73,6 +76,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
 
     private SignUpViewModel mViewModel;
     private boolean isFetchAuthCode;
+    private CompositeDisposable mDisposable = new CompositeDisposable();
+
 
     public static SignUpFragment newInstance() {
         return new SignUpFragment();
@@ -98,8 +103,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         mBtnStartAuth.setOnClickListener(this);
         mInputSingUpItemInvitation = (InputText) view.findViewById(R.id.input_sing_up_item_invitation);
         mInputSingUpItemRelation = (TextView) view.findViewById(R.id.input_sing_up_item_relation);
-        mIbtnSelect = (ImageButton) view.findViewById(R.id.ibtn_select);
-        mIbtnSelect.setOnClickListener(this);
+        mBtnSelect = (ImageButton) view.findViewById(R.id.ibtn_select);
+        mBtnSelect.setOnClickListener(this);
         mBtnStartSignUp = (Button) view.findViewById(R.id.btn_start_sign_up);
         mBtnStartSignUp.setOnClickListener(this);
 
@@ -111,17 +116,49 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         mViewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
     }
 
+    private void startTime(final TextView tvGetCode) {
+        final long codeTimes = 60L;
+        Disposable disposable1 = Observable.interval(0L, 1L, TimeUnit.SECONDS)
+                .take(codeTimes + 1L)
+                .map(aLong -> codeTimes - aLong)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> {
+                    mDisposable.add(disposable);
+                    tvGetCode.setEnabled(false);
+                })
+                .subscribe(
+                        (value) -> {
+                            tvGetCode.setText(String.valueOf(value) + "s");
+                        },
+                        (error) -> {
+                        },
+                        () -> {
+                            tvGetCode.setEnabled(true);
+                            tvGetCode.setText("重新获取");
+                        });
+        mDisposable.add(disposable1);
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mDisposable.isDisposed()) {
+            mDisposable.dispose();
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             default:
                 break;
             case R.id.btn_start_auth:
-                Log.d(TAG, "onClick: btn_start_auth");
                 mBtnStartAuth.requestFocus();
                 attemptFetchSmsCode();
                 break;
             case R.id.ibtn_select:
+                // TODO: 2019/11/22
                 break;
             case R.id.btn_start_sign_up:
                 attemptSign();
@@ -133,7 +170,10 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         String phone = mInputSingUpItemPhone.getEditableText().toString();
         if (TextUtils.isEmpty(phone)) {
             ToastHelper.makeToast(getContext(), "请输入手机号").show();
+        } else if (LoginUtil.isMobileNO(phone)) {
+            ToastHelper.makeToast(getContext(), R.string.error_invalid_mobile, Toast.LENGTH_SHORT).show();
         } else {
+            startTime(mBtnStartAuth);
             mViewModel.getSmsCode(phone).observe(this, resultResource -> {
                 switch (resultResource.status) {
                     case SUCCEED:
@@ -142,8 +182,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     case ERROR:
                         ToastHelper.makeToast(getContext(), resultResource.message).show();
                         break;
-                        default:
-                            break;
+                    default:
+                        break;
                 }
 
             });
@@ -167,10 +207,14 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             ToastHelper.makeToast(getContext(), "请输入密码").show();
         } else if (TextUtils.isEmpty(phone)) {
             ToastHelper.makeToast(getContext(), "请输入手机号").show();
+        } else if (LoginUtil.isMobileNO(phone)) {
+            ToastHelper.makeToast(getContext(), R.string.error_invalid_mobile, Toast.LENGTH_SHORT).show();
         } else if (!isFetchAuthCode) {
             ToastHelper.makeToast(getContext(), "请输获取验证码").show();
         } else if (TextUtils.isEmpty(code)) {
             ToastHelper.makeToast(getContext(), "请输入验证码").show();
+        } else if (LoginUtil.isAuthCodeNo(code)) {
+            ToastHelper.makeToast(getContext(), R.string.error_invalid_sms_code, Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(relation)) {
             ToastHelper.makeToast(getContext(), "请输选择关系").show();
         } else {
@@ -190,6 +234,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                 switch (resultResource.status) {
                     case SUCCEED:
                         getActivity().onBackPressed();
+                        break;
+                    default:
                         break;
                 }
 
