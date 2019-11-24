@@ -55,7 +55,7 @@ public class GrowthFragment extends BaseFragment {
                     ChannelResult result = resultResource.data;
                     List<Channel> channelList = result.getData();
                     Log.d(TAG, "onViewCreated: size" + channelList.size());
-//                    bindPage(channelList);
+                    bindPage(channelList);
                     break;
                 case ERROR:
                     Log.d(TAG, "onViewCreated: error:" + resultResource.message + "code:" + resultResource.code);
@@ -64,8 +64,8 @@ public class GrowthFragment extends BaseFragment {
                     break;
             }
         });
-        ArrayList<Channel> Channels = initData();
-        bindPage(Channels);
+//        ArrayList<Channel> Channels = initData();
+//        bindPage(Channels);
     }
 
     private void bindPage(List<Channel> Channels) {

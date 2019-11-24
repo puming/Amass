@@ -2,28 +2,39 @@ package com.pm.amass.mine.mall;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.basics.base.AppBarActivity;
+import com.basics.repository.Resource;
 import com.common.widget.AppBar;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
+import com.pm.amass.bean.ChannelResult;
 import com.pm.amass.bean.ChannelResult.Channel;
+import com.pm.amass.home.task.DailyTaskViewModel;
 import com.pm.amass.mine.mall.content.MallContentFragment;
+import com.pm.amass.mine.mall.content.MallContentViewModel;
 import com.pm.amass.ui.growth.ContentFragmentPageAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author pm
  */
 public class MallActivity extends AppBarActivity {
+    private static final String TAG = "MallActivity";
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+
+    MallContentViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +42,21 @@ public class MallActivity extends AppBarActivity {
         setContentView(R.layout.activity_mall);
         initView();
         registerListener();
-        bindPage();
+        mViewModel = ViewModelProviders.of(this).get(MallContentViewModel.class);
+        mViewModel.getShopType().observe(this, shopTypeResource -> {
+            switch (shopTypeResource.status) {
+                case SUCCEED:
+                    List<Channel> channelList = shopTypeResource.data.getData();
+                    bindPage(channelList);
+                    break;
+                case ERROR:
+                    Log.d(TAG, "onCreate: "+shopTypeResource.code);
+                    break;
+                default:
+                    break;
+            }
+        });
+//        bindPage();
     }
 
     private void initView() {
@@ -82,13 +107,12 @@ public class MallActivity extends AppBarActivity {
     }
 
 
-    private void bindPage() {
-        ArrayList<Channel> Channels = initData();
-        final int size = Channels.size();
+    private void bindPage(List<Channel> channels) {
+        final int size = channels.size();
         ArrayList<ViewGroup> pages = new ArrayList<>(size);
         ArrayList<Fragment> fragments = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
-            Channel Channel = Channels.get(i);
+            Channel Channel = channels.get(i);
             //tab
             TabLayout.Tab tab = mTabLayout.newTab().setText(Channel.getTitle()).setTag(Channel.getId());
             mTabLayout.addTab(tab);

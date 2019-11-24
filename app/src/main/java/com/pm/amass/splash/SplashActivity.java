@@ -42,10 +42,10 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_longin);
+        setContentView(R.layout.activity_splash);
         mViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
         subscribeViewModel();
-//        initView();
+        initView();
     }
 
     private void subscribeViewModel() {
@@ -71,7 +71,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             }
             return true;
         });
-//        mSplashHandler.sendEmptyMessageDelayed(SPLASH_TIMER_WHAT, 5 * 1000);
+        mSplashHandler.sendEmptyMessageDelayed(SPLASH_TIMER_WHAT, 5 * 1000);
     }
 
     @Override

@@ -53,10 +53,6 @@ public class TaskDetailsFragment extends AppBarFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btnDoTask.setOnClickListener(v -> {
-            Navigation.findNavController(btnDoTask)
-                    .navigate(R.id.action_taskDetailsFragment_to_submitTaskFragment);
-        });
     }
 
     @Override

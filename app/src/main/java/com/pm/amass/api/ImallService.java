@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.bean.ChannelResult;
+import com.pm.amass.bean.ShopResult;
 
 import retrofit2.http.GET;
 
@@ -16,7 +17,7 @@ public interface ImallService {
     LiveData<ApiResponse<ChannelResult>> fetchShopType();
 
     @GET(SHOP_LIST)
-    LiveData<ApiResponse<ChannelResult>> fetchShopList();
+    LiveData<ApiResponse<ShopResult>> fetchShopList();
 
     @GET(SHOP_DETAIL)
     LiveData<ApiResponse<ChannelResult>> fetchShopDetail();
