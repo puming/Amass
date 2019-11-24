@@ -3,43 +3,41 @@ package com.pm.amass.login;
 import android.app.Application;
 import android.content.SharedPreferences;
 
-import com.basics.base.BaseViewModel;
-import com.basics.repository.LiveNetworkBoundResource;
-import com.basics.repository.Resource;
-import com.common.retrofit.ApiResponse;
-import com.common.retrofit.IRetrofitManager;
-import com.pm.amass.MainApplication;
-import com.pm.amass.api.ILoginService;
-import com.pm.amass.bean.Result;
-import com.pm.amass.bean.Token;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+
+import com.basics.base.BaseViewModel;
+import com.basics.repository.LiveNetworkBoundResource;
+import com.basics.repository.Resource;
+import com.basics.repository.Result;
+import com.common.retrofit.ApiResponse;
+import com.pm.amass.MainApplication;
+import com.pm.amass.api.ILoginService;
+import com.pm.amass.bean.ResultInfo;
+import com.pm.amass.bean.Token;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author pm
+ * @author pmcho
  */
-public class SignInViewModel extends BaseViewModel {
+public class LoginViewModel extends BaseViewModel {
 
-    private final IRetrofitManager retrofitManager;
-    private static final String KEY = "31541eefbdf8e5b8fecb87de02720b05";
+    private ILoginService mLoginService;
 
-    public SignInViewModel(@NonNull Application application) {
+    public LoginViewModel(@NonNull Application application) {
         super(application);
-        retrofitManager = MainApplication.getAppComponent().getRetrofitManager();
+        mLoginService = mRetrofitManager.obtainRetrofitService(ILoginService.class);
     }
 
-    public MediatorLiveData<Resource<Token>> getToken() {
-        LiveNetworkBoundResource<Token> boundResource = new LiveNetworkBoundResource<Token>() {
+    public MediatorLiveData<Resource<Result<Token>>> getToken() {
+        LiveNetworkBoundResource<Result<Token>> boundResource = new LiveNetworkBoundResource<Result<Token>>() {
             @NonNull
             @Override
-            protected LiveData<ApiResponse<Token>> createCall() {
-                ILoginService loginService = retrofitManager.obtainRetrofitService(ILoginService.class);
-                return loginService.requestToken(KEY);
+            protected LiveData<ApiResponse<Result<Token>>> createCall() {
+                return mLoginService.requestToken(ILoginService.KEY);
             }
 
             @Override
@@ -50,19 +48,18 @@ public class SignInViewModel extends BaseViewModel {
         return boundResource.getAsLiveData();
     }
 
-    public MediatorLiveData<Resource<Result>> getSmsCode(String phone, String token) {
-        LiveNetworkBoundResource<Result> boundResource = new LiveNetworkBoundResource<Result>() {
+    public MediatorLiveData<Resource<ResultInfo>> getSmsCode(String phone, String action) {
+        LiveNetworkBoundResource<ResultInfo> boundResource = new LiveNetworkBoundResource<ResultInfo>() {
             @NonNull
             @Override
-            protected LiveData<ApiResponse<Result>> createCall() {
-                ILoginService loginService = retrofitManager.obtainRetrofitService(ILoginService.class);
+            protected LiveData<ApiResponse<ResultInfo>> createCall() {
                 HashMap<String, String> fieldMap = new HashMap<>(4);
                 fieldMap.put("phone", phone);
-                fieldMap.put("token", token);
-                fieldMap.put("action", "login");
+                fieldMap.put("token", readTokenFromSp());
+                fieldMap.put("action", action);
                 fieldMap.put("source", "student");
 
-                return loginService.requestSmsCode(fieldMap);
+                return mLoginService.requestSmsCode(fieldMap);
             }
 
             @Override
@@ -73,15 +70,30 @@ public class SignInViewModel extends BaseViewModel {
         return boundResource.getAsLiveData();
     }
 
-    public MediatorLiveData<Resource<Result>> getSignInData(Map fieldMap) {
-        LiveNetworkBoundResource<Result> boundResource = new LiveNetworkBoundResource<Result>() {
+    public MediatorLiveData<Resource<ResultInfo>> getSignInData(Map fieldMap) {
+        LiveNetworkBoundResource<ResultInfo> boundResource = new LiveNetworkBoundResource<ResultInfo>() {
             @NonNull
             @Override
-            protected LiveData<ApiResponse<Result>> createCall() {
-                ILoginService loginService = retrofitManager.obtainRetrofitService(ILoginService.class);
+            protected LiveData<ApiResponse<ResultInfo>> createCall() {
                 fieldMap.put("token",readTokenFromSp());
                 fieldMap.put("source","student");
-                return loginService.requestSignIn(fieldMap);
+                return mLoginService.requestSignIn(fieldMap);
+            }
+
+            @Override
+            protected void onFetchFailed() {
+
+            }
+        };
+        return boundResource.getAsLiveData();
+    }
+
+    public MediatorLiveData<Resource<ResultInfo>> getSignUpData(Map fieldMap) {
+        LiveNetworkBoundResource<ResultInfo> boundResource = new LiveNetworkBoundResource<ResultInfo>() {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<ResultInfo>> createCall() {
+                return mLoginService.requestSignUp(fieldMap);
             }
 
             @Override
@@ -111,6 +123,4 @@ public class SignInViewModel extends BaseViewModel {
         SharedPreferences sp = MainApplication.getAppComponent().getLoginSharedPreferences();
         return sp.getString("token", "");
     }
-
-
 }

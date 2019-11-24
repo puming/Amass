@@ -5,7 +5,7 @@ package com.pm.amass.bean;
  * @date 2019/11/15
  * @email puming@zdsoft.cn
  */
-public class Result {
+public class ResultInfo {
 
     /**
      * result : 200

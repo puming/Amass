@@ -75,4 +75,24 @@
     <style name="TileTrailingText">
         <item name="android:textColor">@color/color_gray_fifty</item>
     </style>
+
+    <style name="SingleLineStyle">
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- Dialog进入及退出动画 -->
+    <style name="BottomDialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/bottom_dialog_anim_enter</item>
+        <item name="android:windowExitAnimation">@anim/bottom_dialog_anim_exit</item>
+    </style>
+
+    <!--底部dialog-->
+    <style name="BottomFragmentDialogWithAnim" parent="@style/AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/BottomDialogAnim</item>
+    </style>
 </resources>

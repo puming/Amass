@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_student_task_item_icon"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_64"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/splash_center_icon" />
+
+    <TextView
+        android:id="@+id/iv_student_task_item_title"
+        style="@style/SingleLineStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="父母如何指导孩子孝"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintBottom_toTopOf="@id/iv_student_task_item_label"
+        app:layout_constraintStart_toEndOf="@+id/iv_student_task_item_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/iv_student_task_item_label"
+        style="@style/SingleLineStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="剩7天截止"
+        android:textColor="#AFAFAF"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/iv_student_task_item_title"
+        app:layout_constraintStart_toStartOf="@id/iv_student_task_item_title"
+        app:layout_constraintTop_toBottomOf="@+id/iv_student_task_item_title" />
+
+    <Button
+        android:id="@+id/btn_student_task_item"
+        android:layout_width="@dimen/dp_74"
+        android:layout_height="@dimen/dp_32"
+        android:background="@drawable/btn_round_primary_shape"
+        android:text="去完成"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/iv_student_task_item_title"
+        app:layout_constraintTop_toBottomOf="@id/iv_student_task_item_icon" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

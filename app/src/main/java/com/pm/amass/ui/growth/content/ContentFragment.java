@@ -1,19 +1,27 @@
 package com.pm.amass.ui.growth.content;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.basics.base.BaseFragment;
+import com.basics.repository.Resource;
 import com.pm.amass.R;
+import com.pm.amass.bean.ArticleResult;
 import com.pm.amass.bean.Moudle;
+import com.pm.amass.ui.grade.GradeViewModel;
 import com.pm.amass.ui.growth.Constant;
+import com.pm.amass.ui.growth.GrowthViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +29,9 @@ import androidx.recyclerview.widget.RecyclerView;
  * @author pmcho
  */
 public class ContentFragment extends BaseFragment {
+    private static final String TAG = "ContentFragment";
     private RecyclerView mRecyclerView;
+    private GrowthViewModel mViewModel;
 
     public static ContentFragment newInstance() {
         return new ContentFragment();
@@ -30,7 +40,29 @@ public class ContentFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_content, container, false);
+        mViewModel = ViewModelProviders.of(this).get(GrowthViewModel.class);
+        mViewModel.getArticleList().observe(this, articleResource -> {
+            switch (articleResource.status) {
+                case SUCCEED:
+                    List<ArticleResult.Article> list = articleResource.data.getData();
+                    Log.d(TAG, "onChanged: size = " + list.size());
+                    break;
+                case ERROR:
+                    Log.d(TAG, "onChanged: "+articleResource.code);
+                    Log.d(TAG, "onChanged: "+articleResource.message);
+                    break;
+                default:
+                    break;
+            }
+        });
+
+
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.fragment_content;
     }
 
     @Override

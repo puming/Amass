@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.pm.amass.R;
+import com.pm.amass.home.raiders.RaidersActivity;
 import com.pm.amass.home.task.DailyTaskActivity;
 
 /**
@@ -42,6 +43,9 @@ public class HomeFragment extends Fragment {
 
         view.findViewById(R.id.btn_goto_task).setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), DailyTaskActivity.class));
+        });
+        view.findViewById(R.id.btn_goto_psp).setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), RaidersActivity.class));
         });
     }
 

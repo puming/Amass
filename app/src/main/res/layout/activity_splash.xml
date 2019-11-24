@@ -11,13 +11,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
+        android:src="@mipmap/splash_main_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/splash_main_bg" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_skip"
@@ -41,32 +41,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="135dp"
+        android:src="@mipmap/splash_center_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/splash_center_icon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
+        android:src="@mipmap/splash_small_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@mipmap/splash_small_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="94dp"
+        android:background="@mipmap/splash_btn_start_bg"
         android:text="立即体验"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
         android:textSize="28sp"
-        android:background="@mipmap/splash_btn_start_bg"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.46"
@@ -76,10 +76,10 @@
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@mipmap/splash_text"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/splash_main_bg"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@mipmap/splash_text" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.pm.amass.login;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +28,7 @@ import com.common.ux.ToastHelper;
 import com.common.widget.AppBar;
 import com.common.widget.InputText;
 import com.pm.amass.R;
+import com.pm.amass.diglog.BottomSelectDialog;
 import com.pm.amass.utils.LoginUtil;
 
 import java.util.HashMap;
@@ -74,7 +78,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
      */
     private Button mBtnStartSignUp;
 
-    private SignUpViewModel mViewModel;
+    private LoginViewModel mViewModel;
     private boolean isFetchAuthCode;
     private CompositeDisposable mDisposable = new CompositeDisposable();
 
@@ -113,7 +117,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
     }
 
     private void startTime(final TextView tvGetCode) {
@@ -158,10 +162,16 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                 attemptFetchSmsCode();
                 break;
             case R.id.ibtn_select:
-                // TODO: 2019/11/22
+                String[] arrays = new String[]{"爸爸", "妈妈", "爷爷","奶奶","外公","外婆"};
+                BottomSelectDialog selectDialog = BottomSelectDialog.newInstance(arrays);
+                selectDialog.showDialogFragment((AppCompatActivity) getActivity(),
+                        selectDialog,
+                        String.valueOf(selectDialog.hashCode()));
+                selectDialog.setOnOnItemClickListener((pos, content) ->
+                        mInputSingUpItemRelation.setText(content));
                 break;
             case R.id.btn_start_sign_up:
-                attemptSign();
+                attemptSignUp();
                 break;
         }
     }
@@ -170,28 +180,31 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         String phone = mInputSingUpItemPhone.getEditableText().toString();
         if (TextUtils.isEmpty(phone)) {
             ToastHelper.makeToast(getContext(), "请输入手机号").show();
-        } else if (LoginUtil.isMobileNO(phone)) {
+        } else if (!LoginUtil.isMobileNO(phone)) {
             ToastHelper.makeToast(getContext(), R.string.error_invalid_mobile, Toast.LENGTH_SHORT).show();
         } else {
             startTime(mBtnStartAuth);
-            mViewModel.getSmsCode(phone).observe(this, resultResource -> {
-                switch (resultResource.status) {
-                    case SUCCEED:
-                        isFetchAuthCode = true;
-                        break;
-                    case ERROR:
-                        ToastHelper.makeToast(getContext(), resultResource.message).show();
-                        break;
-                    default:
-                        break;
-                }
+            mViewModel.getSmsCode(phone, "reg")
+                    .observe(this, resultResource -> {
+                        switch (resultResource.status) {
+                            case SUCCEED:
+                                isFetchAuthCode = true;
+                                ToastHelper.makeToast(getContext(), "验证码发送成功").show();
+                                break;
+                            case ERROR:
+                                ToastHelper.makeToast(getContext(), resultResource.message).show();
+                                break;
+                            default:
+                                break;
+                        }
 
-            });
+                    });
         }
 
     }
 
-    private void attemptSign() {
+    private void attemptSignUp() {
+        Log.d(TAG, "attemptSignUp: ");
         String name = mInputSingUpItemName.getEditableText().toString();
         String nickName = mInputSingUpItemNickname.getEditableText().toString();
         String psd = mInputSingUpItemPsd.getEditableText().toString();
@@ -207,13 +220,13 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             ToastHelper.makeToast(getContext(), "请输入密码").show();
         } else if (TextUtils.isEmpty(phone)) {
             ToastHelper.makeToast(getContext(), "请输入手机号").show();
-        } else if (LoginUtil.isMobileNO(phone)) {
+        } else if (!LoginUtil.isMobileNO(phone)) {
             ToastHelper.makeToast(getContext(), R.string.error_invalid_mobile, Toast.LENGTH_SHORT).show();
         } else if (!isFetchAuthCode) {
             ToastHelper.makeToast(getContext(), "请输获取验证码").show();
         } else if (TextUtils.isEmpty(code)) {
             ToastHelper.makeToast(getContext(), "请输入验证码").show();
-        } else if (LoginUtil.isAuthCodeNo(code)) {
+        } else if (!LoginUtil.isAuthCodeNo(code)) {
             ToastHelper.makeToast(getContext(), R.string.error_invalid_sms_code, Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(relation)) {
             ToastHelper.makeToast(getContext(), "请输选择关系").show();
@@ -230,16 +243,16 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             fieldMap.put("name", name);
             fieldMap.put("nickname", nickName);
             fieldMap.put("relation", "爸爸");
-            mViewModel.getSignUpData(fieldMap).observe(this, resultResource -> {
-                switch (resultResource.status) {
-                    case SUCCEED:
-                        getActivity().onBackPressed();
-                        break;
-                    default:
-                        break;
-                }
-
-            });
+            mViewModel.getSignUpData(fieldMap)
+                    .observe(this, resultResource -> {
+                        switch (resultResource.status) {
+                            case SUCCEED:
+                                getActivity().onBackPressed();
+                                break;
+                            default:
+                                break;
+                        }
+                    });
         }
 
     }

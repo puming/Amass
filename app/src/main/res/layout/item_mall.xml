@@ -43,7 +43,7 @@
         android:layout_width="@dimen/dp_36"
         android:layout_height="@dimen/dp_18"
         android:layout_marginTop="@dimen/dp_4"
-        android:background="@drawable/btn_round_red_shape"
+        android:background="@drawable/btn_rectangle_red_shape"
         android:text="兑换"
         android:textSize="@dimen/sp_12"
         android:textColor="@android:color/holo_red_dark"

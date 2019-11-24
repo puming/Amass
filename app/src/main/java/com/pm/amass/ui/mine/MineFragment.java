@@ -92,8 +92,12 @@ public class MineFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_mine, container, false);
-        return root;
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.fragment_mine;
     }
 
     @Override

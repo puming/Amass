@@ -85,10 +85,9 @@ public class OkHttpModule {
                 .readTimeout(30 * 1000, TimeUnit.MILLISECONDS)
                 .writeTimeout(30 * 1000, TimeUnit.MILLISECONDS)
                 .retryOnConnectionFailure(true)
-                .addInterceptor(new ReceivedCookiesInterceptor())
-                .addInterceptor(new LoggingInterceptor())
+//                .addInterceptor(new ReceivedCookiesInterceptor())
                 .addInterceptor(new TokenInterceptor())
-                .addInterceptor(new AddCookiesInterceptor())
+//                .addInterceptor(new AddCookiesInterceptor())
                 /*.addNetworkInterceptor(cacheInterceptor)
                 .cache(cache)*/
                 .sslSocketFactory(sslContext.getSocketFactory(), trustManager[0]);
@@ -98,6 +97,14 @@ public class OkHttpModule {
         return builder.build();
     }
 
+    @Named("default")
+    @Provides
+    Retrofit provideDefRetrofit(HttpUrl domain, OkHttpClient client) {
+        return new Retrofit.Builder().client(client)
+                .baseUrl(domain)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
     @Named("live")
     @Provides
     Retrofit provideRetrofit(HttpUrl domain, OkHttpClient client) {

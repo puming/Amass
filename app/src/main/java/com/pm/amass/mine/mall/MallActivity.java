@@ -2,7 +2,6 @@ package com.pm.amass.mine.mall;
 
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
@@ -12,10 +11,9 @@ import com.basics.base.AppBarActivity;
 import com.common.widget.AppBar;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
-import com.pm.amass.bean.Channel;
+import com.pm.amass.bean.ChannelResult.Channel;
 import com.pm.amass.mine.mall.content.MallContentFragment;
 import com.pm.amass.ui.growth.ContentFragmentPageAdapter;
-import com.pm.amass.ui.growth.content.ContentFragment;
 
 import java.util.ArrayList;
 
@@ -84,16 +82,15 @@ public class MallActivity extends AppBarActivity {
     }
 
 
-
     private void bindPage() {
-        ArrayList<Channel> channels = initData();
-        final int size = channels.size();
+        ArrayList<Channel> Channels = initData();
+        final int size = Channels.size();
         ArrayList<ViewGroup> pages = new ArrayList<>(size);
         ArrayList<Fragment> fragments = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
-            Channel channel = channels.get(i);
+            Channel Channel = Channels.get(i);
             //tab
-            TabLayout.Tab tab = mTabLayout.newTab().setText(channel.getTitle()).setTag(channel.getId());
+            TabLayout.Tab tab = mTabLayout.newTab().setText(Channel.getTitle()).setTag(Channel.getId());
             mTabLayout.addTab(tab);
             //page
             /*FrameLayout layout = new FrameLayout(this);
@@ -111,27 +108,27 @@ public class MallActivity extends AppBarActivity {
     }
 
     private ArrayList<Channel> initData() {
-        ArrayList<Channel> channels = new ArrayList<>(8);
-        Channel channel = new Channel();
-        channel.setId(0);
-        channel.setTitle("全部");
-        channels.add(channel);
+        ArrayList<Channel> Channels = new ArrayList<>(8);
+        Channel Channel = new Channel();
+        Channel.setId(0);
+        Channel.setTitle("全部");
+        Channels.add(Channel);
 
-        Channel channel1 = new Channel();
-        channel1.setId(1);
-        channel1.setTitle("玩具类");
-        channels.add(channel1);
+        Channel Channel1 = new Channel();
+        Channel1.setId(1);
+        Channel1.setTitle("玩具类");
+        Channels.add(Channel1);
 
-        Channel channel2 = new Channel();
-        channel2.setId(2);
-        channel2.setTitle("学习用品");
-        channels.add(channel2);
+        Channel Channel2 = new Channel();
+        Channel2.setId(2);
+        Channel2.setTitle("学习用品");
+        Channels.add(Channel2);
 
         Channel channe3 = new Channel();
         channe3.setId(3);
         channe3.setTitle("日常用品");
-        channels.add(channe3);
-        return channels;
+        Channels.add(channe3);
+        return Channels;
     }
 
 

@@ -6,21 +6,24 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.basics.base.AppBarFragment;
+import com.common.widget.AppBar;
 import com.pm.amass.R;
 
-public class DoTaskFragment extends AppBarFragment {
+/**
+ * @author pmcho
+ */
+public class SubmitTaskFragment extends AppBarFragment {
 
-    private DoTaskViewModel mViewModel;
+    private SubmitTaskViewModel mViewModel;
 
-    public static DoTaskFragment newInstance() {
-        return new DoTaskFragment();
+    public static SubmitTaskFragment newInstance() {
+        return new SubmitTaskFragment();
     }
 
     @Override
@@ -30,14 +33,23 @@ public class DoTaskFragment extends AppBarFragment {
     }
 
     @Override
+    protected void initAppBar(AppBar appBar) {
+        appBar.showAppbarRightContainer(true)
+                .showAppbarMenuIcon(false)
+                .showAppbarBackText(false)
+                .setAppbarTitle("提交任务")
+                .setAppbarMenuText("提交");
+    }
+
+    @Override
     protected int getContentLayoutId() {
-        return R.layout.do_task_fragment;
+        return R.layout.submit_task_fragment;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(DoTaskViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(SubmitTaskViewModel.class);
         // TODO: Use the ViewModel
     }
 

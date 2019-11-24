@@ -4,16 +4,16 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.basics.base.BaseViewModel;
 import com.basics.repository.LiveNetworkBoundResource;
 import com.basics.repository.Resource;
+import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.api.IGrowthService;
-import com.pm.amass.bean.Channel;
+import com.pm.amass.bean.ArticleResult;
+import com.pm.amass.bean.ChannelResult;
 
 /**
  * @author pmcho
@@ -34,11 +34,11 @@ public class GrowthViewModel extends BaseViewModel {
         return mText;
     }
 
-    public LiveData<Resource<Channel>> getArticleChannel() {
-        return new LiveNetworkBoundResource<Channel>() {
+    public LiveData<Resource<ChannelResult>> getArticleChannel() {
+        return new LiveNetworkBoundResource<ChannelResult>() {
             @NonNull
             @Override
-            protected LiveData<ApiResponse<Channel>> createCall() {
+            protected LiveData<ApiResponse<ChannelResult>> createCall() {
                 return mGrowthService.fetchArticleType();
             }
 
@@ -49,11 +49,11 @@ public class GrowthViewModel extends BaseViewModel {
         }.getAsLiveData();
     }
 
-    public LiveData<Resource<Object>> getArticleList() {
-        return new LiveNetworkBoundResource<Object>() {
+    public LiveData<Resource<ArticleResult>> getArticleList() {
+        return new LiveNetworkBoundResource<ArticleResult>() {
             @NonNull
             @Override
-            protected LiveData<ApiResponse<Object>> createCall() {
+            protected LiveData<ApiResponse<ArticleResult>> createCall() {
                 return mGrowthService.fetchArticleList();
             }
 

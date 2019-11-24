@@ -1,5 +1,6 @@
 package com.basics.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,33 +32,29 @@ public abstract class AppBarFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        /*View view = createView();
-        if (view != null) {
-            return view;
-        }*/
-        if (DEBUG) {
-            Log.d(TAG, "onCreateView: container=" + container);
-        }
         LinearLayout root = new LinearLayout(container.getContext());
-        ViewGroup.LayoutParams matchParent = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        root.setOrientation(LinearLayout.VERTICAL);
+        //app bar
         mAppBar = new AppBar(container.getContext());
         initAppBar(mAppBar);
         registerAppBarListener();
-        root.addView(mAppBar, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        root.addView(mAppBar, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         //content
+        ViewGroup.LayoutParams matchParent = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        View view = createView();
+        if (view != null) {
+            root.addView(view, matchParent);
+            return root;
+        }
         FrameLayout content = new FrameLayout(getContext());
         inflater.inflate(getContentLayoutId(), content, true);
-        root.addView(content, 1, matchParent);
+        root.addView(content, matchParent);
 //        container.addView(root, matchParent);
-        ButterKnife.bind(this, root);
+        if (getButterKnifeAutoBind()) {
+            ButterKnife.bind(this, root);
+        }
         return root;
     }
-
-    protected View createView() {
-        return null;
-    }
-
-    protected abstract int getContentLayoutId();
 
     protected void registerAppBarListener() {
         mAppBar.getAppbarRightContainer().setOnClickListener(this::onClickAppBarRightView);

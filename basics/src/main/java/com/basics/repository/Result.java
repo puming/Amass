@@ -1,6 +1,8 @@
 package com.basics.repository;
 
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * @author pm
  * @date 2019/2/18
@@ -15,9 +17,12 @@ public class Result<D> {
      * code : null
      * message : null
      */
+    @SerializedName("result")
     private boolean success;
     private String code;
+    @SerializedName("msg")
     private String message;
+    @SerializedName("data")
     private D data;
 
     public boolean isSuccess() {

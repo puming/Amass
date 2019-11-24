@@ -2,11 +2,16 @@ package com.pm.amass.api;
 
 import androidx.lifecycle.LiveData;
 
+import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
-import com.pm.amass.bean.Channel;
+import com.pm.amass.bean.ArticleResult;
+import com.pm.amass.bean.ChannelResult;
 
 import retrofit2.http.GET;
 
+/**
+ * @author pmcho
+ */
 public interface IGrowthService {
     String ARTICLE_TYPE = "/api/article/getarticlecate";
     String ARTICLE_LIST = "/api/article/getarticle";
@@ -14,10 +19,10 @@ public interface IGrowthService {
     String ARTICLE_DETAIL = "/api/article/getarticledetail";
 
     @GET(ARTICLE_TYPE)
-    LiveData<ApiResponse<Channel>> fetchArticleType();
+    LiveData<ApiResponse<ChannelResult>> fetchArticleType();
 
     @GET(ARTICLE_LIST)
-    LiveData<ApiResponse<Object>> fetchArticleList();
+    LiveData<ApiResponse<ArticleResult>> fetchArticleList();
 
     @GET(SEARCH_ARTICLE)
     LiveData<ApiResponse<Object>> searchArticle();

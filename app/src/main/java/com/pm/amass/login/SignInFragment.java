@@ -2,7 +2,6 @@ package com.pm.amass.login;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -52,9 +51,9 @@ public class SignInFragment extends BaseFragment {
     private AppCompatEditText mAppCompatEditTextCode;
     private AppCompatEditText mAppCompatEditTextAccount;
     private AppCompatEditText mAppCompatEditTextPsd;
-    private SignInViewModel mViewModel;
+    private LoginViewModel mViewModel;
     private String tokenString;
-    private boolean isFeatchCode;
+    private boolean isFetchCode;
     private RadioGroup mRadioGroup;
     private Button mButtonAuthCode;
 
@@ -67,20 +66,24 @@ public class SignInFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         subscribeViewModel();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sign_in_fragment, container, false);
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.sign_in_fragment;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.d(TAG, "onViewCreated: ");
         view.findViewById(R.id.btn_sign_up).setOnClickListener(v ->
                 Navigation.findNavController(v)
                         .navigate(R.id.action_signIn_to_signUp)
@@ -127,7 +130,7 @@ public class SignInFragment extends BaseFragment {
                 if (s.length() == 11 && isMobileNO(s.toString())) {
                     //如果这一次输入的手机号与上一次输入的手机号不一致
                     if (mViewModel.readPhoneFromSp().equals(s.toString())) {
-                        isFeatchCode = false;
+                        isFetchCode = false;
                     }
                 }
             }
@@ -138,32 +141,34 @@ public class SignInFragment extends BaseFragment {
         });
 
         mButtonAuthCode = view.findViewById(R.id.btn_auth_code);
-        mButtonAuthCode.setOnClickListener(v -> {
-            String phone = mAppCompatEditTextPhone.getText().toString();
-            if (!isMobileNO(phone)) {
-                ToastHelper.makeToast(getContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            startTime(mButtonAuthCode);
-            //手机号正确缓存
-            mViewModel.writePhoneToSp(phone);
-            mViewModel.getSmsCode(phone, tokenString)
-                    .observe(this, resultResource -> {
-                        if (resultResource.status == Resource.Status.SUCCEED) {
-                            isFeatchCode = true;
-                        }
-                    });
-        });
+        mButtonAuthCode.setOnClickListener(v -> attemptFetchCode());
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d(TAG, "onActivityCreated: ");
         String cachePhone = mViewModel.readPhoneFromSp();
         if (!TextUtils.isEmpty(cachePhone)) {
             mAppCompatEditTextPhone.setText(cachePhone);
         }
+    }
+
+    private void attemptFetchCode() {
+        String phone = mAppCompatEditTextPhone.getText().toString();
+        if (!isMobileNO(phone)) {
+            ToastHelper.makeToast(getContext(), "请输入正确的手机号", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        startTime(mButtonAuthCode);
+        //手机号正确缓存
+        mViewModel.writePhoneToSp(phone);
+        mViewModel.getSmsCode(phone, "login")
+                .observe(this, resultResource -> {
+                    if (resultResource.status == Resource.Status.SUCCEED) {
+                        isFetchCode = true;
+                    }
+                });
     }
 
     private void startTime(final TextView tvGetCode) {
@@ -205,7 +210,7 @@ public class SignInFragment extends BaseFragment {
             String mobiles = mAppCompatEditTextPhone.getText().toString();
             String code = mAppCompatEditTextCode.getText().toString();
             // Store values at the time of the login attempt.
-            if (isMobileNO(mobiles) && isAuthCodeNo(code) && isFeatchCode) {
+            if (isMobileNO(mobiles) && isAuthCodeNo(code) && isFetchCode) {
 //            showProgress(true);
                 fieldMap.put("phone", mobiles);
                 fieldMap.put("yzm", code);
@@ -226,15 +231,15 @@ public class SignInFragment extends BaseFragment {
                         });
             } else if (!isMobileNO(mobiles)) {
                 if (TextUtils.isEmpty(mobiles)) {
-                    ToastHelper.makeToast(getContext(), R.string.error_empth_mobile, Toast.LENGTH_SHORT).show();
+                    ToastHelper.makeToast(getContext(), R.string.error_empty_mobile, Toast.LENGTH_SHORT).show();
                 } else {
                     ToastHelper.makeToast(getContext(), R.string.error_invalid_mobile, Toast.LENGTH_SHORT).show();
                 }
-            } else if (!isFeatchCode) {
-                ToastHelper.makeToast(getContext(), getString(R.string.invalid_feath_code)).show();
+            } else if (!isFetchCode) {
+                ToastHelper.makeToast(getContext(), getString(R.string.invalid_fetch_code)).show();
             } else if (!isAuthCodeNo(code)) {
                 if (TextUtils.isEmpty(code)) {
-                    ToastHelper.makeToast(getContext(), R.string.error_empth_code, Toast.LENGTH_SHORT).show();
+                    ToastHelper.makeToast(getContext(), R.string.error_empty_code, Toast.LENGTH_SHORT).show();
                 } else {
                     ToastHelper.makeToast(getContext(), R.string.error_invalid_sms_code, Toast.LENGTH_SHORT).show();
                 }
@@ -245,7 +250,7 @@ public class SignInFragment extends BaseFragment {
             String psd = mAppCompatEditTextPsd.getEditableText().toString();
             if (!isMobileNO(account)) {
                 if (TextUtils.isEmpty(account)) {
-                    ToastHelper.makeToast(getContext(), R.string.error_empth_account, Toast.LENGTH_SHORT).show();
+                    ToastHelper.makeToast(getContext(), R.string.error_empty_account, Toast.LENGTH_SHORT).show();
                 } else {
                     ToastHelper.makeToast(getContext(), R.string.error_invalid_account, Toast.LENGTH_SHORT).show();
                 }
@@ -278,8 +283,8 @@ public class SignInFragment extends BaseFragment {
             mViewModel.getToken().observe(this, tokenResource -> {
                 switch (tokenResource.status) {
                     case SUCCEED:
-                        Token token = tokenResource.data;
-                        tokenString = token.getData().getToken().getInfo();
+                        Token token = tokenResource.data.getData();
+                        tokenString = token.getToken().getInfo();
                         mViewModel.writeTokenToSp(tokenString);
                         Log.d(TAG, "subscribeViewModel: tokenString" + tokenString);
                         break;

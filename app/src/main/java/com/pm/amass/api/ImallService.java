@@ -3,7 +3,7 @@ package com.pm.amass.api;
 import androidx.lifecycle.LiveData;
 
 import com.common.retrofit.ApiResponse;
-import com.pm.amass.bean.Channel;
+import com.pm.amass.bean.ChannelResult;
 
 import retrofit2.http.GET;
 
@@ -13,11 +13,11 @@ public interface ImallService {
     String SHOP_DETAIL = "/api/shop/getshopdetail";
 
     @GET(SHOP_TYPE)
-    LiveData<ApiResponse<Channel>> fetchShopType();
+    LiveData<ApiResponse<ChannelResult>> fetchShopType();
 
     @GET(SHOP_LIST)
-    LiveData<ApiResponse<Channel>> fetchShopList();
+    LiveData<ApiResponse<ChannelResult>> fetchShopList();
 
     @GET(SHOP_DETAIL)
-    LiveData<ApiResponse<Channel>> fetchShopDetail();
+    LiveData<ApiResponse<ChannelResult>> fetchShopDetail();
 }

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,15 +12,14 @@ import com.pm.amass.MainActivity;
 import com.pm.amass.R;
 import com.pm.amass.login.LoginActivity;
 
-import java.util.Timer;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 /**
  * @author pmcho
  */
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "SplashActivity";
     private static final int SPLASH_TIMER_WHAT = 1;
 
     /**
@@ -33,12 +32,34 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     private Button mBtnStart;
 
     Handler mSplashHandler;
+    SplashViewModel mViewModel;
+
+    /**
+     * 已经登录
+     */
+    private boolean isAlreadyLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        initView();
+        setContentView(R.layout.activity_longin);
+        mViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
+        subscribeViewModel();
+//        initView();
+    }
+
+    private void subscribeViewModel() {
+        mViewModel.getLoginState()
+                .observe(this, aBoolean -> {
+                            Log.d(TAG, "subscribeViewModel: aBoolean="+aBoolean);
+                            isAlreadyLogin = aBoolean;
+                        }
+                );
+       /* mViewModel.getToken().observe(this, aBoolean -> {
+            if (!aBoolean) {
+                ToastHelper.makeToast(SplashActivity.this, "获取token失败").show();
+            }
+        });*/
     }
 
     @Override
@@ -50,7 +71,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             }
             return true;
         });
-        mSplashHandler.sendEmptyMessageDelayed(SPLASH_TIMER_WHAT, 3 * 1000);
+//        mSplashHandler.sendEmptyMessageDelayed(SPLASH_TIMER_WHAT, 5 * 1000);
     }
 
     @Override
@@ -87,7 +108,13 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void startMainActivity() {
-        startActivity(new Intent(this, LoginActivity.class));
+        Intent intent;
+        if (isAlreadyLogin) {
+            intent = new Intent(this, MainActivity.class);
+        } else {
+            intent = new Intent(this, LoginActivity.class);
+        }
+        startActivity(intent);
         finish();
     }
 

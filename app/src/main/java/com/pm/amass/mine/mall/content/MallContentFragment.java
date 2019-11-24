@@ -19,6 +19,9 @@ import com.pm.amass.R;
 
 import java.util.ArrayList;
 
+/**
+ * @author pmcho
+ */
 public class MallContentFragment extends BaseFragment {
 
     private MallContentViewModel mViewModel;
@@ -31,7 +34,12 @@ public class MallContentFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.mall_content_fragment, container, false);
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.mall_content_fragment;
     }
 
     @Override

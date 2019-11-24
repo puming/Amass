@@ -23,8 +23,12 @@ public class GradeFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(GradeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_grade, container, false);
-        return root;
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.fragment_grade;
     }
 
     @Override

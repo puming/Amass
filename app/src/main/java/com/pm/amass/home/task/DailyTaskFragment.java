@@ -15,12 +15,16 @@ import android.view.ViewGroup;
 
 import com.basics.base.AppBarFragment;
 import com.common.widget.AppBar;
+import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
+import com.pm.amass.home.task.family.FamilyTaskFragment;
+import com.pm.amass.home.task.student.StudentTaskFragment;
 
 /**
  * @author pmcho
  */
 public class DailyTaskFragment extends AppBarFragment {
+    private TabLayout mTabLayout;
 
     private DailyTaskViewModel mViewModel;
 
@@ -37,24 +41,55 @@ public class DailyTaskFragment extends AppBarFragment {
 
     @Override
     protected void initAppBar(AppBar appBar) {
-//        super.initAppBar(appBar);
-        appBar.showAppbarRightContainer(true)
-                .showAppbarBackText(false)
-                .showAppbarMenuIcon(false)
-                .setAppbarMenuText("提交")
-                .setAppbarTitle("今日任务");
+        super.initAppBar(appBar);
+        appBar.setAppbarTitle("今日任务");
     }
 
     @Override
     protected void onClickAppBarRightView(View view) {
         super.onClickAppBarRightView(view);
         Navigation.findNavController(view)
-                .navigate(R.id.action_dailyTaskFragment_to_doTaskFragment);
+                .navigate(R.id.action_dailyTaskFragment_to_taskDetailsFragment);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mTabLayout = view.findViewById(R.id.tab_layout_task);
+        ViewGroup container = view.findViewById(R.id.fl_task_layout);
+        getChildFragmentManager()
+                .beginTransaction()
+                .add(R.id.fl_task_layout, StudentTaskFragment.newInstance())
+                .commit();
+
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                if (position == 0) {
+                    getChildFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fl_task_layout, StudentTaskFragment.newInstance())
+                            .commit();
+                } else if (position == 1) {
+                    getChildFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fl_task_layout, FamilyTaskFragment.newInstance())
+                            .commit();
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override

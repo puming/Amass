@@ -41,11 +41,11 @@ public abstract class LiveNetworkBoundResource<RequestType> {
         // we re-attach dbSource as a new source,
         // it will dispatch its latest value quickly
         LiveData<Resource<RequestType>> mapData = Transformations.map(apiResponse, response -> {
-            Log.d(TAG, "fetchFromNetwork: apiResponse changed" + response);
+            Log.d(TAG, "fetchFromNetwork: apiResponse :" + response);
             if (response instanceof ApiResponse.ApiSuccessResponse) {
                 ApiResponse.ApiSuccessResponse<RequestType> successResponse = (ApiResponse.ApiSuccessResponse<RequestType>) response;
                 RequestType body = successResponse.getBody();
-                /*if (body instanceof Result) {
+                if (body instanceof Result) {
                     Result result = (Result) body;
                     boolean success = result.isSuccess();
                     if(success){
@@ -53,11 +53,10 @@ public abstract class LiveNetworkBoundResource<RequestType> {
                     }else {
                         return Resource.error(result.getMessage(),body,Resource.Code.NO_SUCCESS_DATA);
                     }
-                    return Resource.success(body);
                 } else {
                     return Resource.success(body);
-                }*/
-                return Resource.success(body);
+                }
+//                return Resource.success(body);
             } else if (response instanceof ApiResponse.ApiErrorResponse) {
                 //请求失败使用，传递失败信息
                 ApiResponse.ApiErrorResponse<RequestType> errorResponse = (ApiResponse.ApiErrorResponse<RequestType>) response;

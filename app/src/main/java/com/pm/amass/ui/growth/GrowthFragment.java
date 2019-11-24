@@ -1,6 +1,7 @@
 package com.pm.amass.ui.growth;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,33 +13,35 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.basics.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
-import com.pm.amass.bean.Channel;
+import com.pm.amass.bean.ChannelResult;
+import com.pm.amass.bean.ChannelResult.Channel;
 import com.pm.amass.ui.growth.content.ContentFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author pm
  */
-public class GrowthFragment extends Fragment {
+public class GrowthFragment extends BaseFragment {
+    private static final String TAG = "GrowthFragment";
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
-    private GrowthViewModel dashboardViewModel;
+    private GrowthViewModel mViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(GrowthViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_growth, container, false);
-        dashboardViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-            }
-        });
-        return root;
+        mViewModel = ViewModelProviders.of(this).get(GrowthViewModel.class);
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.fragment_growth;
     }
 
     @Override
@@ -46,20 +49,33 @@ public class GrowthFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
         registerListener();
-
-
-        bindPage();
+        mViewModel.getArticleChannel().observe(this, resultResource -> {
+            switch (resultResource.status) {
+                case SUCCEED:
+                    ChannelResult result = resultResource.data;
+                    List<Channel> channelList = result.getData();
+                    Log.d(TAG, "onViewCreated: size" + channelList.size());
+//                    bindPage(channelList);
+                    break;
+                case ERROR:
+                    Log.d(TAG, "onViewCreated: error:" + resultResource.message + "code:" + resultResource.code);
+                    break;
+                default:
+                    break;
+            }
+        });
+        ArrayList<Channel> Channels = initData();
+        bindPage(Channels);
     }
 
-    private void bindPage() {
-        ArrayList<Channel> channels = initData();
-        final int size = channels.size();
+    private void bindPage(List<Channel> Channels) {
+        final int size = Channels.size();
         ArrayList<ViewGroup> pages = new ArrayList<>(size);
         ArrayList<Fragment> fragments = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
-            Channel channel = channels.get(i);
+            Channel Channel = Channels.get(i);
             //tab
-            TabLayout.Tab tab = mTabLayout.newTab().setText(channel.getTitle()).setTag(channel.getId());
+            TabLayout.Tab tab = mTabLayout.newTab().setText(Channel.getTitle()).setTag(Channel.getId());
             mTabLayout.addTab(tab);
             //page
             /*FrameLayout layout = new FrameLayout(this);
@@ -77,27 +93,27 @@ public class GrowthFragment extends Fragment {
     }
 
     private ArrayList<Channel> initData() {
-        ArrayList<Channel> channels = new ArrayList<>(8);
-        Channel channel = new Channel();
-        channel.setId(0);
-        channel.setTitle("知识库");
-        channels.add(channel);
+        ArrayList<Channel> Channels = new ArrayList<>(8);
+        Channel Channel = new Channel();
+        Channel.setId(0);
+        Channel.setTitle("知识库");
+        Channels.add(Channel);
 
-        Channel channel1 = new Channel();
-        channel1.setId(1);
-        channel1.setTitle("推荐");
-        channels.add(channel1);
+        Channel Channel1 = new Channel();
+        Channel1.setId(1);
+        Channel1.setTitle("推荐");
+        Channels.add(Channel1);
 
-        Channel channel2 = new Channel();
-        channel2.setId(2);
-        channel2.setTitle("启蒙教育");
-        channels.add(channel2);
+        Channel Channel2 = new Channel();
+        Channel2.setId(2);
+        Channel2.setTitle("启蒙教育");
+        Channels.add(Channel2);
 
         Channel channe3 = new Channel();
         channe3.setId(3);
         channe3.setTitle("育儿助手");
-        channels.add(channe3);
-        return channels;
+        Channels.add(channe3);
+        return Channels;
     }
 
     private void initView(View view) {

@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.task.submit.DoTaskFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    tools:context=".home.task.submit.SubmitTaskFragment">
 
 </FrameLayout>

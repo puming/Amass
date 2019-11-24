@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".home.task.student.StudentTaskFragment">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_student_task_ongoing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进行中" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_family_task_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已完成" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_family_task_over"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已结束" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_student_task"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
