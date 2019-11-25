@@ -16,38 +16,24 @@ public class ArticleResult extends Result<List<ArticleResult.Article>> {
         /**
          * id : 1
          * title : fty
-         * tag : ugyug
-         * description : gyg
+         * images : 008691d151d212cd9697f5ddcbb776ec.png;
+         * read_num : 0
+         * comment_num : 0
          * article_cate_id : 1
-         * thumb : 3
-         * images : 441ef37213604626e73dda7bf295ce7c.png;
-         * content : <p><img src="/ueditor/php/upload/image/20191114/1573715595508334.png" title="1573715595508334.png" alt="3.png"/>guyg<br/></p>
-         * admin_id : 1
-         * create_time : 1523262079
-         * update_time : 1573715609
-         * edit_admin_id : 1
-         * status : 1
-         * is_top : 1
          * name : 555
          * nickname : jy
+         * admin_id :
          */
 
         private int id;
         private String title;
-        private String tag;
-        private String description;
-        private int article_cate_id;
-        private int thumb;
         private String images;
-        private String content;
-        private int admin_id;
-        private int create_time;
-        private int update_time;
-        private int edit_admin_id;
-        private int status;
-        private int is_top;
+        private int read_num;
+        private int comment_num;
+        private int article_cate_id;
         private String name;
         private String nickname;
+        private String admin_id;
 
         public int getId() {
             return id;
@@ -65,38 +51,6 @@ public class ArticleResult extends Result<List<ArticleResult.Article>> {
             this.title = title;
         }
 
-        public String getTag() {
-            return tag;
-        }
-
-        public void setTag(String tag) {
-            this.tag = tag;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public int getArticle_cate_id() {
-            return article_cate_id;
-        }
-
-        public void setArticle_cate_id(int article_cate_id) {
-            this.article_cate_id = article_cate_id;
-        }
-
-        public int getThumb() {
-            return thumb;
-        }
-
-        public void setThumb(int thumb) {
-            this.thumb = thumb;
-        }
-
         public String getImages() {
             return images;
         }
@@ -105,60 +59,28 @@ public class ArticleResult extends Result<List<ArticleResult.Article>> {
             this.images = images;
         }
 
-        public String getContent() {
-            return content;
+        public int getRead_num() {
+            return read_num;
         }
 
-        public void setContent(String content) {
-            this.content = content;
+        public void setRead_num(int read_num) {
+            this.read_num = read_num;
         }
 
-        public int getAdmin_id() {
-            return admin_id;
+        public int getComment_num() {
+            return comment_num;
         }
 
-        public void setAdmin_id(int admin_id) {
-            this.admin_id = admin_id;
+        public void setComment_num(int comment_num) {
+            this.comment_num = comment_num;
         }
 
-        public int getCreate_time() {
-            return create_time;
+        public int getArticle_cate_id() {
+            return article_cate_id;
         }
 
-        public void setCreate_time(int create_time) {
-            this.create_time = create_time;
-        }
-
-        public int getUpdate_time() {
-            return update_time;
-        }
-
-        public void setUpdate_time(int update_time) {
-            this.update_time = update_time;
-        }
-
-        public int getEdit_admin_id() {
-            return edit_admin_id;
-        }
-
-        public void setEdit_admin_id(int edit_admin_id) {
-            this.edit_admin_id = edit_admin_id;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
-        public int getIs_top() {
-            return is_top;
-        }
-
-        public void setIs_top(int is_top) {
-            this.is_top = is_top;
+        public void setArticle_cate_id(int article_cate_id) {
+            this.article_cate_id = article_cate_id;
         }
 
         public String getName() {
@@ -176,5 +98,14 @@ public class ArticleResult extends Result<List<ArticleResult.Article>> {
         public void setNickname(String nickname) {
             this.nickname = nickname;
         }
+
+        public String getAdmin_id() {
+            return admin_id;
+        }
+
+        public void setAdmin_id(String admin_id) {
+            this.admin_id = admin_id;
+        }
     }
+
 }

@@ -32,6 +32,8 @@ public class ContentFragment extends BaseFragment {
     private static final String TAG = "ContentFragment";
     private RecyclerView mRecyclerView;
     private GrowthViewModel mViewModel;
+    private List<ArticleResult.Article> mData= new ArrayList<>(12);
+    private ContentListAdapter adapter;
 
     public static ContentFragment newInstance() {
         return new ContentFragment();
@@ -41,20 +43,6 @@ public class ContentFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(GrowthViewModel.class);
-        mViewModel.getArticleList().observe(this, articleResource -> {
-            switch (articleResource.status) {
-                case SUCCEED:
-                    List<ArticleResult.Article> list = articleResource.data.getData();
-                    Log.d(TAG, "onChanged: size = " + list.size());
-                    break;
-                case ERROR:
-                    Log.d(TAG, "onChanged: "+articleResource.code);
-                    Log.d(TAG, "onChanged: "+articleResource.message);
-                    break;
-                default:
-                    break;
-            }
-        });
 
 
         return super.onCreateView(inflater, container, savedInstanceState);
@@ -68,11 +56,27 @@ public class ContentFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.rv_home);
+        mRecyclerView = view.findViewById(R.id.rv_growth);
         registerListener();
         ArrayList<Moudle> moudles = initData();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(new ContentListAdapter(getContext(), moudles));
+        adapter = new ContentListAdapter(getContext(), mData);
+        mRecyclerView.setAdapter(adapter);
+        mViewModel.getArticleList().observe(this, articleResource -> {
+            switch (articleResource.status) {
+                case SUCCEED:
+                    mData = articleResource.data.getData();
+                    adapter.addData(mData);
+                    Log.d(TAG, "onChanged: size = " + mData.size());
+                    break;
+                case ERROR:
+                    Log.d(TAG, "onChanged: "+articleResource.code);
+                    Log.d(TAG, "onChanged: "+articleResource.message);
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 
     private void registerListener() {
