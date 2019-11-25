@@ -3,6 +3,8 @@ package com.pm.amass.mine.mall.content;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,8 +20,11 @@ import android.view.ViewGroup;
 import com.basics.base.BaseFragment;
 import com.basics.base.BaseItemDecoration;
 import com.basics.repository.Resource;
+import com.common.utils.DensityUtil;
+import com.google.android.flexbox.FlexboxItemDecoration;
 import com.pm.amass.R;
 import com.pm.amass.bean.ShopResult;
+import com.pm.amass.widget.ItemSpace;
 
 import java.nio.channels.Channel;
 import java.util.ArrayList;
@@ -75,14 +80,49 @@ public class MallContentFragment extends BaseFragment {
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
-        Object o = new Object();
+//        mRecyclerView.addItemDecoration(new BaseItemDecoration());
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
 
-        ArrayList<Object> objects = new ArrayList<>(12);
-        for (int i = 0; i < 100; i++) {
-            objects.add(o);
-        }
-
-        mRecyclerView.addItemDecoration(new BaseItemDecoration());
+            @Override
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                int childAdapterPosition = parent.getChildAdapterPosition(view);
+                int childCount = parent.getLayoutManager().getChildCount();
+                if (childAdapterPosition < 2) {
+                    if (childAdapterPosition % 2 == 0) {
+                        //left
+                        outRect.set(0, 0, DensityUtil.dp2px(getContext(), 5),
+                                DensityUtil.dp2px(getContext(), 8));
+                    } else {
+                        //right
+                        outRect.set(DensityUtil.dp2px(getContext(), 5), 0, 0,
+                                DensityUtil.dp2px(getContext(), 8));
+                    }
+                } else if (childAdapterPosition >= 2 && childAdapterPosition < (childCount - 2)) {
+                    if (childAdapterPosition % 2 == 0) {
+                        //left
+                        outRect.set(0, DensityUtil.dp2px(getContext(), 8),
+                                DensityUtil.dp2px(getContext(), 5),
+                                DensityUtil.dp2px(getContext(), 8));
+                    } else {
+                        //right
+                        outRect.set(DensityUtil.dp2px(getContext(), 5),
+                                DensityUtil.dp2px(getContext(), 8), 0,
+                                DensityUtil.dp2px(getContext(), 8));
+                    }
+                } else {
+                    if (childAdapterPosition / 2 == 0) {
+                        //left
+                        outRect.set(0, DensityUtil.dp2px(getContext(), 8), DensityUtil.dp2px(getContext(), 5),
+                                0);
+                    } else {
+                        //right
+                        outRect.set(DensityUtil.dp2px(getContext(), 5), DensityUtil.dp2px(getContext(), 8), 0,
+                                0);
+                    }
+                }
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
     }
 

@@ -30,20 +30,23 @@
         app:layout_constraintTop_toBottomOf="@id/tv_article_title">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/dp_106"
+            android:layout_height="@dimen/dp_72"
             android:src="@mipmap/image_growth_item_zp6" />
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/dp_106"
+            android:layout_height="@dimen/dp_72"
             android:src="@mipmap/image_growth_item_zp6" />
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/dp_106"
+            android:layout_height="@dimen/dp_72"
             android:src="@mipmap/image_growth_item_zp6" />
 
 

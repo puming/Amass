@@ -1,8 +1,11 @@
 package com.pm.amass.mine.mall.content;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Size;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +16,7 @@ import com.common.imageloader.glide.GlideImageLoaderStrategy;
 import com.pm.amass.MainApplication;
 import com.pm.amass.R;
 import com.pm.amass.bean.ShopResult.Shop;
+import com.pm.amass.utils.ImageLoaderUtils;
 
 import java.util.List;
 
@@ -39,9 +43,16 @@ public class MallContentAdapter extends BaseAdapter<Shop, MallContentAdapter.Mal
         TextView title = holder.getItemView(R.id.tv_item_mall_title);
         TextView label = holder.getItemView(R.id.tv_item_mall_label);
         ImageView image = holder.getItemView(R.id.iv_mall_img);
-
+        Button button = holder.getItemView(R.id.btn_item_mall);
+        ImageLoaderUtils.bindImage(image, shop.getThumb(), new Size(174, 96));
         title.setText(shop.getTitle());
-        label.setText(shop.getTag());
+        int priceMoney = shop.getPrice_money();
+        String moneyStr = String.valueOf(priceMoney);
+        if (TextUtils.isEmpty(moneyStr)) {
+            label.setText(shop.getPrice_points());
+        } else {
+            label.setText(shop.getPrice_points() + "+" + moneyStr);
+        }
 
     }
 

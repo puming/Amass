@@ -4,49 +4,33 @@ import com.basics.repository.Result;
 
 import java.util.List;
 
+/**
+ * @author pmcho
+ */
 public class ShopResult extends Result<List<ShopResult.Shop>> {
+
 
     public static class Shop {
         /**
-         * id : 3
-         * title : 111
-         * tag : 111
-         * description : 111
-         * shop_cate_id : 2
-         * price_form : 2
-         * price_points : 111
-         * price_money : 121212
-         * stock : 1111111
-         * thumb : 40
-         * images : 4b7b8304c443dc16d2744337fb74d54b.png;
-         * content : <p>111</p>
-         * admin_id : 1
-         * create_time : 1573703734
-         * update_time : 1573711832
-         * edit_admin_id : 1
-         * status : 1
-         * is_top : 0
-         * name : 12
+         * id : 4
+         * title : 1212
+         * thumb : http://jiye.sdmiaobang.com/uploads/admin/article_thumb/20191125/8e46df1c54c5f429d83631cb7aae2eaa.jpg
+         * images : /uploads/admin/article_thumb/20191125/0750e9a6c8814bc26e3e4cb605c69f7f.jpg;
+         * shop_cate_id : 1
+         * price_form : 1
+         * price_points : 10
+         * price_money : 0
+         * name : 555
          */
 
         private int id;
         private String title;
-        private String tag;
-        private String description;
+        private String thumb;
+        private String images;
         private int shop_cate_id;
         private int price_form;
         private int price_points;
         private int price_money;
-        private int stock;
-        private int thumb;
-        private String images;
-        private String content;
-        private int admin_id;
-        private int create_time;
-        private int update_time;
-        private int edit_admin_id;
-        private int status;
-        private int is_top;
         private String name;
 
         public int getId() {
@@ -65,20 +49,20 @@ public class ShopResult extends Result<List<ShopResult.Shop>> {
             this.title = title;
         }
 
-        public String getTag() {
-            return tag;
+        public String getThumb() {
+            return thumb;
         }
 
-        public void setTag(String tag) {
-            this.tag = tag;
+        public void setThumb(String thumb) {
+            this.thumb = thumb;
         }
 
-        public String getDescription() {
-            return description;
+        public String getImages() {
+            return images;
         }
 
-        public void setDescription(String description) {
-            this.description = description;
+        public void setImages(String images) {
+            this.images = images;
         }
 
         public int getShop_cate_id() {
@@ -111,86 +95,6 @@ public class ShopResult extends Result<List<ShopResult.Shop>> {
 
         public void setPrice_money(int price_money) {
             this.price_money = price_money;
-        }
-
-        public int getStock() {
-            return stock;
-        }
-
-        public void setStock(int stock) {
-            this.stock = stock;
-        }
-
-        public int getThumb() {
-            return thumb;
-        }
-
-        public void setThumb(int thumb) {
-            this.thumb = thumb;
-        }
-
-        public String getImages() {
-            return images;
-        }
-
-        public void setImages(String images) {
-            this.images = images;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-        public int getAdmin_id() {
-            return admin_id;
-        }
-
-        public void setAdmin_id(int admin_id) {
-            this.admin_id = admin_id;
-        }
-
-        public int getCreate_time() {
-            return create_time;
-        }
-
-        public void setCreate_time(int create_time) {
-            this.create_time = create_time;
-        }
-
-        public int getUpdate_time() {
-            return update_time;
-        }
-
-        public void setUpdate_time(int update_time) {
-            this.update_time = update_time;
-        }
-
-        public int getEdit_admin_id() {
-            return edit_admin_id;
-        }
-
-        public void setEdit_admin_id(int edit_admin_id) {
-            this.edit_admin_id = edit_admin_id;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
-        public int getIs_top() {
-            return is_top;
-        }
-
-        public void setIs_top(int is_top) {
-            this.is_top = is_top;
         }
 
         public String getName() {

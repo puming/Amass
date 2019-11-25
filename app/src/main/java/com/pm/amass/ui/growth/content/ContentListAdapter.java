@@ -1,8 +1,10 @@
 package com.pm.amass.ui.growth.content;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.text.Html;
+import android.util.Size;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +17,7 @@ import com.google.android.flexbox.FlexboxLayout;
 import com.pm.amass.R;
 import com.pm.amass.bean.ArticleResult.Article;
 import com.pm.amass.bean.Moudle;
+import com.pm.amass.ui.growth.details.ArticleDetailsActivity;
 import com.pm.amass.utils.ImageLoaderUtils;
 import com.pm.amass.utils.StringUtil;
 
@@ -43,6 +46,7 @@ public class ContentListAdapter extends BaseAdapter<Article, ContentListAdapter.
         TextView label = holder.getItemView(R.id.tv_article_label);
         FlexboxLayout box = holder.getItemView(R.id.fl_article_image_group);
         String images = article.getImages();
+
         String[] urlArray = StringUtil.generateSubString(images);
         for (int i = 0; i < box.getChildCount(); i++) {
             View child = box.getChildAt(i);
@@ -54,7 +58,7 @@ public class ContentListAdapter extends BaseAdapter<Article, ContentListAdapter.
                 } else {
                     url = urlArray[0];
                 }
-                ImageLoaderUtils.bindImage(imageView, url);
+                ImageLoaderUtils.bindImage(imageView, url,new Size(106,72));
             }
         }
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -64,8 +68,10 @@ public class ContentListAdapter extends BaseAdapter<Article, ContentListAdapter.
         }*/
         textView.setText(article.getTitle());
         label.setText("阅读" + article.getRead_num() + "评论" + article.getComment_num());
-//        ImageView imageView = holder.getItemView(R.id.iv_type_1_home);
-//        textView.setText(moudle.getLabel());
+        int articleId = article.getId();
+        holder.itemView.setOnClickListener(v -> {
+            mContext.startActivity(new Intent(mContext, ArticleDetailsActivity.class));
+        });
     }
 
     static class ListViewHolder extends BaseViewHolder<Article> {
