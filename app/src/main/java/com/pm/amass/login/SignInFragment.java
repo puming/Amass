@@ -148,8 +148,12 @@ public class SignInFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         String cachePhone = mViewModel.readPhoneFromSp();
+        String account = mViewModel.readAccountFromSp();
         if (!TextUtils.isEmpty(cachePhone)) {
             mAppCompatEditTextPhone.setText(cachePhone);
+        }
+        if(!TextUtils.isEmpty(account)){
+            mAppCompatEditTextAccount.setText(account);
         }
     }
 

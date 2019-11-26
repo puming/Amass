@@ -1,4 +1,4 @@
-package com.pm.amass.ui.growth;
+package com.pm.amass.common;
 
 
 import java.util.List;

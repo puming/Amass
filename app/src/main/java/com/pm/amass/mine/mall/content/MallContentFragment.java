@@ -68,7 +68,7 @@ public class MallContentFragment extends BaseFragment {
                 case SUCCEED:
                     mData = shopResultResource.data.getData();
                     Log.d(TAG, "onViewCreated: size=" + mData.size());
-                    mAdapter.addData(mData);
+                    mAdapter.setData(mData);
                     break;
                 case ERROR:
                     Log.d(TAG, "onCreate: " + shopResultResource.code);

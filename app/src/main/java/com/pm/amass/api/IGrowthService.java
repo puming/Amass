@@ -4,10 +4,16 @@ import androidx.lifecycle.LiveData;
 
 import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
+import com.pm.amass.bean.ArticleDetailsResult;
 import com.pm.amass.bean.ArticleResult;
 import com.pm.amass.bean.ChannelResult;
 
+import java.util.Map;
+
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 /**
  * @author pmcho
@@ -27,7 +33,8 @@ public interface IGrowthService {
     @GET(SEARCH_ARTICLE)
     LiveData<ApiResponse<Object>> searchArticle();
 
-    @GET(ARTICLE_DETAIL)
-    LiveData<ApiResponse<Object>> fetchArticleDetail();
+    @FormUrlEncoded
+    @POST(ARTICLE_DETAIL)
+    LiveData<ApiResponse<ArticleDetailsResult>> fetchArticleDetail(@FieldMap Map<String,String> map);
 
 }

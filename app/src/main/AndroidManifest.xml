@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.growth.details.ArticleDetailsActivity"></activity>
+        <activity android:name=".ui.growth.comment.CommentActivity"></activity>
+        <activity android:name=".ui.growth.details.ArticleDetailsActivity" />
         <activity android:name=".home.raiders.RaidersActivity" />
         <activity android:name=".test.TestActivity" />
         <activity android:name=".home.task.DailyTaskActivity" />

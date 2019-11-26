@@ -27,19 +27,22 @@
             android:textColor="@android:color/black" />
 
         <ImageView
+            android:id="@+id/iv_btn_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_soucang_vector" />
+            android:src="@drawable/ic_comment_vector" />
 
         <ImageView
+            android:id="@+id/iv_btn_collect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_soucang_vector" />
+            android:src="@drawable/ic_collect_selector" />
 
         <ImageView
+            android:id="@+id/iv_btn_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_soucang_vector" />
+            android:src="@drawable/ic_share_vector" />
 
     </com.google.android.flexbox.FlexboxLayout>
 

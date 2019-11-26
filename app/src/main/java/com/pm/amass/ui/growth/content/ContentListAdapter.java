@@ -58,7 +58,7 @@ public class ContentListAdapter extends BaseAdapter<Article, ContentListAdapter.
                 } else {
                     url = urlArray[0];
                 }
-                ImageLoaderUtils.bindImage(imageView, url,new Size(106,72));
+                ImageLoaderUtils.bindImage(imageView, url, new Size(106, 72));
             }
         }
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -70,7 +70,9 @@ public class ContentListAdapter extends BaseAdapter<Article, ContentListAdapter.
         label.setText("阅读" + article.getRead_num() + "评论" + article.getComment_num());
         int articleId = article.getId();
         holder.itemView.setOnClickListener(v -> {
-            mContext.startActivity(new Intent(mContext, ArticleDetailsActivity.class));
+            Intent intent = new Intent(mContext, ArticleDetailsActivity.class);
+            intent.putExtra("articleId", String.valueOf(articleId));
+            mContext.startActivity(intent);
         });
     }
 

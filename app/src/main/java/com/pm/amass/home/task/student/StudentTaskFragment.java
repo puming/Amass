@@ -15,7 +15,7 @@ import com.basics.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
 import com.pm.amass.home.task.content.StudentContentFragment;
-import com.pm.amass.ui.growth.ContentFragmentPageAdapter;
+import com.pm.amass.common.ContentFragmentPageAdapter;
 
 import java.util.ArrayList;
 

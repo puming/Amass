@@ -8,6 +8,7 @@ import com.basics.repository.Resource;
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.api.ILoginService;
 import com.pm.amass.bean.ResultInfo;
+import com.pm.amass.manager.AppManager;
 
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class SettingViewModel extends BaseViewModel {
             @Override
             protected LiveData<ApiResponse<ResultInfo>> createCall() {
                 ILoginService loginService = mRetrofitManager.obtainRetrofitService(ILoginService.class);
-                return loginService.requestLogout("8");
+                return loginService.requestLogout(AppManager.getInstance().getUid());
             }
 
             @Override

@@ -12,8 +12,12 @@ import com.basics.repository.Resource;
 import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.api.IGrowthService;
+import com.pm.amass.bean.ArticleDetailsResult;
 import com.pm.amass.bean.ArticleResult;
 import com.pm.amass.bean.ChannelResult;
+import com.pm.amass.manager.AppManager;
+
+import java.util.HashMap;
 
 /**
  * @author pmcho
@@ -55,6 +59,24 @@ public class GrowthViewModel extends BaseViewModel {
             @Override
             protected LiveData<ApiResponse<ArticleResult>> createCall() {
                 return mGrowthService.fetchArticleList();
+            }
+
+            @Override
+            protected void onFetchFailed() {
+
+            }
+        }.getAsLiveData();
+    }
+
+    public LiveData<Resource<ArticleDetailsResult>> getArticleDetails(String articleId) {
+        return new LiveNetworkBoundResource<ArticleDetailsResult>() {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<ArticleDetailsResult>> createCall() {
+                HashMap<String, String> map = new HashMap<>(2);
+                map.put("articleId",articleId);
+                map.put("UserId", AppManager.getInstance().getUid());
+                return mGrowthService.fetchArticleDetail(map);
             }
 
             @Override

@@ -108,14 +108,15 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.tile_detection_version:
                 break;
             case R.id.btn_logout:
-                mViewModel.getLogoutData().observe(this, resultInfoResource -> {
-                    if (resultInfoResource.status == Resource.Status.SUCCEED) {
-                        startActivity(new Intent(this, LoginActivity.class));
-                        this.finish();
-                    } else if (resultInfoResource.status == Resource.Status.ERROR) {
-                        ToastHelper.makeToast(this, resultInfoResource.message, Toast.LENGTH_LONG).show();
-                    }
-                });
+                mViewModel.getLogoutData()
+                        .observe(this, resultInfoResource -> {
+                            if (resultInfoResource.status == Resource.Status.SUCCEED) {
+                                startActivity(new Intent(this, LoginActivity.class));
+                                this.finish();
+                            } else if (resultInfoResource.status == Resource.Status.ERROR) {
+                                ToastHelper.makeToast(this, resultInfoResource.message, Toast.LENGTH_LONG).show();
+                            }
+                        });
                 break;
         }
     }

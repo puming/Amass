@@ -22,11 +22,11 @@ public class AppManager {
     }
 
     public String getUid() {
-        return MainApplication.getAppComponent().getSharedPreferences().getString("uid", "");
+        return MainApplication.getAppComponent().getLoginSharedPreferences().getString("uid", "");
     }
 
     public String getAccountOrPhone() {
-        return MainApplication.getAppComponent().getSharedPreferences().getString("phone", "");
+        return MainApplication.getAppComponent().getLoginSharedPreferences().getString("phone", "");
     }
 
 
