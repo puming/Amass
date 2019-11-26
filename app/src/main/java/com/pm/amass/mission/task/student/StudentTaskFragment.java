@@ -1,4 +1,4 @@
-package com.pm.amass.home.task.student;
+package com.pm.amass.mission.task.student;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.basics.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
-import com.pm.amass.home.task.content.StudentContentFragment;
+import com.pm.amass.mission.task.content.StudentContentFragment;
 import com.pm.amass.common.ContentFragmentPageAdapter;
 
 import java.util.ArrayList;

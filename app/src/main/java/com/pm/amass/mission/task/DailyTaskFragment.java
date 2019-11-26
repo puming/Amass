@@ -1,4 +1,4 @@
-package com.pm.amass.home.task;
+package com.pm.amass.mission.task;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -17,8 +16,8 @@ import com.basics.base.AppBarFragment;
 import com.common.widget.AppBar;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
-import com.pm.amass.home.task.family.FamilyTaskFragment;
-import com.pm.amass.home.task.student.StudentTaskFragment;
+import com.pm.amass.mission.task.family.FamilyTaskFragment;
+import com.pm.amass.mission.task.student.StudentTaskFragment;
 
 /**
  * @author pmcho

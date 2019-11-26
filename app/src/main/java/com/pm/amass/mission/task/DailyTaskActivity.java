@@ -1,4 +1,4 @@
-package com.pm.amass.home.raiders;
+package com.pm.amass.mission.task;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,11 @@ import com.pm.amass.R;
 /**
  * @author pmcho
  */
-public class RaidersActivity extends AppCompatActivity {
+public class DailyTaskActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_raiders);
+        setContentView(R.layout.activity_daily_task);
     }
 }

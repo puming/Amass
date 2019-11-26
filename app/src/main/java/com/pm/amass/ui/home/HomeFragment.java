@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.pm.amass.R;
-import com.pm.amass.home.raiders.RaidersActivity;
-import com.pm.amass.home.task.DailyTaskActivity;
+import com.pm.amass.mission.raiders.RaidersActivity;
+import com.pm.amass.mission.task.DailyTaskActivity;
 
 /**
  * @author pmcho

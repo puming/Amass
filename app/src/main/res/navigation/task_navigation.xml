@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dailyTaskFragment"
-        android:name="com.pm.amass.home.task.DailyTaskFragment"
+        android:name="com.pm.amass.mission.task.DailyTaskFragment"
         android:label="daily_task_fragment"
         tools:layout="@layout/daily_task_fragment">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/taskDetailsFragment"
-        android:name="com.pm.amass.home.task.details.TaskDetailsFragment"
+        android:name="com.pm.amass.mission.task.details.TaskDetailsFragment"
         android:label="task_details_fragment"
         tools:layout="@layout/task_details_fragment" >
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/submitTaskFragment"
-        android:name="com.pm.amass.home.task.submit.SubmitTaskFragment"
+        android:name="com.pm.amass.mission.task.submit.SubmitTaskFragment"
         android:label="do_task_fragment"
         tools:layout="@layout/submit_task_fragment" />
 

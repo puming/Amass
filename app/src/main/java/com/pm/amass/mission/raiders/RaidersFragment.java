@@ -1,4 +1,4 @@
-package com.pm.amass.home.raiders;
+package com.pm.amass.mission.raiders;
 
 import androidx.lifecycle.ViewModelProviders;
 

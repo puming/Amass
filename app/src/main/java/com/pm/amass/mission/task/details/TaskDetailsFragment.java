@@ -1,6 +1,5 @@
-package com.pm.amass.home.task.details;
+package com.pm.amass.mission.task.details;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.pm.amass.home.task.content;
+package com.pm.amass.mission.task.content;
 
 import android.content.Context;
 import android.view.View;

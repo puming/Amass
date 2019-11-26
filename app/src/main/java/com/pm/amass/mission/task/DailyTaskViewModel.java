@@ -1,4 +1,4 @@
-package com.pm.amass.home.task;
+package com.pm.amass.mission.task;
 
 import androidx.lifecycle.ViewModel;
 

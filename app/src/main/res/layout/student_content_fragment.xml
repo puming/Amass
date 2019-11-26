@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingStart="@dimen/dp_16"
     android:paddingEnd="@dimen/dp_16"
-    tools:context=".home.task.content.StudentContentFragment">
+    tools:context=".mission.task.content.StudentContentFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_student_content_list"

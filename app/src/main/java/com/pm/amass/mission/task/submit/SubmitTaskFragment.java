@@ -1,4 +1,4 @@
-package com.pm.amass.home.task.submit;
+package com.pm.amass.mission.task.submit;
 
 import androidx.lifecycle.ViewModelProviders;
 
