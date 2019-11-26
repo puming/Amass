@@ -35,6 +35,8 @@ public class TokenInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         if (!NetworkUtils.isNetWorkConnected(BaseApplication.getAppComponent().getApplication())) {
             Log.d(TAG, "intercept: 无网络连接");
+            chain.call().cancel();
+            return null;
         }
         Request originalRequest = chain.request();
         HttpUrl originalHttpUrl = originalRequest.url();

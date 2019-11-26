@@ -1,21 +1,28 @@
 package com.pm.amass.login;
 
 import android.app.Application;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.Observer;
 
 import com.basics.base.BaseViewModel;
 import com.basics.repository.LiveNetworkBoundResource;
 import com.basics.repository.Resource;
 import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
+import com.common.ux.ToastHelper;
+import com.pm.amass.MainActivity;
 import com.pm.amass.MainApplication;
 import com.pm.amass.api.ILoginService;
 import com.pm.amass.bean.ResultInfo;
 import com.pm.amass.bean.Token;
+import com.pm.amass.bean.UserResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,10 +33,14 @@ import java.util.Map;
 public class LoginViewModel extends BaseViewModel {
 
     private ILoginService mLoginService;
+    private MediatorLiveData<Boolean> mLoginSuccessData = new MediatorLiveData<Boolean>();
+    private MediatorLiveData<Resource<UserResult>> mUserResource;
+    private SharedPreferences mLoginSp;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
         mLoginService = mRetrofitManager.obtainRetrofitService(ILoginService.class);
+        mLoginSp = MainApplication.getAppComponent().getLoginSharedPreferences();
     }
 
     public MediatorLiveData<Resource<Result<Token>>> getToken() {
@@ -70,13 +81,13 @@ public class LoginViewModel extends BaseViewModel {
         return boundResource.getAsLiveData();
     }
 
-    public MediatorLiveData<Resource<ResultInfo>> getSignInData(Map fieldMap) {
-        LiveNetworkBoundResource<ResultInfo> boundResource = new LiveNetworkBoundResource<ResultInfo>() {
+    public MediatorLiveData<Resource<UserResult>> getSignInData(Map fieldMap) {
+        mUserResource = new LiveNetworkBoundResource<UserResult>() {
             @NonNull
             @Override
-            protected LiveData<ApiResponse<ResultInfo>> createCall() {
-                fieldMap.put("token",readTokenFromSp());
-                fieldMap.put("source","student");
+            protected LiveData<ApiResponse<UserResult>> createCall() {
+                fieldMap.put("token", readTokenFromSp());
+                fieldMap.put("source", "student");
                 return mLoginService.requestSignIn(fieldMap);
             }
 
@@ -84,8 +95,41 @@ public class LoginViewModel extends BaseViewModel {
             protected void onFetchFailed() {
 
             }
-        };
-        return boundResource.getAsLiveData();
+        }.getAsLiveData();
+        return mUserResource;
+    }
+
+    public LiveData<Boolean> getLoginSuccessData(Map fieldMap) {
+        mUserResource = new LiveNetworkBoundResource<UserResult>() {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<UserResult>> createCall() {
+                fieldMap.put("token", readTokenFromSp());
+                fieldMap.put("source", "student");
+                return mLoginService.requestSignIn(fieldMap);
+            }
+
+            @Override
+            protected void onFetchFailed() {
+
+            }
+        }.getAsLiveData();
+
+        mLoginSuccessData.addSource(mUserResource, resultLogin -> {
+            if (resultLogin.status == Resource.Status.SUCCEED) {
+                UserResult user = resultLogin.data;
+                if (user == null) {
+                    mLoginSuccessData.setValue(false);
+                } else {
+                    writeUidToSp(String.valueOf(user.getId()));
+                    writePhoneToSp(user.getPhone());
+                    mLoginSuccessData.setValue(true);
+                }
+            } else if (resultLogin.status == Resource.Status.ERROR) {
+                mLoginSuccessData.setValue(false);
+            }
+        });
+        return mLoginSuccessData;
     }
 
     public MediatorLiveData<Resource<ResultInfo>> getSignUpData(Map fieldMap) {
@@ -105,22 +149,36 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     void writePhoneToSp(String phone) {
-        SharedPreferences sp = MainApplication.getAppComponent().getLoginSharedPreferences();
-        sp.edit().putString("phone", phone).apply();
+        SharedPreferences sp = MainApplication.getAppComponent().getSharedPreferences();
+        sp.edit().putString("cache_phone", phone).apply();
     }
 
     String readPhoneFromSp() {
-        SharedPreferences sp = MainApplication.getAppComponent().getLoginSharedPreferences();
-        return sp.getString("phone", "");
+        SharedPreferences sp = MainApplication.getAppComponent().getSharedPreferences();
+        return sp.getString("cache_phone", "");
     }
 
     void writeTokenToSp(String token) {
-        SharedPreferences sp = MainApplication.getAppComponent().getLoginSharedPreferences();
-        sp.edit().putString("token", token).apply();
+        mLoginSp.edit().putString("token", token).apply();
     }
 
     String readTokenFromSp() {
-        SharedPreferences sp = MainApplication.getAppComponent().getLoginSharedPreferences();
-        return sp.getString("token", "");
+        return mLoginSp.getString("token", "");
+    }
+
+    void writeUidToSp(String token) {
+        mLoginSp.edit().putString("uid", token).apply();
+    }
+
+    String readUidFromSp() {
+        return mLoginSp.getString("uid", "");
+    }
+
+    void writeAccountToSp(String token) {
+        mLoginSp.edit().putString("account", token).apply();
+    }
+
+    String readAccountFromSp() {
+        return mLoginSp.getString("account", "");
     }
 }

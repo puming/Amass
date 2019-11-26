@@ -4,6 +4,7 @@ import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.bean.ResultInfo;
 import com.pm.amass.bean.Token;
+import com.pm.amass.bean.UserResult;
 
 import androidx.lifecycle.LiveData;
 
@@ -23,6 +24,7 @@ public interface ILoginService {
     String CHECK = "/api/index/tokencheck";
     String SMS_CODE = "/api/index/sendyzm";
     String SIGN_IN = "/api/index/applogin";
+    String LOGOUT = "/api/index/applogout";
     String SIGN_UP = "/api/index/appregister";
 
     @FormUrlEncoded
@@ -31,7 +33,11 @@ public interface ILoginService {
 
     @FormUrlEncoded
     @POST(SIGN_IN)
-    LiveData<ApiResponse<ResultInfo>> requestSignIn(@FieldMap Map<String, String> map);
+    LiveData<ApiResponse<UserResult>> requestSignIn(@FieldMap Map<String, String> map);
+
+    @FormUrlEncoded
+    @POST(LOGOUT)
+    LiveData<ApiResponse<ResultInfo>> requestLogout(@Field("uid") String uid);
 
     @FormUrlEncoded
     @POST(SIGN_UP)
@@ -43,5 +49,5 @@ public interface ILoginService {
 
     @FormUrlEncoded
     @POST(CHECK)
-    LiveData<ApiResponse<Map<String,Object>>> requestCheckToken(@Field("token") String token);
+    LiveData<ApiResponse<Map<String, Object>>> requestCheckToken(@Field("token") String token);
 }

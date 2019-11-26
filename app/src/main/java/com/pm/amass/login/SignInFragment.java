@@ -32,10 +32,13 @@ import com.basics.repository.Resource;
 import com.common.ux.ToastHelper;
 import com.pm.amass.BuildConfig;
 import com.pm.amass.MainActivity;
+import com.pm.amass.MainApplication;
 import com.pm.amass.R;
 import com.pm.amass.bean.Token;
+import com.pm.amass.bean.UserResult;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static com.pm.amass.utils.LoginUtil.isAuthCodeNo;
@@ -90,11 +93,7 @@ public class SignInFragment extends BaseFragment {
         );
         view.findViewById(R.id.tv_welcome).setOnClickListener(v -> {
             if (BuildConfig.DEBUG) {
-                startActivity(new Intent(getContext(), MainActivity.class));
-                FragmentActivity activity = getActivity();
-                if (activity != null) {
-                    activity.finish();
-                }
+                startMainActivity();
             }
         });
 
@@ -215,20 +214,8 @@ public class SignInFragment extends BaseFragment {
                 fieldMap.put("phone", mobiles);
                 fieldMap.put("yzm", code);
                 fieldMap.put("way", "phone");
-                mViewModel.getSignInData(fieldMap)
-                        .observe(this, resultLogin -> {
-                            if (resultLogin.status == Resource.Status.SUCCEED) {
-                                startActivity(new Intent(getContext(), MainActivity.class));
-                                FragmentActivity activity = getActivity();
-                                if (activity != null) {
-                                    activity.finish();
-                                }
-                            } else if (resultLogin.status == Resource.Status.ERROR) {
-                                ToastHelper.makeToast(getContext(), resultLogin.message, Toast.LENGTH_LONG).show();
-                            }
-
+                realLogin(fieldMap);
 //                showProgress(false);
-                        });
             } else if (!isMobileNO(mobiles)) {
                 if (TextUtils.isEmpty(mobiles)) {
                     ToastHelper.makeToast(getContext(), R.string.error_empty_mobile, Toast.LENGTH_SHORT).show();
@@ -260,18 +247,34 @@ public class SignInFragment extends BaseFragment {
                 fieldMap.put("number", account);
                 fieldMap.put("password", psd);
                 fieldMap.put("way", "number");
-                mViewModel.getSignInData(fieldMap).observe(this, resultResource -> {
-                    if (resultResource.status == Resource.Status.SUCCEED) {
-                        startActivity(new Intent(getContext(), MainActivity.class));
-                        FragmentActivity activity = getActivity();
-                        if (activity != null) {
-                            activity.finish();
+                realLogin(fieldMap);
+            }
+        }
+    }
+
+    private void realLogin(Map fieldMap) {
+        mViewModel.getSignInData(fieldMap)
+                .observe(this, resultLogin -> {
+                    if (resultLogin.status == Resource.Status.SUCCEED) {
+                        UserResult user = resultLogin.data;
+                        if (user == null) {
+                            ToastHelper.makeToast(getContext(), "登录失败", Toast.LENGTH_LONG).show();
+                        } else {
+                            mViewModel.writeUidToSp(String.valueOf(user.getId()));
+                            mViewModel.writePhoneToSp(user.getPhone());
+                            startMainActivity();
                         }
-                    } else if (resultResource.status == Resource.Status.ERROR) {
-                        ToastHelper.makeToast(getContext(), resultResource.message, Toast.LENGTH_LONG).show();
+                    } else if (resultLogin.status == Resource.Status.ERROR) {
+                        ToastHelper.makeToast(getContext(), resultLogin.message, Toast.LENGTH_LONG).show();
                     }
                 });
-            }
+    }
+
+    private void startMainActivity() {
+        startActivity(new Intent(getContext(), MainActivity.class));
+        FragmentActivity activity = getActivity();
+        if (activity != null) {
+            activity.finish();
         }
     }
 
