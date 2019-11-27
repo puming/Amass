@@ -83,6 +83,7 @@ public class GrowthFragment extends BaseFragment {
         ArrayList<Fragment> fragments = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
             Channel Channel = Channels.get(i);
+            String cateId = String.valueOf(Channel.getId());
             //tab
             TabLayout.Tab tab = mTabLayout.newTab().setText(Channel.getTitle()).setTag(Channel.getId());
             mTabLayout.addTab(tab);
@@ -93,7 +94,7 @@ public class GrowthFragment extends BaseFragment {
             layout.addView(child, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER));
             pages.add(layout);*/
-            ContentFragment homeFragment = ContentFragment.newInstance();
+            ContentFragment homeFragment = ContentFragment.newInstance(cateId);
             fragments.add(homeFragment);
         }
 //        mViewPager.setAdapter(new HomePageAdapter<ViewGroup>(pages));

@@ -29,11 +29,15 @@ public class ContentFragment extends BaseFragment {
     private static final String TAG = "ContentFragment";
     private RecyclerView mRecyclerView;
     private GrowthViewModel mViewModel;
-    private List<ArticleResult.Article> mData= new ArrayList<>(12);
+    private List<ArticleResult.Article> mData = new ArrayList<>(12);
     private ContentListAdapter mAdapter;
 
-    public static ContentFragment newInstance() {
-        return new ContentFragment();
+    public static ContentFragment newInstance(String cateId) {
+        Bundle bundle = new Bundle();
+        bundle.putString("cateId", cateId);
+        ContentFragment contentFragment = new ContentFragment();
+        contentFragment.setArguments(bundle);
+        return contentFragment;
     }
 
     @Override
@@ -56,7 +60,11 @@ public class ContentFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new ContentListAdapter(getContext(), mData);
         mRecyclerView.setAdapter(mAdapter);
-        mViewModel.getArticleList().observe(this, articleResource -> {
+        Bundle arguments = getArguments();
+        if (arguments == null) {
+            return;
+        }
+        mViewModel.getArticleList(arguments.getString("cateId")).observe(this, articleResource -> {
             switch (articleResource.status) {
                 case SUCCEED:
                     mData = articleResource.data.getData();
@@ -64,8 +72,8 @@ public class ContentFragment extends BaseFragment {
                     Log.d(TAG, "onChanged: size = " + mData.size());
                     break;
                 case ERROR:
-                    Log.d(TAG, "onChanged: "+articleResource.code);
-                    Log.d(TAG, "onChanged: "+articleResource.message);
+                    Log.d(TAG, "onChanged: " + articleResource.code);
+                    Log.d(TAG, "onChanged: " + articleResource.message);
                     break;
                 default:
                     break;

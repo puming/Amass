@@ -36,13 +36,13 @@ public class MallContentViewModel extends BaseViewModel {
         }.getAsLiveData();
     }
 
-    public LiveData<Resource<ShopResult>> getShopListData(){
+    public LiveData<Resource<ShopResult>> getShopListData(String cateId){
         return new LiveNetworkBoundResource<ShopResult>() {
             @NonNull
             @Override
             protected LiveData<ApiResponse<ShopResult>> createCall() {
                 ImallService imallService = mRetrofitManager.obtainRetrofitService(ImallService.class);
-                return imallService.fetchShopList();
+                return imallService.fetchShopList(cateId);
             }
             @Override
             protected void onFetchFailed() {

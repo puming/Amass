@@ -24,6 +24,7 @@ import com.common.utils.DensityUtil;
 import com.google.android.flexbox.FlexboxItemDecoration;
 import com.pm.amass.R;
 import com.pm.amass.bean.ShopResult;
+import com.pm.amass.shelf.growth.content.ContentFragment;
 import com.pm.amass.widget.ItemSpace;
 
 import java.nio.channels.Channel;
@@ -41,8 +42,12 @@ public class MallContentFragment extends BaseFragment {
     private List<ShopResult.Shop> mData = new ArrayList<>(12);
     private MallContentAdapter mAdapter;
 
-    public static MallContentFragment newInstance() {
-        return new MallContentFragment();
+    public static MallContentFragment newInstance(String cateId) {
+        Bundle bundle = new Bundle();
+        bundle.putString("cateId", cateId);
+        MallContentFragment fragment = new MallContentFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -62,8 +67,11 @@ public class MallContentFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = view.findViewById(R.id.rv_mall_content);
         mAdapter = new MallContentAdapter(getContext(), mData);
-
-        mViewModel.getShopListData().observe(this, shopResultResource -> {
+        Bundle arguments = getArguments();
+        if(arguments==null){
+            return;
+        }
+        mViewModel.getShopListData(arguments.getString("cateId")).observe(this, shopResultResource -> {
             switch (shopResultResource.status) {
                 case SUCCEED:
                     mData = shopResultResource.data.getData();

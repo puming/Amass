@@ -93,8 +93,10 @@ public class MallActivity extends AppBarActivity {
         ArrayList<Fragment> fragments = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
             Channel Channel = channels.get(i);
+            String cateId = String.valueOf(Channel.getId());
+
             //tab
-            TabLayout.Tab tab = mTabLayout.newTab().setText(Channel.getTitle()).setTag(Channel.getId());
+            TabLayout.Tab tab = mTabLayout.newTab().setText(Channel.getTitle()).setTag(cateId);
             mTabLayout.addTab(tab);
             //page
             /*FrameLayout layout = new FrameLayout(this);
@@ -103,7 +105,7 @@ public class MallActivity extends AppBarActivity {
             layout.addView(child, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER));
             pages.add(layout);*/
-            MallContentFragment homeFragment = MallContentFragment.newInstance();
+            MallContentFragment homeFragment = MallContentFragment.newInstance(cateId);
             fragments.add(homeFragment);
         }
 //        mViewPager.setAdapter(new HomePageAdapter<ViewGroup>(pages));

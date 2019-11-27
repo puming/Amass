@@ -52,12 +52,12 @@ public class GrowthViewModel extends BaseViewModel {
         }.getAsLiveData();
     }
 
-    public LiveData<Resource<ArticleResult>> getArticleList() {
+    public LiveData<Resource<ArticleResult>> getArticleList(String cateId) {
         return new LiveNetworkBoundResource<ArticleResult>() {
             @NonNull
             @Override
             protected LiveData<ApiResponse<ArticleResult>> createCall() {
-                return mGrowthService.fetchArticleList();
+                return mGrowthService.fetchArticleList(cateId);
             }
 
             @Override

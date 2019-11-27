@@ -10,6 +10,7 @@ import com.pm.amass.bean.ChannelResult;
 
 import java.util.Map;
 
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -27,8 +28,9 @@ public interface IGrowthService {
     @GET(ARTICLE_TYPE)
     LiveData<ApiResponse<ChannelResult>> fetchArticleType();
 
-    @GET(ARTICLE_LIST)
-    LiveData<ApiResponse<ArticleResult>> fetchArticleList();
+    @FormUrlEncoded
+    @POST(ARTICLE_LIST)
+    LiveData<ApiResponse<ArticleResult>> fetchArticleList(@Field("cateId") String cateId);
 
     @GET(SEARCH_ARTICLE)
     LiveData<ApiResponse<Object>> searchArticle();

@@ -4,6 +4,7 @@ import com.common.retrofit.ApiResponse;
 import com.pm.amass.bean.ChannelResult;
 
 import androidx.lifecycle.LiveData;
+
 import retrofit2.http.GET;
 
 /**
@@ -18,4 +19,7 @@ public interface ITaskService {
 
     @GET(TASK_LIST)
     LiveData<ApiResponse<ChannelResult>> fetchShopType();
+
+    @GET(TASK_LIST)
+    LiveData<ApiResponse<ChannelResult>> fetchShopList();
 }
