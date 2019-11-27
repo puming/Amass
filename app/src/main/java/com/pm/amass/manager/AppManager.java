@@ -26,7 +26,15 @@ public class AppManager {
     }
 
     public String getAccountOrPhone() {
-        return MainApplication.getAppComponent().getLoginSharedPreferences().getString("phone", "");
+        return MainApplication.getAppComponent().getLoginSharedPreferences().getString("account", "");
+    }
+
+    public String getToken() {
+        return MainApplication.getAppComponent().getLoginSharedPreferences().getString("token", "");
+    }
+
+    public void clear(){
+        boolean commit = MainApplication.getAppComponent().getLoginSharedPreferences().edit().clear().commit();
     }
 
 

@@ -32,7 +32,6 @@ import com.basics.repository.Resource;
 import com.common.ux.ToastHelper;
 import com.pm.amass.BuildConfig;
 import com.pm.amass.MainActivity;
-import com.pm.amass.MainApplication;
 import com.pm.amass.R;
 import com.pm.amass.bean.Token;
 import com.pm.amass.bean.UserResult;
@@ -128,7 +127,7 @@ public class SignInFragment extends BaseFragment {
             public void afterTextChanged(Editable s) {
                 if (s.length() == 11 && isMobileNO(s.toString())) {
                     //如果这一次输入的手机号与上一次输入的手机号不一致
-                    if (mViewModel.readPhoneFromSp().equals(s.toString())) {
+                    if (mViewModel.readCachePhoneFromSp().equals(s.toString())) {
                         isFetchCode = false;
                     }
                 }
@@ -147,12 +146,12 @@ public class SignInFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        String cachePhone = mViewModel.readPhoneFromSp();
+        String cachePhone = mViewModel.readCachePhoneFromSp();
         String account = mViewModel.readAccountFromSp();
         if (!TextUtils.isEmpty(cachePhone)) {
             mAppCompatEditTextPhone.setText(cachePhone);
         }
-        if(!TextUtils.isEmpty(account)){
+        if (!TextUtils.isEmpty(account)) {
             mAppCompatEditTextAccount.setText(account);
         }
     }
@@ -165,7 +164,7 @@ public class SignInFragment extends BaseFragment {
         }
         startTime(mButtonAuthCode);
         //手机号正确缓存
-        mViewModel.writePhoneToSp(phone);
+        mViewModel.writeCachePhoneToSp(phone);
         mViewModel.getSmsCode(phone, "login")
                 .observe(this, resultResource -> {
                     if (resultResource.status == Resource.Status.SUCCEED) {
@@ -260,12 +259,12 @@ public class SignInFragment extends BaseFragment {
         mViewModel.getSignInData(fieldMap)
                 .observe(this, resultLogin -> {
                     if (resultLogin.status == Resource.Status.SUCCEED) {
-                        UserResult user = resultLogin.data;
+                        UserResult.User user = resultLogin.data.getData();
                         if (user == null) {
                             ToastHelper.makeToast(getContext(), "登录失败", Toast.LENGTH_LONG).show();
                         } else {
+                            mViewModel.writeAccountToSp(user.getPhone());
                             mViewModel.writeUidToSp(String.valueOf(user.getId()));
-                            mViewModel.writePhoneToSp(user.getPhone());
                             startMainActivity();
                         }
                     } else if (resultLogin.status == Resource.Status.ERROR) {

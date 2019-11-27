@@ -7,29 +7,29 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.pm.amass.ui.home.HomeFragment"
+        android:name="com.pm.amass.shelf.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_growth"
-        android:name="com.pm.amass.ui.growth.GrowthFragment"
+        android:name="com.pm.amass.shelf.growth.GrowthFragment"
         android:label="@string/title_growth"
         tools:layout="@layout/fragment_growth" />
 
     <fragment
         android:id="@+id/navigation_news"
-        android:name="com.pm.amass.ui.news.NewsFragment"
+        android:name="com.pm.amass.shelf.news.NewsFragment"
         android:label="@string/title_news"
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/navigation_grade"
-        android:name="com.pm.amass.ui.grade.GradeFragment"
+        android:name="com.pm.amass.shelf.grade.GradeFragment"
         android:label="@string/title_grade"
         tools:layout="@layout/fragment_grade" />
     <fragment
         android:id="@+id/navigation_mine"
-        android:name="com.pm.amass.ui.mine.MineFragment"
+        android:name="com.pm.amass.shelf.mine.MineFragment"
         android:label="@string/title_mine"
         tools:layout="@layout/fragment_mine">
         <action

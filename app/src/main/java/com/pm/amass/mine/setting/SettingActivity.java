@@ -15,6 +15,7 @@ import com.pm.amass.MainActivity;
 import com.pm.amass.R;
 import com.pm.amass.bean.ResultInfo;
 import com.pm.amass.login.LoginActivity;
+import com.pm.amass.manager.AppManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
@@ -111,6 +112,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 mViewModel.getLogoutData()
                         .observe(this, resultInfoResource -> {
                             if (resultInfoResource.status == Resource.Status.SUCCEED) {
+                                AppManager.getInstance().clear();
                                 startActivity(new Intent(this, LoginActivity.class));
                                 this.finish();
                             } else if (resultInfoResource.status == Resource.Status.ERROR) {

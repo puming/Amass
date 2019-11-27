@@ -47,8 +47,6 @@ public class DailyTaskFragment extends AppBarFragment {
     @Override
     protected void onClickAppBarRightView(View view) {
         super.onClickAppBarRightView(view);
-        Navigation.findNavController(view)
-                .navigate(R.id.action_dailyTaskFragment_to_taskDetailsFragment);
     }
 
     @Override

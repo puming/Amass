@@ -1,6 +1,7 @@
 package com.pm.amass.mission.task.content;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,6 +11,7 @@ import androidx.navigation.Navigation;
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
 import com.pm.amass.R;
+import com.pm.amass.mission.task.details.DetailsActivity;
 
 import java.util.List;
 
@@ -30,8 +32,9 @@ public class StudentContentAdapter extends BaseAdapter<Object, StudentContentAda
     public void onBindViewHolder(@NonNull StudentContentViewHolder holder, int position, @NonNull List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
         holder.getItemView(R.id.btn_student_task_item).setOnClickListener(v -> {
-            Navigation.findNavController(v)
-                    .navigate(R.id.action_dailyTaskFragment_to_taskDetailsFragment);
+           /* Navigation.findNavController(v)
+                    .navigate(R.id.action_dailyTaskFragment_to_taskDetailsFragment);*/
+            mContext.startActivity(new Intent(mContext, DetailsActivity.class));
         });
     }
 

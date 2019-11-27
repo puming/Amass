@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import com.pm.amass.MainActivity;
 import com.pm.amass.R;
 import com.pm.amass.login.LoginActivity;
+import com.pm.amass.manager.AppManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -49,12 +51,19 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void subscribeViewModel() {
-        mViewModel.getLoginState()
+       /* mViewModel.getLoginState()
                 .observe(this, aBoolean -> {
                             Log.d(TAG, "subscribeViewModel: aBoolean="+aBoolean);
                             isAlreadyLogin = aBoolean;
                         }
-                );
+                );*/
+        String accountOrPhone = AppManager.getInstance().getAccountOrPhone();
+        String uid = AppManager.getInstance().getUid();
+        if (!TextUtils.isEmpty(accountOrPhone) && !TextUtils.isEmpty(uid)) {
+            isAlreadyLogin = true;
+        } else {
+            isAlreadyLogin = false;
+        }
        /* mViewModel.getToken().observe(this, aBoolean -> {
             if (!aBoolean) {
                 ToastHelper.makeToast(SplashActivity.this, "获取token失败").show();

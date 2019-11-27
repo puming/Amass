@@ -5,13 +5,13 @@
     android:id="@+id/drawer_navigation">
     <fragment
         android:id="@+id/navigation_add_baby"
-        android:name="com.pm.amass.ui.addbaby.AddBabyFragment"
+        android:name="com.pm.amass.shelf.addbaby.AddBabyFragment"
         tools:layout="@layout/fragment_add_baby_drawer"
         android:label="@string/menu_add_baby" />
 
     <fragment
         android:id="@+id/navigation_baby_info"
-        android:name="com.pm.amass.ui.babyinfo.BabyInfoFragment"
+        android:name="com.pm.amass.shelf.babyinfo.BabyInfoFragment"
         tools:layout="@layout/fragment_baby_info_drawer"
         android:label="@string/title_growth" />
 

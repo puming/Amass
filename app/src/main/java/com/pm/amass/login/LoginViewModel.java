@@ -117,12 +117,12 @@ public class LoginViewModel extends BaseViewModel {
 
         mLoginSuccessData.addSource(mUserResource, resultLogin -> {
             if (resultLogin.status == Resource.Status.SUCCEED) {
-                UserResult user = resultLogin.data;
+                UserResult.User user = resultLogin.data.getData();
                 if (user == null) {
                     mLoginSuccessData.setValue(false);
                 } else {
                     writeUidToSp(String.valueOf(user.getId()));
-                    writePhoneToSp(user.getPhone());
+                    writeAccountToSp(user.getPhone());
                     mLoginSuccessData.setValue(true);
                 }
             } else if (resultLogin.status == Resource.Status.ERROR) {
@@ -148,12 +148,12 @@ public class LoginViewModel extends BaseViewModel {
         return boundResource.getAsLiveData();
     }
 
-    void writePhoneToSp(String phone) {
+    void writeCachePhoneToSp(String phone) {
         SharedPreferences sp = MainApplication.getAppComponent().getSharedPreferences();
         sp.edit().putString("cache_phone", phone).apply();
     }
 
-    String readPhoneFromSp() {
+    String readCachePhoneFromSp() {
         SharedPreferences sp = MainApplication.getAppComponent().getSharedPreferences();
         return sp.getString("cache_phone", "");
     }
@@ -174,8 +174,8 @@ public class LoginViewModel extends BaseViewModel {
         return mLoginSp.getString("uid", "");
     }
 
-    void writeAccountToSp(String token) {
-        mLoginSp.edit().putString("account", token).apply();
+    void writeAccountToSp(String account) {
+        mLoginSp.edit().putString("account", account).apply();
     }
 
     String readAccountFromSp() {

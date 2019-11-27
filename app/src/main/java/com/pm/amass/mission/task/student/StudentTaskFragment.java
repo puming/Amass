@@ -50,13 +50,12 @@ public class StudentTaskFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        registerListener();
         ArrayList<Fragment> fragments = new ArrayList<>(3);
         fragments.add(StudentContentFragment.newInstance());
         fragments.add(StudentContentFragment.newInstance());
         fragments.add(StudentContentFragment.newInstance());
         vpStudentTask.setAdapter(new ContentFragmentPageAdapter(getChildFragmentManager(), fragments));
-        vpStudentTask.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayoutTask));
-
     }
 
     @Override
@@ -64,6 +63,24 @@ public class StudentTaskFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(StudentTaskViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    private void registerListener(){
+        vpStudentTask.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayoutTask));
+        tabLayoutTask.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                vpStudentTask.setCurrentItem(tab.getPosition(), false);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
     }
 
 }
