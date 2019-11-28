@@ -11,6 +11,8 @@ import androidx.navigation.Navigation;
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
 import com.pm.amass.R;
+import com.pm.amass.bean.TaskResult;
+import com.pm.amass.bean.TaskResult.Task;
 import com.pm.amass.mission.task.details.DetailsActivity;
 
 import java.util.List;
@@ -18,8 +20,8 @@ import java.util.List;
 /**
  * @author pmcho
  */
-public class StudentContentAdapter extends BaseAdapter<Object, StudentContentAdapter.StudentContentViewHolder> {
-    public StudentContentAdapter(Context context, List<Object> datas) {
+public class StudentContentAdapter extends BaseAdapter<TaskResult.Task, StudentContentAdapter.StudentContentViewHolder> {
+    public StudentContentAdapter(Context context, List<TaskResult.Task> datas) {
         super(context, datas);
     }
 
@@ -31,14 +33,17 @@ public class StudentContentAdapter extends BaseAdapter<Object, StudentContentAda
     @Override
     public void onBindViewHolder(@NonNull StudentContentViewHolder holder, int position, @NonNull List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
+        Task task = mDatas.get(position);
         holder.getItemView(R.id.btn_student_task_item).setOnClickListener(v -> {
            /* Navigation.findNavController(v)
                     .navigate(R.id.action_dailyTaskFragment_to_taskDetailsFragment);*/
-            mContext.startActivity(new Intent(mContext, DetailsActivity.class));
+            Intent intent = new Intent(mContext, DetailsActivity.class);
+            intent.putExtra("tid", task.getId());
+            mContext.startActivity(intent);
         });
     }
 
-    static class StudentContentViewHolder extends BaseViewHolder<Object> {
+    static class StudentContentViewHolder extends BaseViewHolder<TaskResult.Task> {
         public StudentContentViewHolder(View itemView) {
             super(itemView);
         }

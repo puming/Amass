@@ -3,17 +3,11 @@ package com.pm.amass.mission.task;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
-import com.basics.base.AppBarActivity;
 import com.basics.base.BaseActivity;
-import com.basics.base.BaseFragment;
-import com.common.widget.AppBar;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
-import com.pm.amass.mission.task.family.FamilyTaskFragment;
-import com.pm.amass.mission.task.student.StudentTaskFragment;
-
-import androidx.lifecycle.ViewModelProviders;
+import com.pm.amass.mission.task.content.TaskListFragment;
 
 /**
  * @author pmcho
@@ -41,7 +35,7 @@ public class DailyTaskActivity extends BaseActivity {
         initView();
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.fl_task_layout, StudentTaskFragment.newInstance())
+                .add(R.id.fl_task_layout, TaskListFragment.newInstance())
                 .commit();
         registerListener();*/
     }
@@ -61,12 +55,12 @@ public class DailyTaskActivity extends BaseActivity {
                 if (position == 0) {
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fl_task_layout, StudentTaskFragment.newInstance())
+                            .replace(R.id.fl_task_layout, TaskListFragment.newInstance("student"))
                             .commit();
                 } else if (position == 1) {
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fl_task_layout, FamilyTaskFragment.newInstance())
+                            .replace(R.id.fl_task_layout, TaskListFragment.newInstance("family"))
                             .commit();
                 }
 

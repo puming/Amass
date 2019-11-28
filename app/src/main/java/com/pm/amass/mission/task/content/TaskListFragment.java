@@ -1,4 +1,4 @@
-package com.pm.amass.mission.task.student;
+package com.pm.amass.mission.task.content;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.basics.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
-import com.pm.amass.mission.task.content.StudentContentFragment;
 import com.pm.amass.common.ContentFragmentPageAdapter;
 
 import java.util.ArrayList;
@@ -24,16 +23,19 @@ import butterknife.BindView;
 /**
  * @author pmcho
  */
-public class StudentTaskFragment extends BaseFragment {
+public class TaskListFragment extends BaseFragment {
 
     @BindView(R.id.tab_layout_task)
     TabLayout tabLayoutTask;
     @BindView(R.id.vp_student_task)
     ViewPager vpStudentTask;
-    private StudentTaskViewModel mViewModel;
 
-    public static StudentTaskFragment newInstance() {
-        return new StudentTaskFragment();
+    public static TaskListFragment newInstance(String source) {
+        Bundle bundle = new Bundle();
+        bundle.putString("source", source);
+        TaskListFragment fragment = new TaskListFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -52,20 +54,30 @@ public class StudentTaskFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         registerListener();
         ArrayList<Fragment> fragments = new ArrayList<>(3);
-        fragments.add(StudentContentFragment.newInstance());
-        fragments.add(StudentContentFragment.newInstance());
-        fragments.add(StudentContentFragment.newInstance());
+        Bundle arguments = getArguments();
+        if(arguments==null){
+            return;
+        }
+        String source = arguments.getString("source");
+        if("student".equals(source)){
+            fragments.add(StudentContentFragment.newInstance(1));
+            fragments.add(StudentContentFragment.newInstance(2));
+            fragments.add(StudentContentFragment.newInstance(3));
+        }else if("family".equals(source)){
+            fragments.add(StudentContentFragment.newInstance(4));
+            fragments.add(StudentContentFragment.newInstance(4));
+            fragments.add(StudentContentFragment.newInstance(5));
+        }
+        vpStudentTask.setOffscreenPageLimit(2);
         vpStudentTask.setAdapter(new ContentFragmentPageAdapter(getChildFragmentManager(), fragments));
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(StudentTaskViewModel.class);
-        // TODO: Use the ViewModel
     }
 
-    private void registerListener(){
+    private void registerListener() {
         vpStudentTask.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayoutTask));
         tabLayoutTask.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

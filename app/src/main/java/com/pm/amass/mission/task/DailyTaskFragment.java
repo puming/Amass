@@ -1,12 +1,14 @@
 package com.pm.amass.mission.task;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +18,7 @@ import com.basics.base.AppBarFragment;
 import com.common.widget.AppBar;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
-import com.pm.amass.mission.task.family.FamilyTaskFragment;
-import com.pm.amass.mission.task.student.StudentTaskFragment;
+import com.pm.amass.mission.task.content.TaskListFragment;
 
 /**
  * @author pmcho
@@ -26,6 +27,9 @@ public class DailyTaskFragment extends AppBarFragment {
     private TabLayout mTabLayout;
 
     private DailyTaskViewModel mViewModel;
+    private FragmentManager mManager;
+    private FragmentTransaction mTransaction;
+    private Fragment mCurrentFragment;
 
     public static DailyTaskFragment newInstance() {
         return new DailyTaskFragment();
@@ -54,9 +58,13 @@ public class DailyTaskFragment extends AppBarFragment {
         super.onViewCreated(view, savedInstanceState);
         mTabLayout = view.findViewById(R.id.tab_layout_task);
         ViewGroup container = view.findViewById(R.id.fl_task_layout);
-        getChildFragmentManager()
-                .beginTransaction()
-                .add(R.id.fl_task_layout, StudentTaskFragment.newInstance())
+        mManager = getChildFragmentManager();
+        mTransaction = mManager.beginTransaction();
+        final TaskListFragment student = TaskListFragment.newInstance("student");
+        final TaskListFragment family = TaskListFragment.newInstance("family");
+
+        mCurrentFragment = student;
+        mTransaction.add(R.id.fl_task_layout, student)
                 .commit();
 
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -64,15 +72,9 @@ public class DailyTaskFragment extends AppBarFragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 if (position == 0) {
-                    getChildFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fl_task_layout, StudentTaskFragment.newInstance())
-                            .commit();
+                    showFragment(student);
                 } else if (position == 1) {
-                    getChildFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fl_task_layout, FamilyTaskFragment.newInstance())
-                            .commit();
+                    showFragment(family);
                 }
 
             }
@@ -87,6 +89,21 @@ public class DailyTaskFragment extends AppBarFragment {
 
             }
         });
+    }
+
+    private void showFragment(Fragment fragment){
+        //  判断传入的fragment是不是当前的currentFragmentgit
+        if (mCurrentFragment != fragment){
+            FragmentTransaction transaction = mManager.beginTransaction();
+            //  不是则隐藏
+            transaction.hide(mCurrentFragment);
+            mCurrentFragment = fragment;
+            if (!fragment.isAdded()){
+                transaction.add(R.id.fl_task_layout,fragment).show(fragment).commit();
+            }else{
+                transaction.show(fragment).commit();
+            }
+        }
     }
 
     @Override

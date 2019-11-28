@@ -16,4 +16,10 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        String tid = getIntent().getStringExtra("tid");
+    }
 }

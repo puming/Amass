@@ -16,16 +16,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:hint="宝贝完成怎样了？"
-        android:background="@android:color/transparent"
-        android:paddingEnd="@dimen/dp_16"
-        android:paddingStart="@dimen/dp_16"
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_156"
+        android:background="@android:color/transparent"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="宝贝完成怎样了？"
         android:inputType="textMultiLine"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider3" />
@@ -35,6 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="@dimen/dp_16"
@@ -46,25 +47,26 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_32"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_collect_solid_vector" />
+            android:src="@drawable/ic_gallery_vector" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_32"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_collect_solid_vector" />
+            android:src="@drawable/ic_camera_vector" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_32"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_collect_solid_vector" />
+            android:src="@drawable/ic_voice_vector" />
 
     </LinearLayout>
+
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
@@ -72,38 +74,40 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_task_media_group"/>
+        app:layout_constraintTop_toBottomOf="@id/ll_task_media_group" />
 
     <com.common.widget.Tile
+        android:clickable="false"
         android:id="@+id/tile_sync"
-        app:divider_mode="whole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:divider_mode="whole"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider"
+        app:show_leading="false"
         app:title="同步至班级动态，获取更多人的赞" />
 
     <com.common.widget.Tile
-        app:divider_mode="whole"
-        app:leading="@drawable/ic_comment_vector"
         android:id="@+id/tile_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:divider_mode="whole"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tile_sync"
+        app:leading="@mipmap/ic_location"
         app:title="所在位置" />
 
     <com.common.widget.Tile
-        app:divider_mode="whole"
-        app:leading="@drawable/ic_comment_vector"
         android:id="@+id/tile_remind_others"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:divider_mode="whole"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tile_location"
+        app:leading="@mipmap/ic_ait"
         app:title="提醒所看" />
 
 

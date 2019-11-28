@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_submit_task"
+        android:layout_width="@dimen/dp_54"
+        android:layout_height="@dimen/dp_26"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:text="提交"
+        android:textColor="@android:color/white" />
+
+</FrameLayout>
