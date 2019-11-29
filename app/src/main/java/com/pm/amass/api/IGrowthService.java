@@ -24,6 +24,8 @@ public interface IGrowthService {
     String ARTICLE_LIST = "/api/article/getarticle";
     String SEARCH_ARTICLE = "/api/article/searcharticle";
     String ARTICLE_DETAIL = "/api/article/getarticledetail";
+    String ABOUT_ARTICLE_ACTION = "/api/article/aboutarticleaction";
+    String COMMENT_ARTICLE = "/api/article/commentarticle";
 
     @GET(ARTICLE_TYPE)
     LiveData<ApiResponse<ChannelResult>> fetchArticleType();
@@ -37,6 +39,14 @@ public interface IGrowthService {
 
     @FormUrlEncoded
     @POST(ARTICLE_DETAIL)
-    LiveData<ApiResponse<ArticleDetailsResult>> fetchArticleDetail(@FieldMap Map<String,String> map);
+    LiveData<ApiResponse<ArticleDetailsResult>> fetchArticleDetail(@FieldMap Map<String, String> map);
+
+    @FormUrlEncoded
+    @POST(ABOUT_ARTICLE_ACTION)
+    LiveData<ApiResponse<Result<String>>> fetchArticleAction(@FieldMap Map<String, String> map);
+
+    @FormUrlEncoded
+    @POST(COMMENT_ARTICLE)
+    LiveData<ApiResponse<Map<String,String>>> fetchArticleComment(@FieldMap Map<String, String> map);
 
 }

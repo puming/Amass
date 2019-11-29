@@ -10,7 +10,6 @@ import com.basics.base.BaseFragment;
 import com.pm.amass.R;
 import com.pm.amass.bean.ArticleResult;
 import com.pm.amass.bean.Moudle;
-import com.pm.amass.shelf.growth.Constant;
 import com.pm.amass.shelf.growth.GrowthViewModel;
 
 import java.util.ArrayList;
@@ -93,25 +92,6 @@ public class ContentFragment extends BaseFragment {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
-    }
-
-    private ArrayList<Moudle> initData() {
-        ArrayList<Moudle> moudles = new ArrayList<>(10);
-        for (int i = 0; i < 10; i++) {
-            Moudle moudle = new Moudle();
-            moudle.setId(i);
-            moudle.setLabel("Label");
-            moudle.setTitle("Title");
-            if (i % 2 == 0) {
-                moudle.setStyleType(Constant.StyleType.TYPE_ONE);
-            } else if (i % 3 == 0) {
-                moudle.setStyleType(Constant.StyleType.TYPE_TWO);
-            } else {
-                moudle.setStyleType(Constant.StyleType.TYPE_THREE);
-            }
-            moudles.add(moudle);
-        }
-        return moudles;
     }
 
     @Override

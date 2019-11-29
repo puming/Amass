@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".shelf.growth.details.ArticleDetailsActivity">
 
+    <WebView
+        android:id="@+id/web_article_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.flexbox.FlexboxLayout
+        android:background="@android:color/white"
         android:id="@+id/flex_article_details"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_48"
@@ -18,8 +29,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_comment"
+        <Button
+            android:gravity="start|center_vertical"
+            android:id="@+id/btn_et_comment"
             android:layout_width="@dimen/dp_206"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -53,6 +65,7 @@
         android:layout_marginBottom="@dimen/dp_16"
         android:background="@android:color/transparent"
         android:text="展开全文"
+        android:visibility="gone"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/flex_article_details"
         app:layout_constraintEnd_toEndOf="parent"

@@ -47,7 +47,7 @@ public class BottomSelectDialog extends BaseDialogFragment {
 
     @Override
     public int getResLayoutId() {
-        return R.layout.dialog_fragment_goods_tabs_list;
+        return R.layout.dialog_fragment_bottom_select;
     }
 
     @Override

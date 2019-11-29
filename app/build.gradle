@@ -1,4 +1,14 @@
 apply plugin: 'com.android.application'
+//这个必须添加
+apply plugin: 'kotlin-android'
+
+//按需添加  让项目可以使用类似像 Dagger 或者 Data Binding 这样的库。
+//https://www.kotlincn.net/docs/tutorials/android-frameworks.html
+apply plugin: 'kotlin-kapt'
+
+//按需添加  让kotlin支持视图绑定，如直接使用layout中的id设置具体的值，
+//不需要使用findViewById，或者butterKnife，可以直接用xml中的Id名
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -66,4 +76,16 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     annotationProcessor "com.alibaba:arouter-compiler:$arouterCompilerVersion"
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    //按需添加  指定kotlin标准库依赖
+    //相关说明  https://www.kotlincn.net/docs/reference/using-gradle.html
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    //如果项目中使用了butterknife和glide相关依赖需进行修改（将annotationProcessor），否则会出现兼容问题
+
+    //纯java开发
+    //annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    //annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    //java+kotlin混合开发
+    kapt "com.jakewharton:butterknife-compiler:10.0.0"
 }
