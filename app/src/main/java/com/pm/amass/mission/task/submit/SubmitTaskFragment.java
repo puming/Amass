@@ -16,6 +16,7 @@ import com.basics.base.AppBarFragment;
 import com.common.widget.AppBar;
 import com.common.widget.Tile;
 import com.pm.amass.R;
+import com.pm.amass.mission.task.details.TaskDetailsViewModel;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,7 +36,7 @@ public class SubmitTaskFragment extends AppBarFragment {
     Tile tileLocation;
     @BindView(R.id.tile_remind_others)
     Tile tileRemindOthers;
-    private SubmitTaskViewModel mViewModel;
+    private TaskDetailsViewModel mViewModel;
 
     public static SubmitTaskFragment newInstance() {
         return new SubmitTaskFragment();
@@ -51,6 +52,8 @@ public class SubmitTaskFragment extends AppBarFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tileSync.setCustomTrailing(new Switch(getContext()));
+        mViewModel = ViewModelProviders.of(this).get(TaskDetailsViewModel.class);
+
     }
 
     @Override
@@ -66,6 +69,9 @@ public class SubmitTaskFragment extends AppBarFragment {
         }
         button.setBackgroundColor(color);*/
         View button = getLayoutInflater().inflate(R.layout.layout_button, null);
+        button.setOnClickListener(v -> {
+           getActivity().finish();
+        });
         appBar.showAppbarRightContainer(true)
                 .showAppbarMenuIcon(false)
                 .showAppbarBackText(false)
@@ -77,6 +83,7 @@ public class SubmitTaskFragment extends AppBarFragment {
     @Override
     protected void onClickAppBarRightView(View view) {
         super.onClickAppBarRightView(view);
+        getActivity().onBackPressed();
     }
 
     @Override
@@ -87,8 +94,6 @@ public class SubmitTaskFragment extends AppBarFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(SubmitTaskViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     @OnClick({R.id.tile_location, R.id.tile_remind_others})

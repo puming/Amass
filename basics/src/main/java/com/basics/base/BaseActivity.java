@@ -36,7 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         //动态修改density适配屏幕
         DensityUtil.setCustomDensity(this, 375);
         super.onCreate(savedInstanceState);
-        mLoadingDialog = new LoadingDialog(this, LoadingDialog.STRIP_SHAPE);
+        mLoadingDialog = new LoadingDialog(this, LoadingDialog.SQUARE_SHAPE);
     }
 
     @Override

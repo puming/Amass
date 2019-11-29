@@ -120,7 +120,7 @@ public class ArticleDetailsActivity extends AppBarActivity implements View.OnCli
         switch (v.getId()) {
             default:
                 break;
-            case R.id.et_comment:
+            case R.id.btn_et_comment:
                 BottomEditDialog editDialog = BottomEditDialog.newInstance();
                 editDialog.showDialogFragment(this, editDialog, String.valueOf(editDialog.hashCode()));
                 editDialog.setOnOnItemClickListener((content) -> {

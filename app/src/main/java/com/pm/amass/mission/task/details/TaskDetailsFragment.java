@@ -5,16 +5,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
 import com.basics.base.AppBarFragment;
+import com.basics.repository.Resource;
 import com.common.widget.AppBar;
 import com.pm.amass.R;
+import com.pm.amass.bean.TaskDetailsResult;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,6 +30,8 @@ public class TaskDetailsFragment extends AppBarFragment {
     private static final String TAG = "TaskDetailsFragment";
     @BindView(R.id.btn_do_task)
     Button btnDoTask;
+    @BindView(R.id.web_task_details)
+    WebView mWebView;
     private TaskDetailsViewModel mViewModel;
 
     public static TaskDetailsFragment newInstance() {
@@ -52,6 +58,28 @@ public class TaskDetailsFragment extends AppBarFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(TaskDetailsViewModel.class);
+        mViewModel.getTaskListData()
+                .observe(this, taskDetailsResultResource -> {
+                    switch (taskDetailsResultResource.status) {
+                        case SUCCEED:
+                            TaskDetailsResult data = taskDetailsResultResource.data;
+                            if(data == null){
+                                break;
+                            }
+                            TaskDetailsResult.TaskDetails taskDetails = data.getData();
+                            String url = taskDetails.getDetail().getH5_url();
+//                            mWebView.loadUrl(url);
+                            mWebView.loadUrl("http://www.pmbloger.com/");
+                            break;
+                        case ERROR:
+                            mWebView.loadUrl("http://www.pmbloger.com/");
+                            break;
+                        default:
+                            break;
+                    }
+
+                });
     }
 
     @Override
@@ -62,7 +90,6 @@ public class TaskDetailsFragment extends AppBarFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(TaskDetailsViewModel.class);
     }
 
     @OnClick(R.id.btn_do_task)

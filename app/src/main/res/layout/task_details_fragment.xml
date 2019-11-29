@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".mission.task.details.TaskDetailsFragment">
 
+    <WebView
+        android:id="@+id/web_task_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/btn_do_task"
