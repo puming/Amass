@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mine_item_header_bg_shape">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:expandedTitleMarginEnd="0dp"
+                app:expandedTitleMarginStart="0dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <ImageView
+                    android:id="@+id/iv_home_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@mipmap/image_home_head_bg" />
+
+                <ImageButton
+                    android:id="@+id/btn_open_drawer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/ic_open_drawer" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/fl_home_header"
+                    android:layout_width="0dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    app:alignItems="center"
+                    app:justifyContent="space_evenly"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_open_drawer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_open_drawer"
+                    app:layout_constraintTop_toTopOf="@id/btn_open_drawer">
+
+                    <LinearLayout
+                        android:id="@+id/ll_goto_brick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_brick" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="块砖：" />
+
+                        <TextView
+                            android:id="@+id/tv_brick_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="50%" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_goto_concrete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_concrete" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="混凝土：" />
+
+                        <TextView
+                            android:id="@+id/tv_concrete_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="50%" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_goto_rebar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_rebar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="钢筋：" />
+
+                        <TextView
+                            android:id="@+id/tv_rebar_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="50%" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_goto_gold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_gold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="金币：" />
+
+                        <TextView
+                            android:id="@+id/tv_gold_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="50%" />
+
+                    </LinearLayout>
+
+                </com.google.android.flexbox.FlexboxLayout>
+
+                <ImageView
+                    android:id="@+id/iv_house"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_32"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/btn_open_drawer"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_home_header"
+                    app:srcCompat="@mipmap/image_home_house" />
+
+                <ImageView
+                    android:id="@+id/iv_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_32"
+                    app:layout_constraintEnd_toEndOf="@+id/fl_home_header"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@id/iv_house"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_home_header"
+                    app:srcCompat="@mipmap/image_home_house" />
+
+                <ImageView
+                    android:id="@+id/iv_baby_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_0"
+                    app:layout_constraintBottom_toTopOf="@id/tv_baby_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_team"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@mipmap/image_baby_pic" />
+
+                <FrameLayout
+                    android:id="@+id/fl_label_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_48"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_baby_picture"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/iv_house"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_house">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_label_day" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="完成2个共4个"
+                        android:textSize="@dimen/dp_6" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_label_week"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_baby_picture"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/iv_house"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_label_day">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_lable_week" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="完成2个共4个"
+                        android:textSize="@dimen/dp_6" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_label_special"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_baby_picture"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/iv_house"
+                    app:layout_constraintTop_toBottomOf="@+id/fl_label_week">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_label_special" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="完成2个共4个"
+                        android:textSize="@dimen/dp_6" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_baby_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:text="瑞吉吉"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_home_bg"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_home_bg"
+                    app:layout_constraintStart_toStartOf="@+id/iv_home_bg" />
+
+                <ImageButton
+                    android:id="@+id/btn_goto_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_team"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_baby_name"
+                    app:srcCompat="@mipmap/ic_btn_task" />
+
+                <ImageButton
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:id="@+id/btn_goto_psp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_goto_task"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_baby_name"
+                    app:srcCompat="@mipmap/ic_btn_psp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_margin="@dimen/dp_16"
+                android:id="@+id/tv_home_dynamic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="最新动态"
+                android:textSize="20sp" />
+            <View
+                android:id="@+id/divider_home_dynamic"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                app:layout_anchor="@+id/app_bar"
+                app:layout_anchorGravity="bottom|center" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_28"
+            android:layout_marginEnd="@dimen/dp_28"
+            android:background="@android:color/white"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</FrameLayout>

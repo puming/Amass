@@ -47,8 +47,8 @@
         <LinearLayout
             android:id="@+id/ll_goto_brick"
             android:layout_width="wrap_content"
-            android:gravity="center_vertical"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
@@ -121,9 +121,9 @@
 
         <LinearLayout
             android:id="@+id/ll_goto_gold"
-            android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
@@ -172,11 +172,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_0"
+        app:layout_constraintBottom_toTopOf="@id/tv_baby_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintBottom_toTopOf="@id/tv_baby_name"
         app:layout_constraintTop_toBottomOf="@+id/iv_team"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@mipmap/image_baby_pic" />
 
     <FrameLayout
@@ -269,11 +269,10 @@
         android:id="@+id/btn_goto_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="@+id/iv_team"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toEndOf="@id/btn_goto_psp"
         app:layout_constraintTop_toBottomOf="@+id/tv_baby_name"
         app:srcCompat="@mipmap/ic_btn_task" />
 

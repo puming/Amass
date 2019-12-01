@@ -45,6 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText">
 
         <ImageButton
+            android:id="@+id/ibtn_pic_media"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_32"
@@ -52,6 +53,7 @@
             android:src="@drawable/ic_gallery_vector" />
 
         <ImageButton
+            android:id="@+id/ibtn_open_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_32"
@@ -59,6 +61,7 @@
             android:src="@drawable/ic_camera_vector" />
 
         <ImageButton
+            android:id="@+id/ibtn_open_voice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dp_32"

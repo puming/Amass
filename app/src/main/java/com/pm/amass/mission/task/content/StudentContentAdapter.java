@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -14,6 +16,7 @@ import com.pm.amass.R;
 import com.pm.amass.bean.TaskResult;
 import com.pm.amass.bean.TaskResult.Task;
 import com.pm.amass.mission.task.details.DetailsActivity;
+import com.pm.amass.utils.ImageLoaderUtils;
 
 import java.util.List;
 
@@ -34,6 +37,15 @@ public class StudentContentAdapter extends BaseAdapter<TaskResult.Task, StudentC
     public void onBindViewHolder(@NonNull StudentContentViewHolder holder, int position, @NonNull List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
         Task task = mDatas.get(position);
+        String endtime = task.getEndtime();
+        String tname = task.getTname();
+        String icon = task.getIcon();
+        ImageView imageView = holder.getItemView(R.id.iv_student_task_item_icon);
+        ImageLoaderUtils.bindImage(imageView,icon);
+        TextView textView = holder.getItemView(R.id.iv_student_task_item_title);
+        textView.setText(tname);
+        TextView label = holder.getItemView(R.id.iv_student_task_item_label);
+        label.setText(endtime);
         holder.getItemView(R.id.btn_student_task_item).setOnClickListener(v -> {
            /* Navigation.findNavController(v)
                     .navigate(R.id.action_dailyTaskFragment_to_taskDetailsFragment);*/

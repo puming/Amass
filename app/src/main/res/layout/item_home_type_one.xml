@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_32"
+    android:layout_marginBottom="@dimen/dp_16"
+    android:scrollbars="none"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_row_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+        <include layout="@layout/sub_home_image"/>
+    </LinearLayout>
+
+</HorizontalScrollView>

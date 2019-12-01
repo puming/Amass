@@ -14,10 +14,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.basics.repository.Resource;
 import com.common.widget.AppBar;
 import com.pm.amass.R;
+import com.pm.amass.bean.NewResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author pmcho
@@ -27,20 +30,15 @@ public class NewsFragment extends Fragment {
     AppBar mAppBar;
 
     RecyclerView mRecyclerView;
-    private ArrayList datas;
-    private NewsViewModel notificationsViewModel;
+    private ArrayList<NewResult> datas;
+    private NewsViewModel mViewModel;
+    private NewsAdapter mAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NewsViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(NewsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_news, container, false);
-        notificationsViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-            }
-        });
         return root;
     }
 
@@ -60,11 +58,25 @@ public class NewsFragment extends Fragment {
 
         mRecyclerView = view.findViewById(R.id.rv_news_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        datas = new ArrayList(24);
-        Object o = new Object();
-        for (int i = 0; i < 50; i++) {
-            datas.add(o);
-        }
-        mRecyclerView.setAdapter(new NewsAdapter(getContext(), datas));
+        datas = new ArrayList(12);
+        mAdapter = new NewsAdapter(getContext(), datas);
+        mRecyclerView.setAdapter(mAdapter);
+
+        mViewModel.getNewList().observe(this, newResultResource -> {
+            switch (newResultResource.status) {
+                case SUCCEED:
+                    NewResult result = newResultResource.data;
+                    if(result == null){
+                        break;
+                    }
+                    List<NewResult.News> newsList = result.getData();
+                    mAdapter.setData(newsList);
+                    break;
+                case ERROR:
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 }

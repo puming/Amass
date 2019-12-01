@@ -5,6 +5,9 @@ import android.os.Bundle;
 import com.basics.base.AppBarActivity;
 import com.pm.amass.R;
 
+/**
+ * @author pmcho
+ */
 public class CommentActivity extends AppBarActivity {
 
     @Override

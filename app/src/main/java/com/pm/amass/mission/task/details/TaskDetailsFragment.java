@@ -69,11 +69,11 @@ public class TaskDetailsFragment extends AppBarFragment {
                             }
                             TaskDetailsResult.TaskDetails taskDetails = data.getData();
                             String url = taskDetails.getDetail().getH5_url();
-//                            mWebView.loadUrl(url);
-                            mWebView.loadUrl("http://www.pmbloger.com/");
+                            mWebView.loadUrl(url);
+//                            mWebView.loadUrl("http://www.pmbloger.com/");
                             break;
                         case ERROR:
-                            mWebView.loadUrl("http://www.pmbloger.com/");
+//                            mWebView.loadUrl("http://www.pmbloger.com/");
                             break;
                         default:
                             break;

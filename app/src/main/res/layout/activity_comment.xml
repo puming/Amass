@@ -6,4 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".shelf.growth.comment.CommentActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_comment_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/flex_article_comment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flex_article_comment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:background="@android:color/white"
+        app:alignContent="center"
+        app:flexDirection="row"
+        app:justifyContent="space_evenly"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_et_comment"
+            android:layout_width="@dimen/dp_206"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="start|center_vertical"
+            android:hint="说点什么吧"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/iv_btn_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_comment_vector" />
+
+        <ImageView
+            android:id="@+id/iv_btn_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_collect_selector" />
+
+        <ImageView
+            android:id="@+id/iv_btn_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share_vector" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

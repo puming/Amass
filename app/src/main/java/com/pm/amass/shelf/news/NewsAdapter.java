@@ -9,6 +9,8 @@ import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
 import com.common.widget.BannerView;
 import com.pm.amass.R;
+import com.pm.amass.bean.NewResult;
+import com.pm.amass.bean.NewResult.News;
 import com.pm.amass.news.details.NewsDetailsActivity;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.List;
 /**
  * @author pmcho
  */
-public class NewsAdapter extends BaseAdapter<Object, NewsAdapter.NewsViewHolder> {
+public class NewsAdapter extends BaseAdapter<NewResult.News, NewsAdapter.NewsViewHolder> {
     private ArrayList<String> banner;
     public NewsAdapter(Context context, List datas) {
         super(context, datas);
@@ -42,7 +44,7 @@ public class NewsAdapter extends BaseAdapter<Object, NewsAdapter.NewsViewHolder>
             BannerView bannerView = holder.getItemView(R.id.banner_news_ad);
             bannerView.addData(banner);
         }
-        super.onBindViewHolder(holder, position);
+        News news = mDatas.get(position);
     }
 
     @Override
@@ -53,7 +55,7 @@ public class NewsAdapter extends BaseAdapter<Object, NewsAdapter.NewsViewHolder>
         return super.getItemViewType(position);
     }
 
-    static class NewsViewHolder extends BaseViewHolder<Object> {
+    static class NewsViewHolder extends BaseViewHolder<NewResult.News> {
 
         public NewsViewHolder(View itemView) {
             super(itemView);
