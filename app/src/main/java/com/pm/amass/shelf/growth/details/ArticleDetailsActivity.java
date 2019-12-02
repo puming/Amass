@@ -82,6 +82,7 @@ public class ArticleDetailsActivity extends AppBarActivity implements View.OnCli
                             break;
                         case ERROR:
                             hideDialog();
+                            mWebArticleDetails.loadUrl("http://www.pmbloger.com/");
                             break;
                         default:
                             break;

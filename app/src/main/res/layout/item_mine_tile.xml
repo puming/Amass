@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="8dp"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
     <com.common.widget.Tile
         android:id="@+id/tile_mine"
-        app:divider_mode="whole"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        android:clickable="true"
+        android:focusable="true"
+        app:divider_mode="whole" />
 
 </FrameLayout>

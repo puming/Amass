@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class NewsAdapter extends BaseAdapter<NewResult.News, NewsAdapter.NewsViewHolder> {
     private ArrayList<String> banner;
-    public NewsAdapter(Context context, List datas) {
+    public NewsAdapter(Context context, List<NewResult.News> datas) {
         super(context, datas);
         banner = new ArrayList<>(4);
         banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
@@ -44,7 +44,7 @@ public class NewsAdapter extends BaseAdapter<NewResult.News, NewsAdapter.NewsVie
             BannerView bannerView = holder.getItemView(R.id.banner_news_ad);
             bannerView.addData(banner);
         }
-        News news = mDatas.get(position);
+//        News news = mDatas.get(position);
     }
 
     @Override

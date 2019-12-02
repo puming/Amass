@@ -2,6 +2,7 @@ package com.pm.amass.shelf.mine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +21,7 @@ import java.util.List;
  * @author pmcho
  */
 public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolder> {
+    private static final String TAG = "MineAdapter";
     public MineAdapter(Context context, List<TileInfo> datas) {
         super(context, datas);
     }
@@ -40,6 +42,7 @@ public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolde
         holder.tile.setLeading(tileInfo.getIcon());
         holder.tile.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         holder.tile.setOnClickListener(v -> {
+            Log.d(TAG, "onBindViewHolder: v="+v);
             Context context = mContext;
             if (context == null) {
                 return ;
@@ -84,7 +87,7 @@ public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolde
         @Override
         protected void onItemClick(View view, int pos) {
             super.onItemClick(view, pos);
-            Context context = view.getContext();
+           /* Context context = view.getContext();
             if (context == null) {
                 return;
             }
@@ -93,8 +96,8 @@ public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolde
             } else if (pos == 4) {
                 context.startActivity(new Intent(context, VirtualCoinActivity.class));
             } else {
-                ToastHelper.showToast(context, "该功能升级中");
-            }
+                ToastHelper.makeToast(context,"该功能升级中").show();
+            }*/
         }
     }
 }

@@ -50,11 +50,22 @@ android {
         }
     }
 
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Amass_VC${defaultConfig.versionCode}_VN${defaultConfig.versionName}_${releaseTime()}_${buildType.name}.apk"
+        }
+    }
+
     compileOptions {
         sourceCompatibility rootProject.ext.sourceCompatibility
         targetCompatibility rootProject.ext.targetCompatibility
     }
 }
+
+static def releaseTime() {
+    return new Date().format("MMdd")
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

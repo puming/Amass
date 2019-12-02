@@ -10,12 +10,10 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
 import com.basics.base.AppBarFragment;
-import com.basics.repository.Resource;
 import com.common.widget.AppBar;
 import com.pm.amass.R;
 import com.pm.amass.bean.TaskDetailsResult;
@@ -59,7 +57,7 @@ public class TaskDetailsFragment extends AppBarFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(TaskDetailsViewModel.class);
-        mViewModel.getTaskListData()
+        mViewModel.getTaskDetailsData()
                 .observe(this, taskDetailsResultResource -> {
                     switch (taskDetailsResultResource.status) {
                         case SUCCEED:
@@ -73,7 +71,7 @@ public class TaskDetailsFragment extends AppBarFragment {
 //                            mWebView.loadUrl("http://www.pmbloger.com/");
                             break;
                         case ERROR:
-//                            mWebView.loadUrl("http://www.pmbloger.com/");
+                            mWebView.loadUrl("http://www.pmbloger.com/");
                             break;
                         default:
                             break;

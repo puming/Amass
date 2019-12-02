@@ -30,7 +30,7 @@ public class NewsFragment extends Fragment {
     AppBar mAppBar;
 
     RecyclerView mRecyclerView;
-    private ArrayList<NewResult> datas;
+    private ArrayList<NewResult.News> datas;
     private NewsViewModel mViewModel;
     private NewsAdapter mAdapter;
 
@@ -59,6 +59,9 @@ public class NewsFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.rv_news_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         datas = new ArrayList(12);
+        for (int i = 0; i < 50; i++) {
+            datas.add(new NewResult.News());
+        }
         mAdapter = new NewsAdapter(getContext(), datas);
         mRecyclerView.setAdapter(mAdapter);
 
