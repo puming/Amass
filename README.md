@@ -5,8 +5,7 @@
 ![image](https://developer.android.google.cn/topic/libraries/architecture/images/final-architecture.png)
 
 ## 屏幕截图
-//![image](https://github.com/puming/Amass/blob/master/screenshot/home.jpg)
-[![N5xfwF.th.jpg](https://s1.ax1x.com/2020/06/30/N5xfwF.th.jpg)](https://imgchr.com/i/N5xfwF)
+![image](https://s1.ax1x.com/2020/06/30/NI9H4e.jpg)
 ![image](https://s1.ax1x.com/2020/06/30/N5xho4.md.jpg)
 ![image](https://github.com/puming/Amass/blob/master/screenshot/grade.jpg)
 ![image](https://github.com/puming/Amass/blob/master/screenshot/mine.jpg)
