@@ -6,6 +6,7 @@
 
 ## 屏幕截图
 //![image](https://github.com/puming/Amass/blob/master/screenshot/home.jpg)
+[![N5xfwF.th.jpg](https://s1.ax1x.com/2020/06/30/N5xfwF.th.jpg)](https://imgchr.com/i/N5xfwF)
 [![N5xfwF.md.jpg](https://s1.ax1x.com/2020/06/30/N5xfwF.md.jpg)](https://imgchr.com/i/N5xfwF)
 ![image](http://i2.tiimg.com/645939/e61777ebe975dd17.jpg)
 ![image](https://github.com/puming/Amass/blob/master/screenshot/growup.jpg)
