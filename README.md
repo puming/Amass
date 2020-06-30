@@ -8,7 +8,6 @@
 ![image](https://s1.ax1x.com/2020/06/30/NI9H4e.jpg)
 ![image](https://s1.ax1x.com/2020/06/30/NI9q9H.jpg)
 ![image](https://s1.ax1x.com/2020/06/30/NI97ND.jpg)
-[![NI97ND.jpg](https://s1.ax1x.com/2020/06/30/NI97ND.jpg)](https://imgchr.com/i/NI97ND)
 ![image](https://github.com/puming/Amass/blob/master/screenshot/mine.jpg)
 
 
