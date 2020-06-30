@@ -6,8 +6,8 @@
 
 ## 屏幕截图
 ![image](https://s1.ax1x.com/2020/06/30/NI9H4e.jpg)
-![image](https://s1.ax1x.com/2020/06/30/N5xho4.md.jpg)
-![image](https://github.com/puming/Amass/blob/master/screenshot/grade.jpg)
+![image](https://s1.ax1x.com/2020/06/30/NI9q9H.jpg)
+![image](https://s1.ax1x.com/2020/06/30/NI97ND.jpg)
 ![image](https://github.com/puming/Amass/blob/master/screenshot/mine.jpg)
 
 
