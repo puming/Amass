@@ -5,10 +5,10 @@
 ![image](https://developer.android.google.cn/topic/libraries/architecture/images/final-architecture.png)
 
 ## 屏幕截图
-![image](https://github.com/puming/Amass/screenshot/home.jpg)
-![image](https://github.com/puming/Amass/screenshot/growup.jpg)
-![image](https://github.com/puming/Amass/screenshot/grade.jpg)
-![image](https://github.com/puming/Amass/screenshot/mine.jpg)
+![image](https://github.com/puming/Amass/blob/master/screenshot/home.jpg)
+![image](https://github.com/puming/Amass/blob/master/screenshot/growup.jpg)
+![image](https://github.com/puming/Amass/blob/master/screenshot/grade.jpg)
+![image](https://github.com/puming/Amass/blob/master/screenshot/mine.jpg)
 
 
 
