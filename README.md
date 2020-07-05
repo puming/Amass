@@ -1,8 +1,8 @@
 # Amass
 此项目采用Jetpack+Okhttp+Retrofit+Dagger2+Rxjava2+ARouter等新时代主流技术栈架构MVVM的实践
 
-## 架构指南
-[![UpOIOK.png](https://s1.ax1x.com/2020/07/05/UpOIOK.png)](https://imgchr.com/i/UpOIOK)
+## 架构设计
+![image](https://s1.ax1x.com/2020/07/05/UpOIOK.md.png)
 
 ## 屏幕截图
 ![image](https://s1.ax1x.com/2020/06/30/NI9H4e.jpg)
