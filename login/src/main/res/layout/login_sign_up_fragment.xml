@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".login.SignUpFragment">
+
+
+    <com.common.widget.AppBar
+        android:id="@+id/appbar_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:text="账号注册"
+        app:showRight="false" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:cardCornerRadius="@dimen/dp_4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <TextView
+                    android:id="@+id/tv_sing_up_name_title"
+                    style="@style/login_SignUpFormTitleStyle"
+                    android:text="姓\u3000\u3000\u3000名"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <com.common.widget.InputText
+                    android:id="@+id/input_sing_up_item_name"
+                    style="@style/login_SignUpFormInputStyle"
+                    android:ems="50"
+                    android:maxLength="50"
+                    android:hint="请输入姓名"
+                    android:inputType="text"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sing_up_name_title"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <TextView
+                    android:id="@+id/tv_sing_up_nickname_title"
+                    style="@style/login_SignUpFormTitleStyle"
+                    android:text="昵\u3000\u3000\u3000称"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <com.common.widget.InputText
+                    android:id="@+id/input_sing_up_item_nickname"
+                    style="@style/login_SignUpFormInputStyle"
+                    android:ems="50"
+                    android:maxLength="50"
+                    android:hint="请输入昵称"
+                    android:inputType="text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sing_up_nickname_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <TextView
+                    android:id="@+id/tv_sing_up_psd_title"
+                    style="@style/login_SignUpFormTitleStyle"
+                    android:text="密\u3000\u3000\u3000码"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <com.common.widget.InputText
+                    android:id="@+id/input_sing_up_item_psd"
+                    style="@style/login_SignUpFormInputStyle"
+                    android:ems="12"
+                    android:maxLength="12"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sing_up_psd_title"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <TextView
+                    android:id="@+id/tv_sing_up_phone_title"
+                    style="@style/login_SignUpFormTitleStyle"
+                    android:text="手\u3000机\u3000号"
+                    tools:ignore="MissingConstraints" />
+
+                <com.common.widget.InputText
+                    android:id="@+id/input_sing_up_item_phone"
+                    style="@style/login_SignUpFormInputStyle"
+                    android:ems="11"
+                    android:maxLength="11"
+                    android:hint="请输入手机号"
+                    android:inputType="phone"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sing_up_phone_title"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <TextView
+                    android:id="@+id/tv_sing_up_code_title"
+                    style="@style/login_SignUpFormTitleStyle"
+                    android:text="@string/login_sign_up_title_code"
+                    tools:ignore="MissingConstraints" />
+
+                <com.common.widget.InputText
+                    android:id="@+id/input_sing_up_item_code"
+                    style="@style/login_SignUpFormInputStyle"
+                    android:ems="6"
+                    android:maxLength="6"
+                    android:hint="请输入验证码"
+                    android:inputType="numberSigned"
+                    app:layout_constraintEnd_toStartOf="@id/btn_start_auth"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sing_up_code_title"
+                    tools:ignore="MissingConstraints" />
+
+                <Button
+                    android:id="@+id/btn_start_auth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@drawable/login_btn_bg_shape"
+                    android:text="发送验证"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <TextView
+                    android:id="@+id/tv_sing_up_invitation_title"
+                    style="@style/login_SignUpFormTitleStyle"
+                    android:text="@string/login_sign_up_title_invitation"
+                    tools:ignore="MissingConstraints" />
+
+                <com.common.widget.InputText
+                    android:id="@+id/input_sing_up_item_invitation"
+                    style="@style/login_SignUpFormInputStyle"
+                    android:ems="10"
+                    android:maxLength="10"
+                    android:hint="选填"
+                    android:inputType="numberSigned"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sing_up_invitation_title"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48">
+
+                <TextView
+                    android:id="@+id/tv_sing_up_relation_title"
+                    style="@style/login_SignUpFormTitleStyle"
+                    android:text="关\u3000\u3000\u3000系"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="16dp" />
+
+                <TextView
+                    android:id="@+id/input_sing_up_item_relation"
+                    style="@style/login_SignUpFormInputStyle"
+                    android:hint="请选择"
+                    android:text="爸爸"
+                    app:layout_constraintEnd_toStartOf="@id/ibtn_select"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sing_up_relation_title"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@android:color/transparent"
+                    android:padding="0dp"
+                    android:paddingHorizontal="@dimen/dp_0"
+                    android:src="@drawable/login_ic_drop_down_vector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <Button
+                android:id="@+id/btn_start_sign_up"
+                style="@style/login_BtnStyle"
+                android:layout_marginStart="@dimen/dp_32"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_32"
+                android:layout_marginBottom="@dimen/dp_32"
+                android:text="确认注册" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

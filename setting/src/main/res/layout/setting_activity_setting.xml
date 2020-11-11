@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+    <com.common.widget.AppBar
+        android:id="@+id/appbar_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showRight="false" />
+
+    <ScrollView
+        android:id="@+id/rv_setting_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#E0E9E9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar_setting">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.common.widget.Tile
+                android:id="@+id/tile_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                app:divider_mode="none"
+                app:show_leading="false"
+                app:title="新消息提示" />
+
+            <com.common.widget.Tile
+                android:id="@+id/tile_account_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                app:title="账号管理" />
+
+            <com.common.widget.Tile
+                android:id="@+id/tile_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                app:show_leading="false"
+                app:title="非WIFI环境下音/视频自动播放" />
+            <!--group-->
+            <com.common.widget.Tile
+                android:id="@+id/tile_font_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                app:divider_mode="whole"
+                app:show_leading="false"
+                app:title="字体大小" />
+
+            <com.common.widget.Tile
+                app:show_leading="false"
+                android:id="@+id/tile_invite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:divider_mode="whole"
+                app:title="邀请设置" />
+
+            <com.common.widget.Tile
+                app:show_leading="false"
+                android:id="@+id/tile_clear_cache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="清除缓存" />
+
+            <!-- group -->
+            <com.common.widget.Tile
+                app:show_leading="false"
+                android:id="@+id/tile_features"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                app:divider_mode="whole"
+                app:title="版本功能介绍" />
+
+            <com.common.widget.Tile
+                app:show_leading="false"
+                android:id="@+id/tile_about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:divider_mode="whole"
+                app:title="关于我们" />
+
+            <com.common.widget.Tile
+                app:show_leading="false"
+                android:id="@+id/tile_detection_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="检测版本" />
+
+            <Button
+
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/tile_bg_selector"
+                android:text="退出登录"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

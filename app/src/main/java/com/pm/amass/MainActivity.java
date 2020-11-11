@@ -3,6 +3,7 @@ package com.pm.amass;
 import android.os.Bundle;
 import android.os.StrictMode;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationView;
@@ -16,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 /**
  * @author pmcho
  */
+@Route(path = "/app/main/MainActivity")
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView mNavView;

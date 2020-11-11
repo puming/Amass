@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInFragment">
+
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_32"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@android:color/transparent"
+        android:text="注册"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_104"
+        android:text="欢迎来到积也"
+        android:textColor="@color/login_colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_60"
+        android:checkedButton="@id/rbtn_sign_in_by_phone"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome">
+
+
+        <RadioButton
+            android:id="@+id/rbtn_sign_in_by_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_32"
+            android:text="手机快捷登录" />
+
+        <RadioButton
+            android:id="@+id/rbtn_sign_up_by_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账号密码登录" />
+
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fl_form_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg">
+
+        <LinearLayout
+            android:id="@+id/sign_in_by_phone_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <include layout="@layout/login_layout_sign_in_form_mobile" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <include layout="@layout/login_layout_sign_in_form_auth_code" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sign_in_by_account_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <include layout="@layout/login_layout_sign_in_form_account" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <include layout="@layout/login_layout_sign_in_form_psd" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_sign_in"
+        style="@style/login_BtnStyle"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:text="登录"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_form_container" />
+
+    <!--chain-->
+    <View
+        android:id="@+id/divider_left"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_48"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toStartOf="@id/three_parties_login"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+
+    <TextView
+        android:id="@+id/three_parties_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="一键登录"
+        app:layout_constraintBottom_toBottomOf="@id/divider_left"
+        app:layout_constraintEnd_toStartOf="@id/divider_right"
+        app:layout_constraintStart_toEndOf="@id/divider_left"
+        app:layout_constraintTop_toTopOf="@id/divider_left" />
+
+    <View
+        android:id="@+id/divider_right"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@id/divider_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/three_parties_login"
+        app:layout_constraintTop_toTopOf="@id/divider_left" />
+
+    <!--three_parties_login-->
+
+    <com.common.widget.ImageTextCell
+        android:id="@+id/imageTextWeiChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_48"
+        app:icon="@drawable/login_ic_wechat_vector"
+        app:layout_constraintTop_toBottomOf="@id/divider_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imageTextQQ"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:text="微信"
+        app:text_size="8dp"
+        app:text_color="#000000" />
+
+    <com.common.widget.ImageTextCell
+        android:id="@+id/imageTextQQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_48"
+        app:icon="@drawable/login_ic_qq_vector"
+        app:layout_constraintTop_toTopOf="@id/imageTextWeiChat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageTextWeiChat"
+        app:text="QQ"
+        app:text_size="8dp"
+        app:text_color="#000000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,2 +1,4 @@
-include ':app',':basics'
+include ':trtc'
+include ':setting'
+include ':app',':basics',':login'
 rootProject.name='Amass'

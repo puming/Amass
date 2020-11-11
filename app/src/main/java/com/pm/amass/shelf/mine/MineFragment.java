@@ -12,9 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.basics.base.BaseFragment;
 import com.common.widget.AppBar;
 import com.pm.amass.R;
+import com.pm.amass.RoutePath;
 import com.pm.amass.bean.TileInfo;
 import com.pm.amass.mine.mall.MallActivity;
 import com.pm.amass.mine.mission.MissionActivity;
@@ -113,7 +115,8 @@ public class MineFragment extends BaseFragment {
                 .showAppbarMenuIcon(true);
         mAppBar.getAppbarRightContainer().setOnClickListener(v -> {
 //            Navigation.findNavController(v).navigate(R.id.action_mine_to_setting);
-            startActivity(new Intent(getActivity(), SettingActivity.class));
+//            startActivity(new Intent(getActivity(), SettingActivity.class));
+            ARouter.getInstance().build(RoutePath.SETTING_ACTIVITY).navigation(getActivity());
         });
         ViewGroup mMineLayout = view.findViewById(R.id.mine_header_layout);
         mMineLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), PersonalActivity.class)));

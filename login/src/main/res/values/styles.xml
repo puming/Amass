@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="login_BtnStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/login_btn_bg_shape</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="login_SignUpFormTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_16</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="login_SignUpFormInputStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_marginStart">@dimen/dp_48</item>
+        <item name="android:layout_marginEnd">@dimen/dp_16</item>
+        <item name="android:lines">1</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintHorizontal_bias">0.0</item>
+
+
+    </style>
+
+    <style name="login_SignInputStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_16</item>
+        <item name="android:layout_marginEnd">@dimen/dp_16</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:lines">1</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+
+    <!-- Dialog进入及退出动画 -->
+    <style name="login_BottomDialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/login_bottom_dialog_anim_enter</item>
+        <item name="android:windowExitAnimation">@anim/login_bottom_dialog_anim_exit</item>
+    </style>
+
+    <!--底部dialog-->
+<!--    <style name="login_BottomFragmentDialogWithAnim" parent="@style/AppTheme">-->
+    <style name="login_BottomFragmentDialogWithAnim">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/login_BottomDialogAnim</item>
+    </style>
+</resources>

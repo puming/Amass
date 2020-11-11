@@ -9,8 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavCallback;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.pm.amass.MainActivity;
 import com.pm.amass.R;
+import com.pm.amass.RoutePath;
 import com.pm.amass.login.LoginActivity;
 import com.pm.amass.manager.AppManager;
 
@@ -120,10 +125,17 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent;
         if (isAlreadyLogin) {
             intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         } else {
-            intent = new Intent(this, LoginActivity.class);
+//            intent = new Intent(this, LoginActivity.class);
+            ARouter.getInstance()
+                    .build(RoutePath.LOGIN_ACTIVITY)
+                    .navigation(SplashActivity.this, 200, new NavCallback() {
+                        @Override
+                        public void onArrival(Postcard postcard) {
+                        }
+                    });
         }
-        startActivity(intent);
         finish();
     }
 

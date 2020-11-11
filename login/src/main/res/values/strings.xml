@@ -1,0 +1,12 @@
+<resources>
+    <string name="login_sign_up_title_code">验\u3000证\u3000码</string>
+    <string name="login_sign_up_title_invitation">邀\u3000请\u3000码</string>
+    <string name="login_error_invalid_mobile">手机号错误</string>
+    <string name="login_error_invalid_account">手机号错误</string>
+    <string name="login_invalid_fetch_code">请先获取验证码</string>
+    <string name="login_error_invalid_sms_code">验证码错误</string>
+    <string name="login_error_empty_mobile">请输入手机号</string>
+    <string name="login_error_empty_code">请输入验证码</string>
+    <string name="login_error_empty_account">请输入手机号</string>
+    <string name="login_cancel">取消</string>
+</resources>

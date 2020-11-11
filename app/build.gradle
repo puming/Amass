@@ -30,6 +30,10 @@ android {
 
         multiDexEnabled true
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     buildTypes {
         debug {
             minifyEnabled false
@@ -77,6 +81,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation project(path: ':login')
+    implementation project(path: ':setting')
+    implementation project(path: ':trtc')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -99,4 +106,7 @@ dependencies {
 
     //java+kotlin混合开发
     kapt "com.jakewharton:butterknife-compiler:10.0.0"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+    kapt "com.alibaba:arouter-compiler:$arouterCompilerVersion"
 }
