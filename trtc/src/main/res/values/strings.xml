@@ -1,1 +1,3 @@
-<resources></resources>
+<resources>
+    <string name="trtc_module_name">视频通话模块</string>
+</resources>

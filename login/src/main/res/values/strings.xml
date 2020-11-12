@@ -1,4 +1,5 @@
 <resources>
+    <string name="login_module_name">登录注册</string>
     <string name="login_sign_up_title_code">验\u3000证\u3000码</string>
     <string name="login_sign_up_title_invitation">邀\u3000请\u3000码</string>
     <string name="login_error_invalid_mobile">手机号错误</string>

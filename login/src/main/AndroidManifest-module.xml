@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pm.login">
+
+    <application android:name="com.basics.base.BaseApplication" android:allowBackup="true"
+        android:icon="@mipmap/ic_home" android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_home" android:supportsRtl="true"></application>
+
+</manifest>

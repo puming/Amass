@@ -28,8 +28,6 @@
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="layout_constraintHorizontal_bias">0.0</item>
-
-
     </style>
 
     <style name="login_SignInputStyle">
@@ -50,8 +48,7 @@
     </style>
 
     <!--底部dialog-->
-<!--    <style name="login_BottomFragmentDialogWithAnim" parent="@style/AppTheme">-->
-    <style name="login_BottomFragmentDialogWithAnim">
+    <style name="login_BottomFragmentDialogWithAnim" parent="@style/BaseAppTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:windowIsFloating">true</item>

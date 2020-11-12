@@ -21,7 +21,7 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
-        resourcePrefix "login_"
+        resourcePrefix "trtc_"
     }
 
     buildTypes {
@@ -34,6 +34,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+        sourceSets {
+            main {
+                if (isModule.toBoolean()) {
+                    manifest.srcFile 'src/main/module/AndroidManifest.xml'
+                } else {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                    //集成开发模式下排除 module 文件夹中的所有 Java 文件
+                    java {
+                        exclude 'module/**'
+                    }
+                }
+            }
+        }
 }
 
 dependencies {

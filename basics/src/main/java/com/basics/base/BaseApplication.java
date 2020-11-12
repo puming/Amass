@@ -66,8 +66,13 @@ public class BaseApplication extends Application {
         return mAppComponent;
     }
 
+    /**
+     * 子模块如果有网络通信一定要重写此方法，返回具体的域名。
+     *
+     * @return domain
+     */
     protected String baseUrlString() {
-        return "";
+        return BuildConfig.DEFAULT_DOMAIN;
     }
 
     @Override
