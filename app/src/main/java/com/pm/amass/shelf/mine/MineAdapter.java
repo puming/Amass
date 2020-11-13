@@ -1,5 +1,6 @@
 package com.pm.amass.shelf.mine;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -47,7 +48,9 @@ public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolde
             if (context == null) {
                 return ;
             }
-            if (position == 2) {
+            if(position == 1){
+//                new TakePhotoOwner().start((Activity) context,100);
+            } else if (position == 2) {
                 context.startActivity(new Intent(context, OrderActivity.class));
             } else if (position == 4) {
                 context.startActivity(new Intent(context, VirtualCoinActivity.class));

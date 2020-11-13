@@ -84,6 +84,12 @@ dependencies {
     implementation project(path: ':login')
     implementation project(path: ':setting')
     implementation project(path: ':trtc')
+    implementation project(path: ':hybrid-extensions')
+    implementation project(path: ':mediapicker-extensions')
+    implementation project(path: ':qrcode-extensions')
+//    implementation project(path: ':takephoto-extensions')
+//    implementation('com.pm.takephoto:takephoto:0.1.1')
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
