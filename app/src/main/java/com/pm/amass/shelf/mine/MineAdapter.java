@@ -15,6 +15,7 @@ import com.pm.amass.R;
 import com.pm.amass.bean.TileInfo;
 import com.pm.amass.mine.coin.VirtualCoinActivity;
 import com.pm.amass.mine.order.OrderActivity;
+import com.takephoto.TakePhotoOwner;
 
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolde
                 return ;
             }
             if(position == 1){
-//                new TakePhotoOwner().start((Activity) context,100);
+                new TakePhotoOwner().start((Activity) context,100);
             } else if (position == 2) {
                 context.startActivity(new Intent(context, OrderActivity.class));
             } else if (position == 4) {

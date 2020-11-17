@@ -28,6 +28,7 @@ import com.pm.amass.common.ContentFragmentPageAdapter;
  * @author pm
  */
 public class GrowthFragment extends BaseFragment {
+    private static final boolean DEBUG = true;
     private static final String TAG = "GrowthFragment";
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -94,6 +95,10 @@ public class GrowthFragment extends BaseFragment {
             layout.addView(child, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT, Gravity.CENTER));
             pages.add(layout);*/
+            if(DEBUG){
+                //调试值
+                cateId = "1";
+            }
             ContentFragment homeFragment = ContentFragment.newInstance(cateId);
             fragments.add(homeFragment);
         }

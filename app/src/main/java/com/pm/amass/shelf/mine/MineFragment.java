@@ -23,6 +23,7 @@ import com.pm.amass.mine.mission.MissionActivity;
 import com.pm.amass.mine.personal.PersonalActivity;
 import com.pm.amass.mine.top.TopActivity;
 import com.pm.amass.mine.setting.SettingActivity;
+import com.qrcode.QrCodeOwner;
 
 import java.util.ArrayList;
 
@@ -112,7 +113,14 @@ public class MineFragment extends BaseFragment {
         Log.d(TAG, "onViewCreated: ");
         mAppBar = view.findViewById(R.id.appbar);
         mAppBar.setAppbarMenuIcon(R.drawable.ic_setting)
+                .setAppbarBackIcon(R.drawable.ic_scan)
+                .showAppbarLeftContainer(true)
+                .showAppbarBackText(false)
+                .showAppbarBackIcon(true)
                 .showAppbarMenuIcon(true);
+        mAppBar.getAppbarLeftContainer().setOnClickListener(v -> {
+            new QrCodeOwner().start(getActivity());
+        });
         mAppBar.getAppbarRightContainer().setOnClickListener(v -> {
 //            Navigation.findNavController(v).navigate(R.id.action_mine_to_setting);
 //            startActivity(new Intent(getActivity(), SettingActivity.class));

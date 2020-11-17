@@ -29,7 +29,9 @@ android {
 }
 
 dependencies {
-    implementation('com.pm.takephoto:takephoto:0.1.1')
+    implementation('com.pm.takephoto:takephoto:0.1.1'){
+        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.+'
