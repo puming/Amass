@@ -7,14 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.basics.base.BaseFragment;
 import com.basics.base.BaseItemDecoration;
-import com.basics.repository.Resource;
 import com.common.utils.DensityUtil;
 import com.pm.amass.R;
 import com.pm.amass.bean.TaskResult;

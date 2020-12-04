@@ -11,7 +11,6 @@ import android.graphics.Canvas;
 import android.graphics.Movie;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.pm.amass.R;

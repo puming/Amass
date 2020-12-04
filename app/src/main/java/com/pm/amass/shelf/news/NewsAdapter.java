@@ -10,7 +10,6 @@ import com.basics.base.BaseViewHolder;
 import com.common.widget.BannerView;
 import com.pm.amass.R;
 import com.pm.amass.bean.NewResult;
-import com.pm.amass.bean.NewResult.News;
 import com.pm.amass.news.details.NewsDetailsActivity;
 
 import java.util.ArrayList;

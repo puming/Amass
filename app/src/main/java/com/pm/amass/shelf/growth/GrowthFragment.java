@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
@@ -17,12 +17,11 @@ import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
 import com.pm.amass.bean.ChannelResult;
 import com.pm.amass.bean.ChannelResult.Channel;
+import com.pm.amass.common.ContentFragmentPageAdapter;
 import com.pm.amass.shelf.growth.content.ContentFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.pm.amass.common.ContentFragmentPageAdapter;
 
 /**
  * @author pm

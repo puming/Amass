@@ -15,7 +15,6 @@ import com.mediapicker.MediaPickerOwner;
 import com.pm.amass.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

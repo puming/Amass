@@ -3,9 +3,6 @@ package com.pm.amass.common;
 import android.content.Context;
 import android.os.Bundle;
 
-import java.lang.reflect.Field;
-import java.util.ArrayDeque;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
@@ -13,6 +10,9 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigator;
 import androidx.navigation.fragment.FragmentNavigator;
+
+import java.lang.reflect.Field;
+import java.util.ArrayDeque;
 
 /**
  * @author pm

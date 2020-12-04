@@ -1,12 +1,12 @@
 package com.pm.amass.api;
 
+import androidx.lifecycle.LiveData;
+
 import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.bean.ResultInfo;
 import com.pm.amass.bean.Token;
 import com.pm.amass.bean.UserResult;
-
-import androidx.lifecycle.LiveData;
 
 import java.util.Map;
 

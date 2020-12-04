@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;

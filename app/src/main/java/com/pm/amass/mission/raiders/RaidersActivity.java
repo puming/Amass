@@ -1,8 +1,8 @@
 package com.pm.amass.mission.raiders;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.pm.amass.R;
 

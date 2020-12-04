@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.common.widget.AppBar;
-
 import androidx.annotation.Nullable;
+
+import com.common.widget.AppBar;
 
 /**
  * @author pm

@@ -9,22 +9,16 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.lifecycle.ViewModelProviders;
+
 import com.basics.base.AppBarActivity;
-import com.basics.repository.Resource;
-import com.basics.repository.Result;
 import com.common.widget.AppBar;
 import com.google.android.flexbox.FlexboxLayout;
 import com.pm.amass.R;
 import com.pm.amass.bean.ArticleDetailsResult;
 import com.pm.amass.diglog.BottomEditDialog;
-import com.pm.amass.diglog.BottomSelectDialog;
 import com.pm.amass.shelf.growth.GrowthViewModel;
 import com.pm.amass.shelf.growth.comment.CommentActivity;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 /**
  * @author pmcho

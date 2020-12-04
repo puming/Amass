@@ -1,33 +1,23 @@
 package com.pm.amass.mine.mall.content;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
-import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.basics.base.BaseFragment;
-import com.basics.base.BaseItemDecoration;
-import com.basics.repository.Resource;
 import com.common.utils.DensityUtil;
-import com.google.android.flexbox.FlexboxItemDecoration;
 import com.pm.amass.R;
 import com.pm.amass.bean.ShopResult;
-import com.pm.amass.shelf.growth.content.ContentFragment;
-import com.pm.amass.widget.ItemSpace;
 
-import java.nio.channels.Channel;
 import java.util.ArrayList;
 import java.util.List;
 

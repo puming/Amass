@@ -14,9 +14,9 @@ import com.common.widget.AppBar;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.amass.R;
 import com.pm.amass.bean.ChannelResult.Channel;
+import com.pm.amass.common.ContentFragmentPageAdapter;
 import com.pm.amass.mine.mall.content.MallContentFragment;
 import com.pm.amass.mine.mall.content.MallContentViewModel;
-import com.pm.amass.common.ContentFragmentPageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

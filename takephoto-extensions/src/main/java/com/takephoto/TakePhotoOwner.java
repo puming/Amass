@@ -1,10 +1,7 @@
 package com.takephoto;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-
-import androidx.lifecycle.LifecycleOwner;
 
 import com.pm.takephoto.PictureFileProvider;
 import com.pm.takephoto.TakePhotoActivity;

@@ -1,18 +1,17 @@
 package com.pm.amass.diglog;
 
 import android.app.Dialog;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.basics.base.BaseDialogFragment;
-import com.pm.amass.R;
-
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.DialogFragment;
+
+import com.basics.base.BaseDialogFragment;
+import com.pm.amass.R;
 
 /**
  * @author pm

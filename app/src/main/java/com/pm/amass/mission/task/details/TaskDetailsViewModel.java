@@ -4,7 +4,6 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.basics.base.BaseViewModel;
 import com.basics.repository.LiveNetworkBoundResource;
@@ -13,7 +12,6 @@ import com.basics.repository.Result;
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.api.ITaskService;
 import com.pm.amass.bean.TaskDetailsResult;
-import com.pm.amass.bean.TaskResult;
 import com.pm.amass.manager.AppManager;
 
 import java.util.HashMap;

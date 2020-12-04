@@ -4,10 +4,6 @@ import android.text.TextUtils;
 
 import com.basics.BuildConfig;
 import com.common.retrofit.LiveDataCallAdapterFactory;
-//import com.basics.http.interceptor.AddCookiesInterceptor;
-//import com.basics.http.interceptor.LoggingInterceptor;
-//import com.basics.http.interceptor.ReceivedCookiesInterceptor;
-//import com.basics.http.interceptor.TokenInterceptor;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.security.KeyManagementException;
@@ -30,6 +26,11 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+//import com.basics.http.interceptor.AddCookiesInterceptor;
+//import com.basics.http.interceptor.LoggingInterceptor;
+//import com.basics.http.interceptor.ReceivedCookiesInterceptor;
+//import com.basics.http.interceptor.TokenInterceptor;
 
 /**
  * @author pm

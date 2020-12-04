@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
 import com.google.android.flexbox.FlexboxLayout;

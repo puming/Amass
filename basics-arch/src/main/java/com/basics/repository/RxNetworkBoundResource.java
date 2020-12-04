@@ -2,10 +2,11 @@ package com.basics.repository;
 
 import android.util.Log;
 
-import com.common.retrofit.ApiResponse;
-
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
+
+import com.common.retrofit.ApiResponse;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;

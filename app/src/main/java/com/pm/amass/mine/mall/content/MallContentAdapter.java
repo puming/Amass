@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
-import com.common.imageloader.glide.GlideImageLoaderConfig;
-import com.common.imageloader.glide.GlideImageLoaderStrategy;
 import com.pm.amass.MainApplication;
 import com.pm.amass.R;
 import com.pm.amass.bean.ShopResult.Shop;

@@ -2,13 +2,13 @@ package com.basics.repository;
 
 import android.util.Log;
 
-import com.common.retrofit.ApiResponse;
-
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Transformations;
+
+import com.common.retrofit.ApiResponse;
 
 /**
  * @author pm

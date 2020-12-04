@@ -2,6 +2,7 @@ package com.basics.repository;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import static com.basics.repository.Resource.Status.ERROR;
 import static com.basics.repository.Resource.Status.LOADING;
 import static com.basics.repository.Resource.Status.MORE_ADD;

@@ -4,15 +4,12 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.basics.base.BaseViewModel;
 import com.basics.repository.LiveNetworkBoundResource;
 import com.basics.repository.Resource;
 import com.common.retrofit.ApiResponse;
 import com.pm.amass.api.INewService;
-import com.pm.amass.bean.ArticleResult;
 import com.pm.amass.bean.NewResult;
 import com.pm.amass.manager.AppManager;
 

@@ -1,7 +1,5 @@
 package com.pm.amass.mine.order;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.basics.base.AppBarActivity;

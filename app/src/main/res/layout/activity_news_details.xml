@@ -7,6 +7,22 @@
     tools:context=".news.details.NewsDetailsActivity">
 
     <ImageButton
+        android:id="@+id/ibtn_open_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="@dimen/dp_16"
+        app:layout_constraintEnd_toStartOf="@id/img_btn_voice"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_camera_vector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/todo" />
+
+    <ImageButton
         android:id="@+id/img_btn_voice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +34,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_voice_vector" />
+        app:srcCompat="@drawable/ic_voice_vector"
+        android:contentDescription="@string/todo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

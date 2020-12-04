@@ -3,10 +3,10 @@ package com.basics.di;
 import android.app.Application;
 import android.content.SharedPreferences;
 
-import com.common.utils.AppExecutors;
-import com.common.retrofit.IRetrofitManager;
 import com.common.imageloader.BaseImageLoaderStrategy;
 import com.common.imageloader.ImageLoader;
+import com.common.retrofit.IRetrofitManager;
+import com.common.utils.AppExecutors;
 
 import javax.inject.Named;
 import javax.inject.Singleton;

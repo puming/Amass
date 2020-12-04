@@ -1,7 +1,5 @@
 package com.pm.amass.mine.coin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.basics.base.AppBarActivity;

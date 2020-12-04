@@ -4,11 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.common.retrofit.IRetrofitManager;
-import com.common.retrofit.RetrofitManager;
 import com.common.imageloader.BaseImageLoaderStrategy;
 import com.common.imageloader.ImageLoader;
 import com.common.imageloader.glide.GlideImageLoaderStrategy;
+import com.common.retrofit.IRetrofitManager;
+import com.common.retrofit.RetrofitManager;
 
 import javax.inject.Named;
 import javax.inject.Singleton;

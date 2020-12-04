@@ -1,12 +1,12 @@
 package com.pm.amass.common;
 
 
-import java.util.List;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
+
+import java.util.List;
 
 /**
  * @author pmcho

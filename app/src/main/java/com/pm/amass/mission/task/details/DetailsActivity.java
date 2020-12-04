@@ -1,9 +1,9 @@
 package com.pm.amass.mission.task.details;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-
-import android.os.Bundle;
 
 import com.pm.amass.R;
 

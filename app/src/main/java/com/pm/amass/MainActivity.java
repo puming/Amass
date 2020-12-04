@@ -3,16 +3,16 @@ package com.pm.amass;
 import android.os.Bundle;
 import android.os.StrictMode;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.android.material.navigation.NavigationView;
 
 /**
  * @author pmcho

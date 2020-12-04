@@ -1,7 +1,5 @@
 package com.basics.http.interceptor;
 
-import android.content.Context;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.basics.base.BaseApplication;

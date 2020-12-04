@@ -21,7 +21,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [moduleName: project.getName(),AROUTER_GENERATE_DOC: "enable"]
                 //room的数据库概要、记录
                 /*arguments = ["room.schemaLocation":
                                      "$projectDir/schemas".toString()]*/
@@ -88,6 +88,7 @@ dependencies {
     implementation project(path: ':mediapicker-extensions')
     implementation project(path: ':qrcode-extensions')
     implementation project(path: ':takephoto-extensions')
+    implementation project(path: ':camera-extensions')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -1,3 +1,4 @@
+include ':iMain'
 include ':hybrid-extensions'
 include ':takephoto-extensions'
 include ':camera-extensions'

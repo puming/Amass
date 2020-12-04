@@ -6,20 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.basics.base.BaseFragment;
-import com.pm.amass.R;
-import com.pm.amass.bean.ArticleResult;
-import com.pm.amass.bean.Moudle;
-import com.pm.amass.shelf.growth.GrowthViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.basics.base.BaseFragment;
+import com.pm.amass.R;
+import com.pm.amass.bean.ArticleResult;
+import com.pm.amass.shelf.growth.GrowthViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author pmcho

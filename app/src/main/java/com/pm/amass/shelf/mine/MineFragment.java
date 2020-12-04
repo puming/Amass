@@ -22,7 +22,6 @@ import com.pm.amass.mine.mall.MallActivity;
 import com.pm.amass.mine.mission.MissionActivity;
 import com.pm.amass.mine.personal.PersonalActivity;
 import com.pm.amass.mine.top.TopActivity;
-import com.pm.amass.mine.setting.SettingActivity;
 import com.qrcode.QrCodeOwner;
 
 import java.util.ArrayList;
