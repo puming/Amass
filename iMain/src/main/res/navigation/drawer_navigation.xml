@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_navigation">
+    <fragment
+        android:id="@+id/navigation_add_baby"
+        android:name="com.pm.imain.shelf.addbaby.AddBabyFragment"
+        tools:layout="@layout/fragment_add_baby_drawer"
+        android:label="@string/menu_add_baby" />
+
+    <fragment
+        android:id="@+id/navigation_baby_info"
+        android:name="com.pm.imain.shelf.babyinfo.BabyInfoFragment"
+        tools:layout="@layout/fragment_baby_info_drawer"
+        android:label="@string/title_growth" />
+
+</navigation>

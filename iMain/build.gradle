@@ -3,31 +3,65 @@ if (isModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'com.jakewharton.butterknife'
+//这个必须添加
+apply plugin: 'kotlin-android'
+
+//按需添加  让项目可以使用类似像 Dagger 或者 Data Binding 这样的库。
+//https://www.kotlincn.net/docs/tutorials/android-frameworks.html
+//apply plugin: 'kotlin-kapt'
+
+//按需添加  让kotlin支持视图绑定，如直接使用layout中的id设置具体的值，
+//不需要使用findViewById，或者butterKnife，可以直接用xml中的Id名
+//apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
+    compileSdkVersion 29
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-        resourcePrefix "imain_"
-    }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+                //room的数据库概要、记录
+                /*arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]*/
+            }
+        }
 
+        multiDexEnabled true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField('String', 'DOMAIN', '"http://jiye.sdmiaobang.com"')
+        }
+        preview {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.preview
+//            buildConfigField('String', 'DOMAIN', '"http://rap2api.taobao.org/app/mock/235602"')
+//            matchingFallbacks = ['release', 'preview', 'debug']
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+//            buildConfigField('String', 'DOMAIN', '"http://jiye.sdmiaobang.com"')
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
     }
     sourceSets {
         main {
@@ -38,13 +72,51 @@ android {
             }
         }
     }
+    /*viewBinding {
+        enabled = true
+    }*/
 }
 
-dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android:flexbox:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation project(path: ':camera-extensions')
+    implementation project(path: ':hybrid-extensions')
+    implementation project(path: ':mediapicker-extensions')
+    implementation project(path: ':takephoto-extensions')
+    implementation project(path: ':qrcode-extensions')
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(path: ':basics')
+
+    //compiler
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
+    annotationProcessor "com.alibaba:arouter-compiler:$arouterCompilerVersion"
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    //按需添加  指定kotlin标准库依赖
+    //相关说明  https://www.kotlincn.net/docs/reference/using-gradle.html
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    //如果项目中使用了butterknife和glide相关依赖需进行修改（将annotationProcessor），否则会出现兼容问题
+
+    //纯java开发
+    //annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    //annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    //java+kotlin混合开发
+//    kapt "android.arch.persistence.room:compiler:1.1.1"
+//    kapt 'com.google.dagger:dagger-compiler:2.16'
+//    kapt "com.alibaba:arouter-compiler:$arouterCompilerVersion"
+//    kapt "com.jakewharton:butterknife-compiler:10.0.0"
 }

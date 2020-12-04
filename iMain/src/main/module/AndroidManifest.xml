@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pm.imain">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name=" android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <application
+        android:name="com.basics.base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_home"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_home"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.pm.imain.mission.task.details.DetailsActivity"></activity>
+        <activity android:name="com.pm.imain.shelf.growth.comment.CommentActivity" />
+        <activity android:name="com.pm.imain.shelf.growth.details.ArticleDetailsActivity" />
+        <activity android:name="com.pm.imain.mission.raiders.RaidersActivity" />
+<!--        <activity android:name=".test.TestActivity" />-->
+        <activity android:name="com.pm.imain.mission.task.DailyTaskActivity" />
+        <activity android:name="com.pm.imain.news.details.NewsDetailsActivity" />
+        <activity android:name="com.pm.imain.mine.coin.VirtualCoinActivity" />
+        <activity android:name="com.pm.imain.mine.order.OrderActivity" />
+        <activity android:name="com.pm.imain.mine.top.TopActivity" />
+        <activity android:name="com.pm.imain.mine.mission.MissionActivity" />
+        <activity android:name="com.pm.imain.mine.mall.MallActivity" />
+        <activity android:name="com.pm.imain.mine.personal.PersonalActivity" />
+<!--        <activity android:name=".login.LoginActivity" />-->
+        <activity
+            android:name="com.pm.imain.test.TestActivity"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme.NoActionBar" />
+<!--        <activity-->
+<!--            android:name=".mine.setting.SettingActivity"-->
+<!--            android:launchMode="singleTop"-->
+<!--            android:screenOrientation="portrait" />-->
+        <activity
+            android:name="com.pm.imain.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.pm.imain.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.pm.imain.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

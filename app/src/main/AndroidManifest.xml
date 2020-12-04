@@ -16,9 +16,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.location.gps" />
-
     <application
-        android:name=".MainApplication"
+        android:name="com.pm.imain.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_home"
         android:label="@string/app_name"
@@ -26,49 +25,7 @@
         android:roundIcon="@mipmap/ic_home"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mission.task.details.DetailsActivity"></activity>
-        <activity android:name=".shelf.growth.comment.CommentActivity" />
-        <activity android:name=".shelf.growth.details.ArticleDetailsActivity" />
-        <activity android:name=".mission.raiders.RaidersActivity" />
-<!--        <activity android:name=".test.TestActivity" />-->
-        <activity android:name=".mission.task.DailyTaskActivity" />
-        <activity android:name=".news.details.NewsDetailsActivity" />
-        <activity android:name=".mine.coin.VirtualCoinActivity" />
-        <activity android:name=".mine.order.OrderActivity" />
-        <activity android:name=".mine.top.TopActivity" />
-        <activity android:name=".mine.mission.MissionActivity" />
-        <activity android:name=".mine.mall.MallActivity" />
-        <activity android:name=".mine.personal.PersonalActivity" />
-<!--        <activity android:name=".login.LoginActivity" />-->
-        <activity
-            android:name=".test.TestActivity"
-            android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar" />
-<!--        <activity-->
-<!--            android:name=".mine.setting.SettingActivity"-->
-<!--            android:launchMode="singleTop"-->
-<!--            android:screenOrientation="portrait" />-->
-        <activity
-            android:name=".splash.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashActivityTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="com.pm.amass.intent.action.MAIN"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-    </application>
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n" />
 
 </manifest>
