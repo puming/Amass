@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
-import dagger.android.support.HasSupportFragmentInjector;
+//import dagger.android.support.HasSupportFragmentInjector;
 
 /**
  * @author pm
@@ -59,9 +59,9 @@ public class AppInjector {
     }
 
     private static void handleActivity(Activity activity) {
-        if (activity instanceof HasSupportFragmentInjector) {
+       /* if (activity instanceof HasSupportFragmentInjector) {
             AndroidInjection.inject(activity);
-        }
+        }*/
         if (activity instanceof FragmentActivity) {
             FragmentManager supportFragmentManager = ((FragmentActivity) activity).getSupportFragmentManager();
             supportFragmentManager.registerFragmentLifecycleCallbacks(

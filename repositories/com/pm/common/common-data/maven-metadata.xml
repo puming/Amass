@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>com.pm.common</groupId>
-  <artifactId>commonsdk</artifactId>
+  <artifactId>common-data</artifactId>
   <versioning>
     <release>beta-0.0.2</release>
     <versions>
       <version>beta-0.0.2</version>
     </versions>
-    <lastUpdated>20201210011749</lastUpdated>
+    <lastUpdated>20201210025552</lastUpdated>
   </versioning>
 </metadata>

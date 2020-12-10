@@ -30,9 +30,12 @@ android {
 
 dependencies {
 
-    implementation 'com.pm.common:commonsdk:0.0.1'
+//    implementation 'com.pm.common:commonsdk:0.0.1'
+    implementation 'com.pm.common:commonsdk:beta-0.0.2'
     //dagger
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.25'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.25'
+    testImplementation 'com.google.code.findbugs:jsr305:3.0.2'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

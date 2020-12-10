@@ -43,7 +43,9 @@ dependencies {
     api(project(":basics-runtime")){
         exclude group: 'com.pm.common'
     }
-    api 'com.pm.common:commonsdk:0.0.1'
+//    api 'com.pm.common:commonsdk:0.0.1'
+    api 'com.pm.common:commonsdk:beta-0.0.2'
+
 
     //logger
     api 'com.orhanobut:logger:2.2.0'

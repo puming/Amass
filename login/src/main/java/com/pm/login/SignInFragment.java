@@ -1,5 +1,6 @@
 package com.pm.login;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -23,6 +25,7 @@ import androidx.navigation.Navigation;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.basics.base.BaseFragment;
 import com.basics.repository.Resource;
+import com.common.data.LiveDataManager;
 import com.common.ux.ToastHelper;
 import com.pm.login.bean.Token;
 import com.pm.login.bean.UserResult;
@@ -150,6 +153,33 @@ public class SignInFragment extends BaseFragment {
         if (!TextUtils.isEmpty(account)) {
             mAppCompatEditTextAccount.setText(account);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (BuildConfig.DEBUG) {
+            showUserGuideDialog();
+        }
+    }
+
+    private void showUserGuideDialog() {
+        Context context = getContext();
+        assert context != null;
+        new AlertDialog.Builder(context)
+                .setTitle("用户指南")
+                .setMessage("演示版本请双击“欢迎来到积也”跳过登录")
+                .setIcon(R.mipmap.login_ic_launcher_round)
+                .setPositiveButton("知道了", (dialog, which) -> {
+
+                })
+                .setOnCancelListener(v -> {
+                })
+                .setOnDismissListener(v -> {
+                })
+                .setCancelable(false)
+                .create()
+                .show();
     }
 
     private void attemptFetchCode() {
@@ -281,6 +311,8 @@ public class SignInFragment extends BaseFragment {
         if (activity != null) {
             activity.finish();
         }
+        LiveDataManager.getInstance().getLiveData("token", String.class)
+                .postValue("werwwer23423dfgdf1234234");
     }
 
 

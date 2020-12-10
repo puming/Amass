@@ -30,7 +30,8 @@ android {
 
 dependencies {
 
-    implementation 'com.pm.common:commonsdk:0.0.1'
+//    implementation 'com.pm.common:commonsdk:0.0.1'
+    implementation 'com.pm.common:commonsdk:beta-0.0.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.+'

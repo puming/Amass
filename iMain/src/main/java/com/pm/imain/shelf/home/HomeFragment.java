@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.common.data.LiveDataManager;
 import com.pm.imain.R;
 import com.pm.imain.mission.raiders.RaidersActivity;
 import com.pm.imain.mission.task.DailyTaskActivity;
@@ -75,4 +76,12 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        LiveDataManager.getInstance().getLiveData("token", String.class)
+                .observe(this, s -> {
+
+                });
+    }
 }
