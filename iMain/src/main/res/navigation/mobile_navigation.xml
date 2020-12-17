@@ -32,17 +32,17 @@
         android:name="com.pm.imain.shelf.mine.MineFragment"
         android:label="@string/title_mine"
         tools:layout="@layout/fragment_mine">
-        <action
+        <!--<action
             android:id="@+id/action_mine_to_setting"
-            app:destination="@id/navigation_setting" />
+            app:destination="@id/navigation_setting" />-->
         <!--app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right" />-->
     </fragment>
-    <fragment
+    <!--<fragment
         android:id="@+id/navigation_setting"
         android:name="com.pm.imain.mine.setting.SettingFragment"
         android:label="@string/title_setting"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting" />-->
 </navigation>

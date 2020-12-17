@@ -29,6 +29,7 @@ import com.basics.base.AppBarFragment;
 import com.common.widget.AppBar;
 import com.common.widget.Tile;
 import com.pm.imain.R2;
+import com.pm.imain.R;
 import com.pm.imain.mission.task.details.TaskDetailsViewModel;
 
 import java.io.IOException;
@@ -96,7 +97,7 @@ public class SubmitTaskFragment extends AppBarFragment {
             color = getContext().getResources().getColor(R2.color.colorPrimary);
         }
         button.setBackgroundColor(color);*/
-        View button = getLayoutInflater().inflate(R2.layout.layout_button, null);
+        View button = getLayoutInflater().inflate(R.layout.layout_button, null);
         button.setOnClickListener(v -> {
             getActivity().finish();
         });
@@ -116,7 +117,7 @@ public class SubmitTaskFragment extends AppBarFragment {
 
     @Override
     protected int getContentLayoutId() {
-        return R2.layout.submit_task_fragment;
+        return R.layout.submit_task_fragment;
     }
 
     @Override
@@ -187,35 +188,28 @@ public class SubmitTaskFragment extends AppBarFragment {
             R2.id.ibtn_pic_media, R2.id.ibtn_open_camera,
             R2.id.ibtn_open_voice})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R2.id.tile_location:
-                break;
-            case R2.id.tile_remind_others:
-                break;
-            case R2.id.ibtn_pic_media:
-                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                            REQUEST_CODE_PERMISSIONS_EXTERNAL);
-                } else {
-                    pickMedia();
-                }
-                break;
-            case R2.id.ibtn_open_camera:
-                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{Manifest.permission.CAMERA},
-                            REQUEST_CODE_PERMISSIONS_CAMERA);
-                } else {
-                    openCamera();
-                }
-                break;
-            case R2.id.ibtn_open_voice:
-                break;
-            default:
-                break;
+        int id = view.getId();
+        if (id == R.id.tile_location) {
+        } else if (id == R.id.tile_remind_others) {
+        } else if (id == R.id.ibtn_pic_media) {
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_CODE_PERMISSIONS_EXTERNAL);
+            } else {
+                pickMedia();
+            }
+        } else if (id == R.id.ibtn_open_camera) {
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.CAMERA},
+                        REQUEST_CODE_PERMISSIONS_CAMERA);
+            } else {
+                openCamera();
+            }
+        } else if (id == R.id.ibtn_open_voice) {
         }
     }
 

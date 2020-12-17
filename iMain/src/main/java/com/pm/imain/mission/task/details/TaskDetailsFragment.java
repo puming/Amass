@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import com.basics.base.AppBarFragment;
 import com.common.widget.AppBar;
 import com.pm.imain.R2;
+import com.pm.imain.R;
 import com.pm.imain.bean.TaskDetailsResult;
 
 import butterknife.BindView;
@@ -50,7 +51,7 @@ public class TaskDetailsFragment extends AppBarFragment {
                 .showAppbarBackText(false)
                 .showAppbarTitle(false)
 //                .setAccentColor(Color.WHITE)
-                .setAppbarMenuIcon(R2.drawable.ic_more_vector);
+                .setAppbarMenuIcon(R.drawable.ic_more_vector);
     }
 
     @Override
@@ -82,7 +83,7 @@ public class TaskDetailsFragment extends AppBarFragment {
 
     @Override
     protected int getContentLayoutId() {
-        return R2.layout.task_details_fragment;
+        return R.layout.task_details_fragment;
     }
 
     @Override
@@ -94,6 +95,6 @@ public class TaskDetailsFragment extends AppBarFragment {
     public void onViewClicked() {
         Log.d(TAG, "onViewClicked: ");
         Navigation.findNavController(btnDoTask)
-                .navigate(R2.id.action_taskDetailsFragment_to_submitTaskFragment);
+                .navigate(R.id.action_taskDetailsFragment_to_submitFragment);
     }
 }

@@ -8,12 +8,14 @@ import com.basics.BuildConfig;
 import com.basics.di.AppComponent;
 import com.basics.di.DaggerAppComponent;
 import com.basics.di.OkHttpModule;
+import com.basics.utils.CrashHandler;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.CsvFormatStrategy;
 import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.tencent.mmkv.MMKV;
 
 /**
  * @author pm
@@ -60,6 +62,8 @@ public class BaseApplication extends Application {
                 .build();
 
         Logger.addLogAdapter(new DiskLogAdapter(diskStrategy));
+        String rootDir = MMKV.initialize(this);
+        CrashHandler.getInstance(this);
     }
 
     public static AppComponent getAppComponent() {

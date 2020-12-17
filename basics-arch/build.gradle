@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-
+    api 'com.tencent:mmkv-static:1.2.6'
 //    implementation 'com.pm.common:commonsdk:0.0.1'
     implementation 'com.pm.common:commonsdk:beta-0.0.2'
     //dagger

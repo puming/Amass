@@ -22,7 +22,7 @@ public class TaskResult extends Result<List<TaskResult.Task>> {
         private String tname;
         private String endtime;
         private int type;
-        private int jzday;
+        private String jzday;
         private String icon;
         private String is_wj;
         private String h5_url;
@@ -59,11 +59,11 @@ public class TaskResult extends Result<List<TaskResult.Task>> {
             this.type = type;
         }
 
-        public int getJzday() {
+        public String getJzday() {
             return jzday;
         }
 
-        public void setJzday(int jzday) {
+        public void setJzday(String jzday) {
             this.jzday = jzday;
         }
 

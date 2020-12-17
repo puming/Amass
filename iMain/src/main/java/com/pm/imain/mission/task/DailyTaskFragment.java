@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +23,7 @@ import com.pm.imain.mission.task.content.TaskListFragment;
  * @author pmcho
  */
 public class DailyTaskFragment extends AppBarFragment {
-    private TabLayout mTabLayout;
+    private RadioGroup mRadioGroup;
 
     private DailyTaskViewModel mViewModel;
     private FragmentManager mManager;
@@ -54,7 +55,7 @@ public class DailyTaskFragment extends AppBarFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mTabLayout = view.findViewById(R.id.tab_layout_task);
+        mRadioGroup = view.findViewById(R.id.rgp_layout_task);
         ViewGroup container = view.findViewById(R.id.fl_task_layout);
         mManager = getChildFragmentManager();
         mTransaction = mManager.beginTransaction();
@@ -64,41 +65,25 @@ public class DailyTaskFragment extends AppBarFragment {
         mCurrentFragment = student;
         mTransaction.add(R.id.fl_task_layout, student)
                 .commit();
-
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                if (position == 0) {
-                    showFragment(student);
-                } else if (position == 1) {
-                    showFragment(family);
-                }
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+        mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rbtn_family_task) {
+                showFragment(family);
+            } else if (checkedId == R.id.rbtn_student_task) {
+                showFragment(student);
             }
         });
     }
 
-    private void showFragment(Fragment fragment){
+    private void showFragment(Fragment fragment) {
         //  判断传入的fragment是不是当前的currentFragmentgit
-        if (mCurrentFragment != fragment){
+        if (mCurrentFragment != fragment) {
             FragmentTransaction transaction = mManager.beginTransaction();
             //  不是则隐藏
             transaction.hide(mCurrentFragment);
             mCurrentFragment = fragment;
-            if (!fragment.isAdded()){
-                transaction.add(R.id.fl_task_layout,fragment).show(fragment).commit();
-            }else{
+            if (!fragment.isAdded()) {
+                transaction.add(R.id.fl_task_layout, fragment).show(fragment).commit();
+            } else {
                 transaction.show(fragment).commit();
             }
         }

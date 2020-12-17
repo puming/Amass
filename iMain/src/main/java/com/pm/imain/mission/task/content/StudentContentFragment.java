@@ -1,6 +1,7 @@
 package com.pm.imain.mission.task.content;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.basics.base.BaseFragment;
 import com.basics.base.BaseItemDecoration;
 import com.common.utils.DensityUtil;
 import com.pm.imain.R2;
+import com.pm.imain.R;
 import com.pm.imain.bean.TaskResult;
 import com.pm.imain.mission.task.DailyTaskViewModel;
 
@@ -27,6 +29,7 @@ import butterknife.BindView;
  * @author pmcho
  */
 public class StudentContentFragment extends BaseFragment {
+    private static final String TAG = "StudentContentFragment";
 
     @BindView(R2.id.rv_student_content_list)
     RecyclerView rvStudentContentList;
@@ -63,12 +66,13 @@ public class StudentContentFragment extends BaseFragment {
             return;
         }
         int type = arguments.getInt("type");
-        mViewModel.getTaskListData(String.valueOf(type))
+        mViewModel.getTaskListData(String.valueOf(3))
                 .observe(this, taskResultResource -> {
                     switch (taskResultResource.status) {
                         case SUCCEED:
                             TaskResult result = taskResultResource.data;
                             List<TaskResult.Task> taskList = result.getData();
+                            Log.d(TAG, "onViewCreated: "+taskList.size());
                             mAdapter.setData(taskList);
                             break;
                         case ERROR:
@@ -82,7 +86,7 @@ public class StudentContentFragment extends BaseFragment {
 
     @Override
     protected int getContentLayoutId() {
-        return R2.layout.student_content_fragment;
+        return R.layout.student_content_fragment;
     }
 
     @Override

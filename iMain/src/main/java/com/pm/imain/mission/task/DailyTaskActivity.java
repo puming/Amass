@@ -13,16 +13,6 @@ import com.pm.imain.mission.task.content.TaskListFragment;
  * @author pmcho
  */
 public class DailyTaskActivity extends BaseActivity {
-
-    /**
-     * 学员任务
-     */
-    private TabItem mTabStudentTask;
-    /**
-     * 家庭任务
-     */
-    private TabItem mTabFamilyTask;
-    private TabLayout mTabLayoutTask;
     private FrameLayout mFlTaskLayout;
 
     DailyTaskViewModel mViewModel;
@@ -39,43 +29,4 @@ public class DailyTaskActivity extends BaseActivity {
                 .commit();
         registerListener();*/
     }
-
-    private void initView() {
-        mTabStudentTask = (TabItem) findViewById(R.id.tab_student_task);
-        mTabFamilyTask = (TabItem) findViewById(R.id.tab_family_task);
-        mTabLayoutTask = (TabLayout) findViewById(R.id.tab_layout_task);
-        mFlTaskLayout = (FrameLayout) findViewById(R.id.fl_task_layout);
-    }
-
-    private void registerListener() {
-        mTabLayoutTask.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                if (position == 0) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fl_task_layout, TaskListFragment.newInstance("student"))
-                            .commit();
-                } else if (position == 1) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fl_task_layout, TaskListFragment.newInstance("family"))
-                            .commit();
-                }
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-    }
-
 }

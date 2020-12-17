@@ -6,29 +6,35 @@
     android:orientation="vertical"
     tools:context=".mission.task.DailyTaskFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout_task"
+    <RadioGroup
+        android:id="@+id/rgp_layout_task"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/rbtn_student_task"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_student_task"
-            android:layout_width="wrap_content"
+        <RadioButton
+            android:layout_weight="1"
+            android:id="@+id/rbtn_student_task"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="学员任务" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_family_task"
-            android:layout_width="wrap_content"
+        <RadioButton
+            android:layout_weight="1"
+            android:id="@+id/rbtn_family_task"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="家庭任务" />
 
-    </com.google.android.material.tabs.TabLayout>
+    </RadioGroup>
 
     <FrameLayout
         android:id="@+id/fl_task_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

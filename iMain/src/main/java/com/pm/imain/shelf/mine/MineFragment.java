@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.basics.base.BaseFragment;
+import com.common.data.LiveDataManager;
 import com.common.widget.AppBar;
 import com.pm.imain.R;
 import com.pm.imain.RoutePath;
@@ -145,5 +146,9 @@ public class MineFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Log.d(TAG, "onActivityCreated: ");
+        LiveDataManager.getInstance().getLiveData("token", String.class)
+                .observe(this, s -> {
+
+                });
     }
 }

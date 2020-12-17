@@ -9,6 +9,7 @@ import com.common.imageloader.ImageLoader;
 import com.common.imageloader.glide.GlideImageLoaderStrategy;
 import com.common.retrofit.IRetrofitManager;
 import com.common.retrofit.RetrofitManager;
+import com.tencent.mmkv.MMKV;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -48,7 +49,15 @@ public final class AppModule {
     @Provides
     SharedPreferences provideLoginSharedPreferences(Application application) {
         Context context = application.getApplicationContext();
-        return context.getSharedPreferences("login", Context.MODE_PRIVATE);
+//        return context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        return MMKV.mmkvWithID("login");
+    }
+
+    @Named("login")
+    @Singleton
+    @Provides
+    MMKV provideLoginMMKV(){
+        return MMKV.mmkvWithID("login");
     }
 
 //    @Binds

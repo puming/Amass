@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.basics.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.imain.R2;
+import com.pm.imain.R;
 import com.pm.imain.common.ContentFragmentPageAdapter;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class TaskListFragment extends BaseFragment {
 
     @Override
     protected int getContentLayoutId() {
-        return R2.layout.student_task_fragment;
+        return R.layout.student_task_fragment;
     }
 
     @Override

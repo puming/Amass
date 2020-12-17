@@ -30,6 +30,15 @@ public class HomeFragment extends Fragment {
     private HomeAdapter mAdapter;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LiveDataManager.getInstance().getLiveData("token", String.class)
+                .observe(this, s -> {
+
+                });
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
@@ -79,9 +88,17 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        LiveDataManager.getInstance().getLiveData("token", String.class)
-                .observe(this, s -> {
+    }
 
-                });
+    @Override
+    public void onStop() {
+        super.onStop();
+        LiveDataManager.getInstance().getLiveData("token", String.class).removeObservers(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
     }
 }

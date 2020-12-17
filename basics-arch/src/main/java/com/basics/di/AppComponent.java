@@ -7,6 +7,7 @@ import com.common.imageloader.BaseImageLoaderStrategy;
 import com.common.imageloader.ImageLoader;
 import com.common.retrofit.IRetrofitManager;
 import com.common.utils.AppExecutors;
+import com.tencent.mmkv.MMKV;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -33,10 +34,19 @@ public interface AppComponent {
 
     AppExecutors getAppExecutors();
 
+
     SharedPreferences getSharedPreferences();
 
+    /**
+     * @see {getLoginMMKV}
+     * @return
+     */
+    @Deprecated
     @Named("login")
     SharedPreferences getLoginSharedPreferences();
+
+    @Named("login")
+    MMKV getLoginMMKV();
 
     @Component.Builder
     interface Builder {
