@@ -20,6 +20,10 @@
             android:id="@+id/rbtn_student_task"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/rbtn_bg_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/dp_16"
             android:text="学员任务" />
 
         <RadioButton
@@ -27,6 +31,10 @@
             android:id="@+id/rbtn_family_task"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/rbtn_bg_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/dp_16"
             android:text="家庭任务" />
 
     </RadioGroup>
