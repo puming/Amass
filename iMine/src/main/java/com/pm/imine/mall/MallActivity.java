@@ -1,4 +1,4 @@
-package com.pm.imain.mine.mall;
+package com.pm.imine.mall;
 
 
 import android.os.Bundle;
@@ -9,14 +9,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.basics.base.AppBarActivity;
+import com.basics.route.GlobalRoutePath;
 import com.common.widget.AppBar;
 import com.google.android.material.tabs.TabLayout;
-import com.pm.imain.R;
-import com.pm.imain.bean.ChannelResult.Channel;
+import com.pm.imine.R;
+import com.pm.imine.bean.ChannelResult.Channel;
+import com.pm.imine.mall.content.MallContentFragment;
+import com.pm.imine.mall.content.MallContentViewModel;
 import com.pm.middleware.ContentFragmentPageAdapter;
-import com.pm.imain.mine.mall.content.MallContentFragment;
-import com.pm.imain.mine.mall.content.MallContentViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ import java.util.List;
 /**
  * @author pm
  */
+@Route(path = GlobalRoutePath.MALL_ACTIVITY)
 public class MallActivity extends AppBarActivity {
     private static final String TAG = "MallActivity";
 

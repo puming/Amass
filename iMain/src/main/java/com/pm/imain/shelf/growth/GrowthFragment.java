@@ -17,7 +17,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.pm.imain.R;
 import com.pm.imain.bean.ChannelResult;
 import com.pm.imain.bean.ChannelResult.Channel;
-import com.pm.imain.common.ContentFragmentPageAdapter;
+import com.pm.middleware.ContentFragmentPageAdapter;
 import com.pm.imain.shelf.growth.content.ContentFragment;
 
 import java.util.ArrayList;

@@ -14,7 +14,7 @@ import com.google.android.flexbox.FlexboxLayout;
 import com.pm.imain.R;
 import com.pm.imain.bean.ArticleResult.Article;
 import com.pm.imain.shelf.growth.details.ArticleDetailsActivity;
-import com.pm.imain.utils.ImageLoaderUtils;
+import com.pm.middleware.utils.ImageLoaderUtils;
 import com.pm.imain.utils.StringUtil;
 
 import java.util.List;

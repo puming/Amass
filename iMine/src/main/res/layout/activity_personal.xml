@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".personal.PersonalActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/divider_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.common.widget.Tile
+            android:paddingTop="@dimen/dp_4"
+            android:paddingBottom="@dimen/dp_4"
+            android:id="@+id/tile_person_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:leading="@mipmap/ic_mine_icon"
+            app:title=""
+            app:trailing_text="更换头像" />
+
+        <View
+            android:id="@+id/divider_central"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="?android:attr/listDivider" />
+
+
+        <com.common.widget.Tile
+            android:id="@+id/tile_person_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:divider_mode="whole"
+            app:show_leading="false"
+            app:title="姓名"
+            app:trailing_text="瑞吉吉" />
+
+        <com.common.widget.Tile
+            android:id="@+id/tile_person_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:divider_mode="whole"
+            app:show_leading="false"
+            app:title="昵称"
+            app:trailing_text="未设置昵称" />
+
+        <com.common.widget.Tile
+            android:id="@+id/tile_person_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:divider_mode="whole"
+            app:show_leading="false"
+            app:title="性别"
+            app:trailing_text="男" />
+
+        <com.common.widget.Tile
+            android:id="@+id/tile_person_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:show_leading="false"
+            app:title="生日"
+            app:trailing_text="2015-8-11" />
+
+
+        <View
+            android:id="@+id/divider_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_8"
+            android:background="?android:attr/listDivider" />
+
+        <com.common.widget.Tile
+            android:id="@+id/tile_person_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:show_leading="false"
+            app:title="等级"
+            app:trailing_text="Lv6.2" />
+
+    </LinearLayout>
+</ScrollView>

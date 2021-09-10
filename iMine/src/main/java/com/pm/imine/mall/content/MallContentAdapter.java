@@ -1,4 +1,4 @@
-package com.pm.imain.mine.mall.content;
+package com.pm.imine.mall.content;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.basics.base.BaseAdapter;
+import com.basics.base.BaseApplication;
 import com.basics.base.BaseViewHolder;
-import com.pm.imain.MainApplication;
-import com.pm.imain.R;
-import com.pm.imain.bean.ShopResult.Shop;
+import com.pm.imine.R;
+import com.pm.imine.bean.ShopResult;
 import com.pm.middleware.utils.ImageLoaderUtils;
 
 import java.util.List;
@@ -21,11 +21,11 @@ import java.util.List;
 /**
  * @author pmcho
  */
-public class MallContentAdapter extends BaseAdapter<Shop, MallContentAdapter.MallContentViewHolder> {
-    public MallContentAdapter(Context context, List<Shop> datas) {
+public class MallContentAdapter extends BaseAdapter<ShopResult.Shop, MallContentAdapter.MallContentViewHolder> {
+    public MallContentAdapter(Context context, List<ShopResult.Shop> datas) {
         super(context, datas);
 
-        MainApplication.getAppComponent()
+        BaseApplication.getAppComponent()
                 .getImageLoader();
     }
 
@@ -37,7 +37,7 @@ public class MallContentAdapter extends BaseAdapter<Shop, MallContentAdapter.Mal
     @Override
     public void onBindViewHolder(MallContentViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        Shop shop = mDatas.get(position);
+        ShopResult.Shop shop = mDatas.get(position);
         TextView title = holder.getItemView(R.id.tv_item_mall_title);
         TextView label = holder.getItemView(R.id.tv_item_mall_label);
         ImageView image = holder.getItemView(R.id.iv_mall_img);
@@ -54,7 +54,7 @@ public class MallContentAdapter extends BaseAdapter<Shop, MallContentAdapter.Mal
 
     }
 
-    static class MallContentViewHolder extends BaseViewHolder<Shop> {
+    static class MallContentViewHolder extends BaseViewHolder<ShopResult.Shop> {
 
         public MallContentViewHolder(View itemView) {
             super(itemView);

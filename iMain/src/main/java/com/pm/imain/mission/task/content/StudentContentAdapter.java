@@ -15,7 +15,7 @@ import com.pm.imain.R;
 import com.pm.imain.bean.TaskResult;
 import com.pm.imain.bean.TaskResult.Task;
 import com.pm.imain.mission.task.details.DetailsActivity;
-import com.pm.imain.utils.ImageLoaderUtils;
+import com.pm.middleware.utils.ImageLoaderUtils;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@ import com.basics.base.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.pm.imain.R2;
 import com.pm.imain.R;
-import com.pm.imain.common.ContentFragmentPageAdapter;
+import com.pm.middleware.ContentFragmentPageAdapter;
 
 import java.util.ArrayList;
 

@@ -1,16 +1,16 @@
-package com.pm.imain.utils;
+package com.pm.middleware.utils;
 
 import android.util.Log;
 import android.util.Size;
 import android.widget.ImageView;
 
+import com.basics.BuildConfig;
+import com.basics.base.BaseApplication;
 import com.common.imageloader.ImageLoader;
 import com.common.imageloader.glide.GlideImageLoaderConfig;
 import com.common.imageloader.glide.GlideImageLoaderStrategy;
 import com.common.utils.DensityUtil;
-import com.pm.imain.BuildConfig;
-import com.pm.imain.MainApplication;
-import com.pm.imain.R;
+import com.pm.middleware.R;
 
 /**
  * @author pm
@@ -21,7 +21,7 @@ public class ImageLoaderUtils {
     private static final String TAG = "ImageLoaderUtils";
 
     public static void bindImage(ImageView imageView, String url, Size size) {
-        ImageLoader imageLoader = MainApplication.getAppComponent().getImageLoader();
+        ImageLoader imageLoader = BaseApplication.getAppComponent().getImageLoader();
         imageLoader.setImageLoaderStrategy(new GlideImageLoaderStrategy());
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "bindImage: image url : " + url);
@@ -42,7 +42,7 @@ public class ImageLoaderUtils {
     }
 
     public static void bindImage(ImageView imageView, String url) {
-        ImageLoader imageLoader = MainApplication.getAppComponent().getImageLoader();
+        ImageLoader imageLoader = BaseApplication.getAppComponent().getImageLoader();
         imageLoader.setImageLoaderStrategy(new GlideImageLoaderStrategy());
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "bindImage: image url : " + url);
