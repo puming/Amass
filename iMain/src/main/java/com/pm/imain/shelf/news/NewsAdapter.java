@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
+import com.basics.route.GlobalRoutePath;
 import com.common.widget.BannerView;
 import com.pm.imain.R;
 import com.pm.imain.bean.NewResult;
-import com.pm.imain.news.details.NewsDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,10 @@ public class NewsAdapter extends BaseAdapter<NewResult.News, NewsAdapter.NewsVie
     public NewsAdapter(Context context, List<NewResult.News> datas) {
         super(context, datas);
         banner = new ArrayList<>(4);
-        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
-        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
-        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
-        banner.add("https://graph.baidu.com/resource/112be821ee7d2ec880e1e01573281669.jpg");
+        banner.add("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F14036110236%2F641&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1636012599&t=9e4d0b4a167ffb0a92df31c776364cd3");
+        banner.add("https://img1.baidu.com/it/u=1152171067,474066094&fm=26&fmt=auto");
+        banner.add("https://img2.baidu.com/it/u=3117515341,122700844&fm=26&fmt=auto");
+        banner.add("https://img0.baidu.com/it/u=3117458176,3142002220&fm=26&fmt=auto");
     }
 
     @Override
@@ -71,7 +72,7 @@ public class NewsAdapter extends BaseAdapter<NewResult.News, NewsAdapter.NewsVie
             if(context == null){
                 return;
             }
-            context.startActivity(new Intent(context, NewsDetailsActivity.class));
+            ARouter.getInstance().build(GlobalRoutePath.NEWS_DETAILS_ACTIVITY).navigation();
         }
     }
 }

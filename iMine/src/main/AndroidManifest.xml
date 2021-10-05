@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.pm.imine">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pm.imine">
+
+    <application>
+        <activity android:name="com.pm.imine.coin.VirtualCoinActivity" />
+        <activity android:name="com.pm.imine.order.OrderActivity" />
+        <activity android:name="com.pm.imine.top.TopActivity" />
+        <activity android:name="com.pm.imine.mission.MissionActivity" />
+        <activity android:name="com.pm.imine.mall.MallActivity" />
+        <activity android:name="com.pm.imine.personal.PersonalActivity" />
+    </application>
 
 </manifest>

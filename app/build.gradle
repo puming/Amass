@@ -82,6 +82,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(path: ':iMain')
+    implementation project(path: ':iMine')
+    implementation project(path: ':imessager')
     implementation project(path: ':login')
     implementation project(path: ':setting')
     implementation project(path: ':trtc')

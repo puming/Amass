@@ -14,8 +14,8 @@ import com.basics.base.AppBarActivity;
 import com.basics.route.GlobalRoutePath;
 import com.common.widget.Tile;
 import com.mediapicker.MediaPickerOwner;
-import com.pm.imine.R2;
 import com.pm.imine.R;
+import com.pm.imine.databinding.ActivityPersonalBinding;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -24,36 +24,52 @@ import butterknife.OnClick;
  * @author pmcho
  */
 @Route(path = GlobalRoutePath.PERSONAL_ACTIVITY)
-public class PersonalActivity extends AppBarActivity {
-    @BindView(R2.id.tile_person_head)
+public class PersonalActivity extends AppBarActivity implements View.OnClickListener {
+//    @BindView(R2.id.tile_person_head)
     Tile mTilePersonHead;
-    @BindView(R2.id.tile_person_name)
+//    @BindView(R2.id.tile_person_name)
     Tile mTilePersonName;
-    @BindView(R2.id.tile_person_nickname)
+//    @BindView(R2.id.tile_person_nickname)
     Tile mTilePersonNickname;
-    @BindView(R2.id.tile_person_gender)
+//    @BindView(R2.id.tile_person_gender)
     Tile mTilePersonGender;
-    @BindView(R2.id.tile_person_birthday)
+//    @BindView(R2.id.tile_person_birthday)
     Tile mTilePersonBirthday;
-    @BindView(R2.id.tile_person_grade)
+//    @BindView(R2.id.tile_person_grade)
     Tile mTilePersonGrade;
-    @BindView(R2.id.ll_container)
+//    @BindView(R2.id.ll_container)
     LinearLayout mContainer;
     private MediaPickerOwner mMediaPickerOwner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R2.layout.activity_personal);
+        ActivityPersonalBinding personalBinding = ActivityPersonalBinding.inflate(getLayoutInflater());
+        setContentView(personalBinding.getRoot());
+        mTilePersonHead = personalBinding.tilePersonHead;
+        mTilePersonName = personalBinding.tilePersonName;
+        mTilePersonNickname = personalBinding.tilePersonNickname;
+        mTilePersonGender = personalBinding.tilePersonGender;
+        mTilePersonBirthday = personalBinding.tilePersonBirthday;
+        mTilePersonGrade = personalBinding.tilePersonGrade;
+        mContainer = personalBinding.llContainer;
+
         int childCount = mContainer.getChildCount();
         for (int i = 0; i < childCount; i++) {
             View child = mContainer.getChildAt(i);
             if (child instanceof Tile) {
                 Tile tile = (Tile) child;
-                tile.setTitleTextAppearance(R2.style.PersonTileTitle);
-                tile.setTrailingTextAppearance(R2.style.TileTrailingText);
+                tile.setTitleTextAppearance(R.style.IminePersonTileTitle);
+                tile.setTrailingTextAppearance(R.style.ImineTileTrailingText);
             }
         }
+
+        mTilePersonHead.setOnClickListener(this);
+        mTilePersonName.setOnClickListener(this);
+        mTilePersonNickname.setOnClickListener(this);
+        mTilePersonGender.setOnClickListener(this);
+        mTilePersonBirthday.setOnClickListener(this);
+        mTilePersonGrade.setOnClickListener(this);
     }
 
     @Override
@@ -76,7 +92,7 @@ public class PersonalActivity extends AppBarActivity {
         boolean isDone = mMediaPickerOwner.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    @OnClick({R2.id.tile_person_head, R2.id.tile_person_name, R2.id.tile_person_nickname, R2.id.tile_person_gender, R2.id.tile_person_birthday, R2.id.tile_person_grade})
+    @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.tile_person_head) {

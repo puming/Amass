@@ -1,6 +1,5 @@
 package com.pm.imain.shelf.mine;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,15 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.basics.base.BaseFragment;
+import com.basics.route.GlobalRoutePath;
 import com.common.data.LiveDataManager;
 import com.common.widget.AppBar;
 import com.pm.imain.R;
 import com.pm.imain.RoutePath;
 import com.pm.imain.bean.TileInfo;
-import com.pm.imain.mine.mall.MallActivity;
-import com.pm.imain.mine.mission.MissionActivity;
-import com.pm.imain.mine.personal.PersonalActivity;
-import com.pm.imain.mine.top.TopActivity;
 import com.qrcode.QrCodeOwner;
 
 import java.util.ArrayList;
@@ -127,11 +123,20 @@ public class MineFragment extends BaseFragment {
             ARouter.getInstance().build(RoutePath.SETTING_ACTIVITY).navigation(getActivity());
         });
         ViewGroup mMineLayout = view.findViewById(R.id.mine_header_layout);
-        mMineLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), PersonalActivity.class)));
+//        mMineLayout.setOnClickListener(v -> startActivity(new Intent(getContext(), PersonalActivity.class)));
+        mMineLayout.setOnClickListener(v -> ARouter.getInstance()
+                .build(GlobalRoutePath.PERSONAL_ACTIVITY)
+                .navigation(getActivity()));
 
-        view.findViewById(R.id.ll_goto_mission).setOnClickListener(v -> startActivity(new Intent(getContext(), MissionActivity.class)));
-        view.findViewById(R.id.ll_goto_top).setOnClickListener(v -> startActivity(new Intent(getContext(), TopActivity.class)));
-        view.findViewById(R.id.ll_goto_mall).setOnClickListener(v -> startActivity(new Intent(getContext(), MallActivity.class)));
+        view.findViewById(R.id.ll_goto_mission).setOnClickListener(v -> ARouter.getInstance()
+                .build(GlobalRoutePath.MISSION_ACTIVITY)
+                .navigation(getActivity()));
+        view.findViewById(R.id.ll_goto_top).setOnClickListener(v -> ARouter.getInstance()
+                .build(GlobalRoutePath.TOP_ACTIVITY)
+                .navigation(getActivity()));
+        view.findViewById(R.id.ll_goto_mall).setOnClickListener(v -> ARouter.getInstance()
+                .build(GlobalRoutePath.MALL_ACTIVITY)
+                .navigation(getActivity()));
         mRecyclerView = view.findViewById(R.id.rv_mine_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Object obj = new Object();
@@ -147,7 +152,7 @@ public class MineFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         Log.d(TAG, "onActivityCreated: ");
         LiveDataManager.getInstance().getLiveData("token", String.class)
-                .observe(this, s -> {
+                .observe(getViewLifecycleOwner(), s -> {
 
                 });
     }

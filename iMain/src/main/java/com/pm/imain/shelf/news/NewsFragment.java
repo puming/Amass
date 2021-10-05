@@ -63,7 +63,7 @@ public class NewsFragment extends Fragment {
         mAdapter = new NewsAdapter(getContext(), datas);
         mRecyclerView.setAdapter(mAdapter);
 
-        mViewModel.getNewList().observe(this, newResultResource -> {
+        mViewModel.getNewList().observe(getViewLifecycleOwner(), newResultResource -> {
             switch (newResultResource.status) {
                 case SUCCEED:
                     NewResult result = newResultResource.data;

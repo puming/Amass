@@ -2,19 +2,18 @@ package com.pm.imain.shelf.mine;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.basics.base.BaseAdapter;
 import com.basics.base.BaseViewHolder;
+import com.basics.route.GlobalRoutePath;
 import com.common.ux.ToastHelper;
 import com.common.widget.Tile;
 import com.pm.imain.R;
 import com.pm.imain.bean.TileInfo;
-import com.pm.imain.mine.coin.VirtualCoinActivity;
-import com.pm.imain.mine.order.OrderActivity;
 import com.takephoto.TakePhotoOwner;
 
 import java.util.List;
@@ -24,6 +23,7 @@ import java.util.List;
  */
 public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolder> {
     private static final String TAG = "MineAdapter";
+
     public MineAdapter(Context context, List<TileInfo> datas) {
         super(context, datas);
     }
@@ -44,17 +44,17 @@ public class MineAdapter extends BaseAdapter<TileInfo, MineAdapter.MineViewHolde
         holder.tile.setLeading(tileInfo.getIcon());
         holder.tile.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         holder.tile.setOnClickListener(v -> {
-            Log.d(TAG, "onBindViewHolder: v="+v);
+            Log.d(TAG, "onBindViewHolder: v=" + v);
             Context context = mContext;
             if (context == null) {
-                return ;
+                return;
             }
-            if(position == 1){
-                new TakePhotoOwner().start((Activity) context,100);
+            if (position == 1) {
+                new TakePhotoOwner().start((Activity) context, 100);
             } else if (position == 2) {
-                context.startActivity(new Intent(context, OrderActivity.class));
+                ARouter.getInstance().build(GlobalRoutePath.ORDER_ACTIVITY).navigation();
             } else if (position == 4) {
-                context.startActivity(new Intent(context, VirtualCoinActivity.class));
+                ARouter.getInstance().build(GlobalRoutePath.VIRTUAL_COIN_ACTIVITY).navigation();
             } else {
                 ToastHelper.makeToast(context, "该功能升级中").show();
             }

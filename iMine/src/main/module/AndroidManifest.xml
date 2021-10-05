@@ -3,5 +3,19 @@
     package="com.pm.imine">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <application android:name="com.basics.base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_mine_icon"
+        android:label="@string/imine_module_name"
+        android:roundIcon="@mipmap/ic_mine_icon"
+        android:supportsRtl="true"
+        android:theme="@style/BaseAppTheme">
+        <activity android:name="com.pm.imine.coin.VirtualCoinActivity" />
+        <activity android:name="com.pm.imine.order.OrderActivity" />
+        <activity android:name="com.pm.imine.top.TopActivity" />
+        <activity android:name="com.pm.imine.mission.MissionActivity" />
+        <activity android:name="com.pm.imine.mall.MallActivity" />
+        <activity android:name="com.pm.imine.personal.PersonalActivity" />
+    </application>
 
 </manifest>

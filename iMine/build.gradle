@@ -17,6 +17,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
         resourcePrefix "imine_"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName(),AROUTER_GENERATE_DOC: "enable"]
+                //room的数据库概要、记录
+                /*arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]*/
+            }
+        }
     }
 
     buildTypes {
@@ -37,6 +45,9 @@ android {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             }
         }
+    }
+    viewBinding {
+        enabled = true
     }
 }
 

@@ -7,4 +7,12 @@ public interface GlobalRoutePath {
     String ORDER_ACTIVITY = "/imine/order/OrderActivity";
     String PERSONAL_ACTIVITY = "/imine/personal/PersonalActivity";
     String TOP_ACTIVITY = "/imine/top/TopActivity";
+
+
+    String NEWS_DETAILS_ACTIVITY = "/imessager/details/NewsDetailsActivity";
+
+    String TRTC_LAUNCH_ACTIVITY = "/trtc/launch/TrtcLaunchActivity";
+
+
+
 }

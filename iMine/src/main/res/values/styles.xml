@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="IminePersonTileTitle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ImineTileTrailingText">
+        <item name="android:textColor">@color/color_gray_fifty</item>
+    </style>
+</resources>
