@@ -3,7 +3,6 @@
     package="com.pm.news">
 
     <application>
-        <activity android:name=".MainActivity"></activity>
         <activity android:name="com.pm.news.details.NewsDetailsActivity" />
     </application>
 

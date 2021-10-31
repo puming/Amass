@@ -84,9 +84,9 @@ dependencies {
     implementation project(path: ':iMain')
     implementation project(path: ':iMine')
     implementation project(path: ':imessager')
-    implementation project(path: ':login')
-    implementation project(path: ':setting')
-    implementation project(path: ':trtc')
+    implementation project(path: ':iLogin')
+    implementation project(path: ':iSetting')
+    implementation project(path: ':iTrtc')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

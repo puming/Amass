@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.basics.base.AppBarActivity;
 import com.common.widget.AppBar;
 import com.google.android.flexbox.FlexboxLayout;
-import com.pm.imain.R2;
+import com.pm.imain.R;
 import com.pm.imain.bean.ArticleDetailsResult;
 import com.pm.imain.diglog.BottomEditDialog;
 import com.pm.imain.shelf.growth.GrowthViewModel;
@@ -48,7 +48,7 @@ public class ArticleDetailsActivity extends AppBarActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R2.layout.activity_article_details);
+        setContentView(R.layout.activity_article_details);
         initView();
         mViewModel = ViewModelProviders.of(this).get(GrowthViewModel.class);
         initData();
@@ -90,74 +90,66 @@ public class ArticleDetailsActivity extends AppBarActivity implements View.OnCli
                 .showAppbarTitle(false)
                 .showAppbarMenuIcon(true)
                 .showAppbarBackText(false)
-                .setAppbarMenuIcon(R2.drawable.ic_more_vector);
+                .setAppbarMenuIcon(R.drawable.ic_more_vector);
     }
 
 
     private void initView() {
-        mEtComment = (Button) findViewById(R2.id.btn_et_comment);
+        mEtComment = (Button) findViewById(R.id.btn_et_comment);
         mEtComment.setOnClickListener(this);
-        mIvBtnComment = (ImageView) findViewById(R2.id.iv_btn_comment);
+        mIvBtnComment = (ImageView) findViewById(R.id.iv_btn_comment);
         mIvBtnComment.setOnClickListener(this);
-        mIvBtnCollect = (ImageView) findViewById(R2.id.iv_btn_collect);
+        mIvBtnCollect = (ImageView) findViewById(R.id.iv_btn_collect);
         mIvBtnCollect.setOnClickListener(this);
-        mIvBtnShare = (ImageView) findViewById(R2.id.iv_btn_share);
+        mIvBtnShare = (ImageView) findViewById(R.id.iv_btn_share);
         mIvBtnShare.setOnClickListener(this);
-        mFlexArticleDetails = (FlexboxLayout) findViewById(R2.id.flex_article_details);
+        mFlexArticleDetails = (FlexboxLayout) findViewById(R.id.flex_article_details);
         mFlexArticleDetails.setOnClickListener(this);
-        mBtnOpenMore = (Button) findViewById(R2.id.btn_open_more);
+        mBtnOpenMore = (Button) findViewById(R.id.btn_open_more);
         mBtnOpenMore.setOnClickListener(this);
-        mWebArticleDetails = (WebView) findViewById(R2.id.web_article_details);
+        mWebArticleDetails = (WebView) findViewById(R.id.web_article_details);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            default:
-                break;
-            case R2.id.btn_et_comment:
-                BottomEditDialog editDialog = BottomEditDialog.newInstance();
-                editDialog.showDialogFragment(this, editDialog, String.valueOf(editDialog.hashCode()));
-                editDialog.setOnOnItemClickListener((content) -> {
-                            Log.d(TAG, "onClick: content=" + content);
-                            mViewModel.getCommentData(mArticleId, content)
-                                    .observe(this, resultResource -> {
-                                        switch (resultResource.status) {
-                                            case SUCCEED:
-                                                break;
-                                            case ERROR:
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                    });
+        int id = v.getId();
+        if (id == R.id.btn_et_comment) {
+            BottomEditDialog editDialog = BottomEditDialog.newInstance();
+            editDialog.showDialogFragment(this, editDialog, String.valueOf(editDialog.hashCode()));
+            editDialog.setOnOnItemClickListener((content) -> {
+                        Log.d(TAG, "onClick: content=" + content);
+                        mViewModel.getCommentData(mArticleId, content)
+                                .observe(this, resultResource -> {
+                                    switch (resultResource.status) {
+                                        case SUCCEED:
+                                            break;
+                                        case ERROR:
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                });
+                    }
+            );
+        } else if (id == R.id.iv_btn_comment) {
+            startActivity(new Intent(this, CommentActivity.class));
+        } else if (id == R.id.iv_btn_collect) {
+            mViewModel.getActionData(mArticleId, "collect")
+                    .observe(this, resultResource -> {
+                        switch (resultResource.status) {
+                            case SUCCEED:
+                                select = !select;
+                                mIvBtnCollect.setSelected(select);
+                                break;
+                            case ERROR:
+                                break;
+                            default:
+                                break;
                         }
-                );
-                break;
-            case R2.id.iv_btn_comment:
-                startActivity(new Intent(this, CommentActivity.class));
-                break;
-            case R2.id.iv_btn_collect:
-                mViewModel.getActionData(mArticleId, "collect")
-                        .observe(this, resultResource -> {
-                            switch (resultResource.status) {
-                                case SUCCEED:
-                                    select = !select;
-                                    mIvBtnCollect.setSelected(select);
-                                    break;
-                                case ERROR:
-                                    break;
-                                default:
-                                    break;
-                            }
-                        });
-                break;
-            case R2.id.iv_btn_share:
-                break;
-            case R2.id.btn_open_more:
-                break;
-            case R2.id.flex_article_details:
-                break;
+                    });
+        } else if (id == R.id.iv_btn_share) {
+        } else if (id == R.id.btn_open_more) {
+        } else if (id == R.id.flex_article_details) {
         }
     }
 }
