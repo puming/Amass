@@ -1,6 +1,7 @@
 package com.pm.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -302,11 +303,13 @@ public class SignInFragment extends BaseFragment {
     private void startMainActivity() {
 //        startActivity(new Intent(getContext(), MainActivity.class));
         /*Intent intent = new Intent("com.pm.amass.intent.action.MAIN");
-        intent.setClassName("com.pm.amass","com.pm.amass.MainActivity");
+        intent.setClassName("com.pm.amass","com.pm.imain.MainActivity");
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(intent);
         }*/
-        ARouter.getInstance().build(RoutePath.MAIN_ACTIVITY).navigation(getActivity());
+        ARouter.getInstance().build(RoutePath.MAIN_ACTIVITY)
+                .withString("token","werwwer23423dfgdf1234234")
+                .navigation(getActivity());
         FragmentActivity activity = getActivity();
         if (activity != null) {
             activity.finish();

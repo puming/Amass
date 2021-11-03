@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
@@ -19,6 +20,8 @@ import com.google.android.material.navigation.NavigationView;
  */
 @Route(path = "/app/main/MainActivity")
 public class MainActivity extends AppCompatActivity {
+    @Autowired(name = "token")
+    String mToken;
 
     private BottomNavigationView mNavView;
 

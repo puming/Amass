@@ -14,9 +14,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.basics.route.GlobalRoutePath;
 import com.pm.imain.MainActivity;
 import com.pm.imain.R;
 import com.pm.imain.R2;
+import com.pm.imain.RoutePath;
 import com.pm.imain.manager.AppManager;
 
 /**
@@ -120,17 +122,42 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
-//            intent = new Intent(this, LoginActivity.class);
             ARouter.getInstance()
-//                    .build(RoutePath.LOGIN_ACTIVITY)
                     .build("/login/login/LoginActivity")
-                    .navigation(SplashActivity.this, 200, new NavCallback() {
-                        @Override
-                        public void onArrival(Postcard postcard) {
-                        }
-                    });
+                    .navigation(SplashActivity.this, 200);
         }
         finish();
+        /*ARouter.getInstance()
+                .build("/app/main/MainActivity")
+                .navigation(SplashActivity.this, 200, new NavCallback() {
+                    @Override
+                    public void onArrival(Postcard postcard) {
+                        //到达路由目标
+                        finish();
+                    }
+
+                    @Override
+                    public void onFound(Postcard postcard) {
+                        super.onFound(postcard);
+                        //找到路由目标
+                    }
+
+                    @Override
+                    public void onLost(Postcard postcard) {
+                        super.onLost(postcard);
+                        //路由丢失
+                    }
+
+                    @Override
+                    public void onInterrupt(Postcard postcard) {
+                        super.onInterrupt(postcard);
+                        //被拦截
+                        ARouter.getInstance()
+                                .build("/login/login/LoginActivity")
+                                .navigation();
+                        finish();
+                    }
+                });*/
     }
 
     private static class SplashTimer extends CountDownTimer {
