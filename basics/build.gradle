@@ -14,14 +14,17 @@ android {
         debug {
             minifyEnabled false
             buildConfigField('String', 'DEFAULT_DOMAIN', '"http://jiye.sdmiaobang.com"')
+            buildConfigField('Boolean', 'isComponent', rootProject.ext.android.isComponent.toString())
         }
         preview {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField('Boolean', 'isComponent', rootProject.ext.android.isComponent.toString())
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField('Boolean', 'isComponent', rootProject.ext.android.isComponent.toString())
         }
     }
 
@@ -37,10 +40,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    api(project(":basics-arch")){
+    api(project(":basics-arch")) {
         exclude group: 'com.pm.common'
     }
-    api(project(":basics-runtime")){
+    api(project(":basics-runtime")) {
         exclude group: 'com.pm.common'
     }
 //    api 'com.pm.common:commonsdk:0.0.1'

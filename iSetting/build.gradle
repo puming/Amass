@@ -54,6 +54,7 @@ dependencies {
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation project(path: ':basics')
+    implementation project(path: ':middleware')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

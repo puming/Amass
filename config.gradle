@@ -1,0 +1,22 @@
+ext {
+    android = [
+            compileSdkVersion  : 29,
+            buildToolsVersion  : "30.0.2",
+            minSdkVersion      : 21,
+            targetSdkVersion   : 29,
+            versionCode        : 1,
+            versionName        : "1.0.0.0",
+            targetCompatibility: JavaVersion.VERSION_1_8,
+            sourceCompatibility: JavaVersion.VERSION_1_8,
+            isComponent        : false,
+    ]
+
+    depen = [
+            jet   : [],
+            google: [],
+            other : [],
+            local : [
+                    ':basics'
+            ],
+    ]
+}
